@@ -1,5 +1,7 @@
-public class Game {
-    System.out.println("the best team");
+public class Game
+{
+    public Game ()
+    {
 
-
+    }
 }
