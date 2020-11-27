@@ -13,6 +13,11 @@ public class Round
         this.points = points;
     }
 
+    public int GetPoints()
+    {
+        return points;
+    }
+
     public int hasQuestions (int numberOfQuestions)
     {
         this.numberOfQuestions = 8;
