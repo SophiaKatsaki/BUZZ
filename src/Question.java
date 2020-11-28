@@ -1,40 +1,24 @@
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Question
-{
-    ArrayList<String> categories;
+public class Question extends Game {
+    private int numberOfQuestions;
 
-    public Question()
-    {
-        categories=new ArrayList<>();
-        categories.add("Music");
-        categories.add("Books");
-        categories.add("Travelling");
-        categories.add("Movies");
+    public Question (String categories, String kinds, String questions, String answers, String correctAnswers) {
+        super(categories, kinds, questions, answers, correctAnswers);
     }
 
-    public void ShowCategory()
-    {
-            Random rand = new Random();
-            System.out.println(categories.get(rand.nextInt(categories.size())));
+    public void showQuestion () {
+        Random rand = new Random();
+
+        System.out.println(questions.get(rand.nextInt(questions.size())));
     }
 
-    public void showQuestion()
-    {
-
+    public int getQuestion () {
+        return numberOfQuestions;
     }
 
-    public void showAnswers()
-    {
-
+    public void showNumberOfQuestion () {
+        System.out.println("Question");
     }
-
-    public void showCorrectAnswer()
-    {
-        //U answered correct as an intellectual or you are useless and you did this wrong as usual
-    }
-
-
 }
-
