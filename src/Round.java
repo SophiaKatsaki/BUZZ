@@ -1,38 +1,38 @@
+import java.util.Random;
 import java.util.Scanner;
 
-public class Round
+public class Round extends Game
 {
     private int numberOfQuestions;
-    private int points;
     private String kind;
 
-    public Round (int numberOfQuestions, String kind, int points)
+    public Round (int numberOfRounds)
     {
-        this.numberOfQuestions = numberOfQuestions;
-        this.kind = kind;
-        this.points = points;
-    }
-
-    public int GetPoints()
-    {
-        return points;
-    }
-
-    public int hasQuestions (int numberOfQuestions)
-    {
+        super(numberOfRounds);
         this.numberOfQuestions = 8;
-        System.out.printf("Number of Questions iof this rounds are: %d\n", this.numberOfQuestions);
+    }
 
+    public int hasNumberOfQuestions()
+    {
+        Random rand=new Random();
+        //3-10
+        do {
+            this.numberOfQuestions=rand.nextInt(11);
+        }
+        while ((this.numberOfQuestions!=0) && (this.numberOfQuestions!=1) && (this.numberOfQuestions!=2));
+        System.out.printf("Number of Questions of this rounds are: %d\n", this.numberOfQuestions);
         return this.numberOfQuestions;
     }
 
-    public void isKind ()
+    public void showKind ()
     {
         System.out.printf("%s\n", this.kind);
     }
 
-    public void showPoint ()
+    public void showRound()
     {
-        System.out.printf("%d\n", this.points);
+
     }
+
+
 }

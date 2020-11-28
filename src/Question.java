@@ -5,7 +5,6 @@ public class Question
 {
     ArrayList<String> categories;
 
-
     public Question()
     {
         categories=new ArrayList<>();
@@ -21,28 +20,21 @@ public class Question
             System.out.println(categories.get(rand.nextInt(categories.size())));
     }
 
-    public void ShowQuestion()
+    public void showQuestion()
     {
 
     }
 
-    public void ShowAnswers()
+    public void showAnswers()
     {
 
     }
 
-    public void ShowCorrectAnswer()
+    public void showCorrectAnswer()
     {
         //U answered correct as an intellectual or you are useless and you did this wrong as usual
     }
 
-    public int ChangePoints()
-    {
-        Round r=new Round(int numberOfQuestions, String kind, int points);
-        int PointsToChange=r.GetPoints();
-        //we add or subtract points
-        return PointsToChange;
-    }
 
 }
 
