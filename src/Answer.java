@@ -1,19 +1,25 @@
+import java.util.ArrayList;
+
 public class Answer extends Game {
     private String answer;
+
     public Answer (String categories, String kinds, String questions, String answers, String correctAnswers) {
-        super(categories, kinds, questions, answers, correctAnswers);
+        super(categories, questions, answers, correctAnswers);
     }
 
-    public void showAnswer () {
-        int i;
+    public String getCorrectAnswer (int i) {
+        answer = correctAnswers.get(i);
 
-        for (i=0;i<4;i++) {
-            System.out.println(i);
-            System.out.println(this.answer);
+        return this.answer;
+    }
+
+    public void showAnswers (int i) {
+        int j=1;
+        for (;i<i+4;i++) {
+            System.out.printf("%d)\n", j);
+            j++;
+
+            this.answer = answers.get (i);
         }
-    }
-
-    public void showCorrectAnswer () {
-        System.out.println(this.answer);
     }
 }

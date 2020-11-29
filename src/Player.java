@@ -31,11 +31,6 @@ public class Player {
         System.out.printf("- %d\n",points);
     }
 
-    public void showPoints()
-    {
-        System.out.printf("You have: %d",this.points,"points \n");
-    }
-
     //This might go to logic
     public int giveAnswer() {
         int answer;
@@ -49,6 +44,5 @@ public class Player {
         while ((answer!=1) && (answer!=2) && (answer!=3) && (answer!=4));
 
         return answer;
-
     }
 }

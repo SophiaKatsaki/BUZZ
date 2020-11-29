@@ -5,7 +5,7 @@ public class Question extends Game {
     private int numberOfQuestions;
 
     public Question (String categories, String kinds, String questions, String answers, String correctAnswers) {
-        super(categories, kinds, questions, answers, correctAnswers);
+        super(categories, questions, answers, correctAnswers);
     }
 
     public void showQuestion () {
