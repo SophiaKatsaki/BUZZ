@@ -1,48 +1,90 @@
 import java.util.Scanner;
 
+/**
+ * This class contains the data that the player will need.
+ *
+ * It has the name of the player, their points and their answers.
+ *
+ * It has a constructor that will create an object of this class and by default will have it named and with 0 points.
+ *
+ * It has six methods.
+ * One for the handling of the name.
+ * Two for the handling of the answers of the player.
+ * Three for the handling of the points of the player.
+ */
 public class Player {
     private String name;
     private int points;
+    private int answer;
 
+    /**
+     * The constructor initializes the points of the player in the value 0.
+     *
+     * The constructor also initializes the name of the player with the name that get from the parameter.
+     *
+     * @param name contains the name of the player and it is given when the object gets created.
+     */
     public Player(String name) {
         this.name = name;
         this.points = 0;
     }
 
+    /**
+     * @return the information of the name of the player whenever it is asked.
+     */
     public String getName()
     {
         return this.name;
     }
 
+    /**
+     * @return the information of the points that the player has whenever it is asked.
+     */
     public int getPoints()
     {
         return this.points;
     }
 
+    /**
+     * @return the information of the answer that the player is giving whenever it is asked.
+     */
+    public int getAnswer () { return this.answer; }
+
+    /**
+     * This method set the answer of the player by questioning them what that answer is.
+     */
+    public void setAnswer() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Select an answer between 1 and 4");
+        do {
+            this.answer = scanner.nextInt();
+            scanner.nextLine();
+        }
+        while ((this.answer != 1) && (this.answer != 2) && (this.answer != 3) && (this.answer != 4));
+    }
+
+    /**
+     * This method change the points of the player positively by the points the parameter says.
+     *
+     * @param points are the points that the player deserves.
+     */
     public void winPoints(int points) {
         this.points += points;
 
-        System.out.printf("+ %d\n",points);
+        System.out.println("+" + points);
     }
 
-    public void losePoints(int point) {
+    /**
+     *  This method change the points of the player negatively by the points the parameter says.
+     *
+     *  @param points are the points that the player deserves.
+     */
+    public void losePoints(int points) {
         this.points -= points;
-
-        System.out.printf("- %d\n",points);
-    }
-
-    //This might go to logic
-    public int giveAnswer() {
-        int answer;
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Select an answer between 1 and 4");
-        do
-        {
-            answer = scanner.nextInt();
-            scanner.nextLine();
+        if (this.points <= 0){
+            this.points = 0;
         }
-        while ((answer!=1) && (answer!=2) && (answer!=3) && (answer!=4));
 
-        return answer;
+        System.out.println("-" + points);
     }
 }

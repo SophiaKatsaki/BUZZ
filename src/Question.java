@@ -2,23 +2,68 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Question extends Game {
-    private int numberOfQuestions;
+    private String question;
+    private int numberOfQuestion;
+    private String category;
+    protected ArrayList<String> usedQuestions;
 
-    public Question (String categories, String kinds, String questions, String answers, String correctAnswers) {
-        super(categories, questions, answers, correctAnswers);
+    public Question () {
+        super();
+
+        usedQuestions = new ArrayList<>();
     }
 
-    public void showQuestion () {
+    public String getQuestion () {
+        return question;
+    }
+
+    public String getCategory () {
+        return category;
+    }
+
+    public int getNumberOfQuestion() {
+        return numberOfQuestion;
+    }
+
+    public void setQuestion() {
+        //int size;
+        //int randInt;
         Random rand = new Random();
 
-        System.out.println(questions.get(rand.nextInt(questions.size())));
+        /*categories.indexOf(category);
+        size = questions.size()/categories.size();
+        randInt = rand.nextInt(size);
+
+        for (int i=size*categories.indexOf(category);i<1+size;i++) {
+            if (randInt == i) {
+                question = questions.get(randInt);
+
+                for (String searchingString: usedQuestions) {
+                    if (question.equals(searchingString)){
+                        question = questions.get(rand.nextInt(questions.size()));
+                    }
+                }
+            }
+        }*/
+
+        question = questions.get(rand.nextInt(questions.size()));
+
+        for (String searchingString: usedQuestions) {
+            if (question.equals(searchingString)){
+                question = questions.get(rand.nextInt(questions.size()));
+            }
+        }
+
+        usedQuestions.add(question);
     }
 
-    public int getQuestion () {
-        return numberOfQuestions;
+    public void setCategory() {
+        Random rand = new Random();
+
+        category = categories.get(rand.nextInt(categories.size()));
     }
 
-    public void showNumberOfQuestion () {
-        System.out.println("Question");
+    public void setNumberOfQuestion(){
+        numberOfQuestion = questions.indexOf(question);
     }
 }
