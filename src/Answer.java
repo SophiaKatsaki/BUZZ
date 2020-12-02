@@ -13,8 +13,8 @@ public class Answer extends Game {
     /**
      * The The constructor calls the constructor of the mother class Game with the command super().
      */
-    public Answer () {
-        super();
+    public Answer (int answer) {
+        super(answer);
     }
 
     /**

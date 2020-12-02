@@ -15,7 +15,7 @@ import java.util.Scanner;
 public class Player {
     private String name;
     private int points;
-    private int answer;
+    private int numberOfAnswer;
 
     /**
      * The constructor initializes the points of the player in the value 0.
@@ -45,22 +45,23 @@ public class Player {
         return this.points;
     }
 
-    /**
-     * @return the information of the answer that the player is giving whenever it is asked.
-     */
-    public int getAnswer () { return this.answer; }
+    public int getNumberOfAnswer()
+    {
+        return this.numberOfAnswer;
+    }
 
     /**
      * This method set the answer of the player by questioning them what that answer is.
      */
-    public void setAnswer() {
+    public void setNumberOfAnswer(int answer) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Select an answer between 1 and 4");
-        do {
-            this.answer = scanner.nextInt();
+        //scanner.nextLine();
+        while ((answer != 1) && (answer != 2) && (answer != 3) && (answer != 4))
+        {
+            answer=scanner.nextInt();
             scanner.nextLine();
         }
-        while ((this.answer != 1) && (this.answer != 2) && (this.answer != 3) && (this.answer != 4));
+        this.numberOfAnswer=answer;
     }
 
     /**
@@ -69,9 +70,7 @@ public class Player {
      * @param points are the points that the player deserves.
      */
     public void winPoints(int points) {
-        this.points += points;
-
-        System.out.println("+" + points);
+        this.points += points; //minima sti main
     }
 
     /**
@@ -81,10 +80,8 @@ public class Player {
      */
     public void losePoints(int points) {
         this.points -= points;
-        if (this.points <= 0){
+        if (this.points < 0){
             this.points = 0;
         }
-
-        System.out.println("-" + points);
     }
 }

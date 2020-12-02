@@ -16,6 +16,7 @@ import java.util.Scanner;
 
 public class Game {
     private int numberOfRounds;
+    private int currentRound;
     protected ArrayList<String> categories;
     protected ArrayList<String> kinds;
     protected ArrayList<String> questions;
@@ -30,8 +31,17 @@ public class Game {
      *
      * In general, the constructor creates the the key element of the game.
      */
-    public Game () {
-        this.numberOfRounds = 1;
+    public Game (int answer) {
+        this.numberOfRounds = answer;
+        Scanner scanner=new Scanner(System.in);
+        //scanner.nextLine();
+        while (this.numberOfRounds!=1 && this.numberOfRounds!=2){
+            this.numberOfRounds=scanner.nextInt();
+            scanner.nextLine();
+        }
+        this.currentRound=1;
+
+
 
         this.kinds = new ArrayList<>();
         this.kinds.add("Correct Answer");
@@ -82,30 +92,40 @@ public class Game {
      *
      * @param answer contains the decision of the user/ player to choose the number of rounds or to be set randomly.
      */
-    public void setRounds (int answer) {
-        if (answer == 1) {
-            Scanner scanner = new Scanner(System.in);
-            System.out.println("From 1 to 10.");
-            System.out.println("How many rounds do you want to play?");
-            do {
-                this.numberOfRounds = scanner.nextInt();
-                scanner.nextLine();
-            } while (this.numberOfRounds < 1 || this.numberOfRounds > 10);
+    public void setNumberOfRounds (int answer) {
+        this.numberOfRounds=answer;
+        Scanner scanner = new Scanner(System.in);
+        //scanner.nextLine();
+        while (this.numberOfRounds < 1 || this.numberOfRounds > 10)
+        {
+            this.numberOfRounds = scanner.nextInt();
+            scanner.nextLine();
         }
-        else {
-            if (answer == 2) {
-                Random rand = new Random();
-                do {
-                    this.numberOfRounds = rand.nextInt(11);
-                } while (this.numberOfRounds == 0);
-            }
+    }
+
+    public void setRandomRounds()
+    {
+        Random rand=new Random();
+        do {
+            this.numberOfRounds=rand.nextInt(11);
         }
+        while(this.numberOfRounds==0);
     }
 
     /**
      * @return statement gives back the information about the number of the rounds whenever it gets asked.
      */
-    public int getRounds () {
+    public int getNumberOfRounds () {
         return this.numberOfRounds;
+    }
+
+    public int getCurrentRound()
+    {
+        return this.currentRound;
+    }
+
+    public void setCurrentRound(int x)
+    {
+        this.currentRound=x;
     }
 }

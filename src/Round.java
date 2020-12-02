@@ -16,15 +16,17 @@ import java.util.Random;
 public class Round extends Game {
     private int numberOfQuestions;
     private String kind;
+    private int currentQuestion;
 
     /**
      * The constructor initializes the number of questions to 8.
      *
      * It is also calling the constructor of the mother class Game with the command super().
      */
-    public Round () {
-        super();
+    public Round (int answer) {
+        super(answer);
         this.numberOfQuestions = 8;
+        this.currentQuestion=1;
     }
 
     /**
@@ -62,5 +64,15 @@ public class Round extends Game {
         do {
             this.numberOfQuestions = rand.nextInt(11);
         } while ((this.numberOfQuestions == 0) || (this.numberOfQuestions == 1) || (this.numberOfQuestions == 2));
+    }
+
+    public int getCurrentQuestion()
+    {
+        return this.currentQuestion;
+    }
+
+    public void setCurrentQuestion(int x)
+    {
+        this.currentQuestion=x;
     }
 }

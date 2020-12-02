@@ -7,8 +7,8 @@ public class Question extends Game {
     private String category;
     protected ArrayList<String> usedQuestions;
 
-    public Question () {
-        super();
+    public Question (int answer) {
+        super(answer);
 
         usedQuestions = new ArrayList<>();
     }
@@ -59,7 +59,6 @@ public class Question extends Game {
 
     public void setCategory() {
         Random rand = new Random();
-
         category = categories.get(rand.nextInt(categories.size()));
     }
 
