@@ -46,61 +46,52 @@ public class Main
         System.out.println("1) Choose the number of rounds.");
         System.out.println("2) Random rounds.");
         scanner = new Scanner(System.in);
-
         Game game=new Game(scanner.nextInt());
 
-        if (game.getNumberOfRounds()==1)
-        {
+        if (game.getNumberOfRounds()==1) {
             System.out.println("From 1 to 10,");
             System.out.println("how many rounds do you want to play?");
             game.setNumberOfRounds(scanner.nextInt());
             System.out.println("You choose "+game.getNumberOfRounds()+" round/s.");
         }
-        else
-        {
+        else {
             game.setRandomRounds();
             System.out.println(game.getNumberOfRounds()+" round/s was chosen.");
         }
-        Round round = new Round(scanner.nextInt());
 
         while (game.getCurrentRound() <= game.getNumberOfRounds()) {
+            Round round = new Round();
+
             System.out.println("Round " + game.getCurrentRound());
             if (game.getCurrentRound()== game.getNumberOfRounds()) {
                 System.out.println("Last Round");
             }
-            round.setKind();
+
             System.out.println(round.getKind());
 
-            round.hasNumberOfQuestions();
+            while (round.getCurrentNumberOfQuestion() <= round.getRandomNumberOfQuestions()) {
+                Question question = new Question();
 
-            Question question = new Question(scanner.nextInt());
-            Answer objectAnswer = new Answer(scanner.nextInt());
-
-            while (round.getCurrentQuestion() <= round.getNumberOfQuestions()) {
-                System.out.println("Question " + round.getCurrentQuestion());
+                System.out.println("Question " + round.getCurrentNumberOfQuestion());
                 if (round.getKind().equals("Bet")) {
-                    question.setCategory();
                     System.out.println("\"" + question.getCategory() + "\"");
                     System.out.println("Bet 250, 500, 750 or 1000");
                     scanner = new Scanner(System.in);
-                    int answer = scanner.nextInt();
-                    scanner.nextLine();
-                    while (answer != 250 && answer != 500 && answer != 750 && answer != 1000) {
-                        answer = scanner.nextInt();
-                        scanner.nextLine();
-                    }
+                    round.setBetPoints(scanner.nextInt());
                 }
-                question.setQuestion();
-                question.setNumberOfQuestion();
-                System.out.println("\"" + question.getQuestion() + "\"");
-                objectAnswer.showAnswers(question.getNumberOfQuestion());
 
+                question.setRandomQuestion();
+                question.setNumberOfRandomQuestionInArray();
+                System.out.println("\"" + question.getRandomQuestion() + "\"");
+
+                Answer answer = new Answer();
+                answer.showAnswers(question.getNumberOfRandomQuestionInArray());
 
                 System.out.println("Select an answer between 1 and 4");
                 player.setNumberOfAnswer(scanner.nextInt());
-                answer.setCorrectAnswer(player.getNumberOfAnswer(),question.getNumberOfRandomQuestion);
+                answer.setCorrectAnswer(player.getNumberOfAnswer(), question.getNumberOfRandomQuestionInArray());
 
-                if (answer.getCorrectAnswer()){
+                if (answer.getCorrectAnswer()) {
                     if(round.getKind().equals("Bet")){
                         player.winPoints(round.getBetPoints());
                         System.out.println("+" + round.getBetPoints());
@@ -111,35 +102,18 @@ public class Main
                         System.out.println("+1000");
                     }
                 }
-                if((round.getKind().equals("Bet")) && (!(answer.getCorrectAnswer())))
-                {
+
+                if ((round.getKind().equals("Bet")) && (!(answer.getCorrectAnswer()))) {
                     player.losePoints(round.getBetPoints());
                     System.out.println("-" + round.getBetPoints());
                 }
 
-
-
-                /*    player.setAnswer();
-                if (objectAnswer.getAnswer(question.getNumberOfQuestion(),
-                        player.getAnswer()).equals(objectAnswer.getCorrectAnswer(question.getNumberOfQuestion()))) {
-                    if (round.getKind().equals("Bet")) {
-                        player.winPoints(answer);
-                    }
-                    else {
-                        player.winPoints(1000);
-                    }
-                }
-
-                if (round.getKind().equals("Bet") && !(objectAnswer.getAnswer(question.getNumberOfQuestion(),
-                        player.getAnswer()).equals(objectAnswer.getCorrectAnswer(question.getNumberOfQuestion())))) {
-                    player.losePoints(answer);
-                }
-
-                questions++;
+                round.setCurrentNumberOfQuestion();
             }
 
             System.out.println("You have " + player.getPoints() + " points.");
-            rounds++;
+
+            game.setCurrentRound();
         }
 
         System.out.println("The game is over.");

@@ -56,11 +56,13 @@ public class Player {
     public void setNumberOfAnswer(int answer) {
         Scanner scanner = new Scanner(System.in);
         //scanner.nextLine();
+
         while ((answer != 1) && (answer != 2) && (answer != 3) && (answer != 4))
         {
             answer=scanner.nextInt();
             scanner.nextLine();
         }
+
         this.numberOfAnswer=answer;
     }
 
@@ -70,7 +72,7 @@ public class Player {
      * @param points are the points that the player deserves.
      */
     public void winPoints(int points) {
-        this.points += points; //minima sti main
+        this.points += points;
     }
 
     /**

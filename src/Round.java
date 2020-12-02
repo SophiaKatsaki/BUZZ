@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 /**
  * This class is subclass of the class Game.
@@ -13,32 +15,33 @@ import java.util.Random;
  * Two for handling the kind of the round.
  * Two for handling the number of questions.
  */
-public class Round extends Game {
-    private int numberOfQuestions;
-    private String kind;
-    private int currentQuestion;
+public class Round {
+    protected ArrayList<String> kinds;
+    protected String kind;
+    protected int randomNumberOfQuestions;
+    protected int currentNumberOfQuestion;
+    protected int betPoints;
 
     /**
      * The constructor initializes the number of questions to 8.
      *
      * It is also calling the constructor of the mother class Game with the command super().
      */
-    public Round (int answer) {
-        super(answer);
-        this.numberOfQuestions = 8;
-        this.currentQuestion=1;
-    }
+    public Round () {
+        this.kinds = new ArrayList<>();
+        this.kinds.add("Correct Answer");
+        this.kinds.add("Bet");
 
-    /**
-     * This method set the kind of the current round randomly.
-     */
-    public void setKind () {
         Random rand = new Random();
         int randInt;
-
-        randInt = rand.nextInt(2);
-
+        randInt = rand.nextInt(this.kinds.size());
         this.kind = kinds.get(randInt);
+
+        do {
+            this.randomNumberOfQuestions = rand.nextInt(9);
+        } while ((this.randomNumberOfQuestions == 0) || (this.randomNumberOfQuestions == 1));
+
+        this.currentNumberOfQuestion = 1;
     }
 
     /**
@@ -48,31 +51,31 @@ public class Round extends Game {
         return this.kind;
     }
 
-    /**
-     * @return the information of the number of the questions of the current round whenever it is asked.
-     */
-    public int getNumberOfQuestions () {
-        return this.numberOfQuestions;
+    public int getRandomNumberOfQuestions () {
+        return this.randomNumberOfQuestions;
     }
 
-    /**
-     * This method changes the number of questions that the current round contains randomly.
-     */
-    public void hasNumberOfQuestions() {
-        Random rand = new Random();
-
-        do {
-            this.numberOfQuestions = rand.nextInt(11);
-        } while ((this.numberOfQuestions == 0) || (this.numberOfQuestions == 1) || (this.numberOfQuestions == 2));
+    public int getCurrentNumberOfQuestion () {
+        return this.currentNumberOfQuestion;
     }
 
-    public int getCurrentQuestion()
-    {
-        return this.currentQuestion;
+    public int getBetPoints () {
+        return this.betPoints;
     }
 
-    public void setCurrentQuestion(int x)
-    {
-        this.currentQuestion=x;
+    public void setCurrentNumberOfQuestion () {
+        this.currentNumberOfQuestion++;
+    }
+
+    public void setBetPoints (int answer) {
+        Scanner scanner = new Scanner(System.in);
+        //scanner.nextLine();
+
+        while (answer != 250 && answer != 500 && answer != 750 && answer != 1000) {
+            answer = scanner.nextInt();
+            scanner.nextLine();
+        }
+
+        this.betPoints = answer;
     }
 }

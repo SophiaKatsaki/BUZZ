@@ -1,67 +1,46 @@
-/**
- * This class is a subclass of the mother class Game.
- * It has all the important information of the mother class Game such as the answers (correct or possible).
- *
- * It has a constructor that calls the constructor of the mother class.
- *
- * It has three methods.
- * Two for handling the answers in general and one for handling the correct answers specifically.
- */
-public class Answer extends Game {
+import java.util.ArrayList;
+
+public class Answer extends Question {
     private String answer;
+    private boolean correctAnswer;
+    private ArrayList<String> fourPossibleAnswers;
 
-    /**
-     * The The constructor calls the constructor of the mother class Game with the command super().
-     */
-    public Answer (int answer) {
-        super(answer);
+    public Answer () {
+        this.fourPossibleAnswers = new ArrayList<>();
     }
 
-    /**
-     * @param i is the number of question that was chosen randomly.
-     * @return the information of the correct answer to the question whenever it is asked.
-     */
-    public String getCorrectAnswer (int i) {
-        answer = correctAnswers.get(i);
-
-        return this.answer;
+    public boolean getCorrectAnswer () {
+        return this.correctAnswer;
     }
 
-    /**
-     * @param i is the number of the question that was chosen randomly.
-     * @param j is the number of the possible answer that the user/ player gave.
-     * @return the answer that corresponds to the number of the answer that user/ player gave.
-     */
-    public String getAnswer (int i, int j) {
-        int counter=0;
-        int k;
+    public void setCorrectAnswer (int answerOfPlayer, int numberOfRandomQuestionInArray) {
+        this.answer = possibleAnswers.get(numberOfRandomQuestionInArray*4);
 
-        for (k=i*4;k<i*4+4;k++){
-            if (counter == j){
-                answer = answers.get(j);
-                break;
-            }
-            counter++;
+        if (this.answer.equals(this.fourPossibleAnswers.get(answerOfPlayer-1))) {
+            this.correctAnswer = true;
+        }
+        else {
+            this.correctAnswer = false;
+        }
+    }
+
+    public void showAnswers (int numberOfQuestionInArray) {
+        int numberInScreen=1;
+
+        for (int i=numberOfQuestionInArray*4;i<numberOfQuestionInArray*4
+                +4;i++) {
+            this.fourPossibleAnswers.add(possibleAnswers.get(i));
         }
 
-        return this.answer;
-    }
+        for (int i=0;i<4;i++) {
 
-    /**
-     * This method shows the four possible answers to one random question as indicated by the parameter.
-     * @param i is the number of the question that was chosen randomly.
-     */
-    public void showAnswers (int i) {
-        int j=1;
-        int k;
+            this.answer = this.fourPossibleAnswers.get(i);
 
-        for (k=i*4;k<i*4+4;k++) {
-            this.answer = answers.get (k);
-            System.out.printf("%d)", j);
+            System.out.printf("%d)", numberInScreen);
             System.out.print(" ");
             System.out.printf("%s", this.answer);
             System.out.println();
-            j++;
+            numberInScreen++;
         }
     }
 }
