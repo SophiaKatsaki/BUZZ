@@ -109,6 +109,9 @@ public class Main
                 }
 
                 round.setCurrentNumberOfQuestion();
+
+                question.questions.clear();
+                question.possibleAnswers.clear();
             }
 
             System.out.println("You have " + player.getPoints() + " points.");

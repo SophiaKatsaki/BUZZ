@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Answer extends Question {
+public class Answer extends QA {
     private String answer;
     private boolean correctAnswer;
     private ArrayList<String> fourPossibleAnswers;
@@ -25,6 +25,8 @@ public class Answer extends Question {
     }
 
     public void showAnswers (int numberOfQuestionInArray) {
+        makeA(getNumberOfCategory());
+
         for (int i=numberOfQuestionInArray*4;i<numberOfQuestionInArray*4
                 +4;i++) {
             this.fourPossibleAnswers.add(possibleAnswers.get(i));

@@ -13,14 +13,20 @@ public abstract class QA {
         this.categories.add("Books");
         this.categories.add("TV Series/ Movies");
         this.categories.add("Travelling");
-    }
 
-    public void makeQA () {
         this.questions = new ArrayList<>();
         this.possibleAnswers = new ArrayList<>();
+    }
 
+    public int getNumberOfCategory() {
+        return this.numberOfCategory;
+    }
+    public void setNumberOFCategory () {
         Random rand = new Random();
         this.numberOfCategory = rand.nextInt(this.categories.size());
+    }
+    public void makeQ (int numberOfCategory) {
+        this.numberOfCategory = numberOfCategory;
 
         switch (this.numberOfCategory) {
             case 0: {
@@ -39,12 +45,86 @@ public abstract class QA {
                 this.questions.add("Which country has won the ESC 7 times?");
                 this.questions.add("Who is the singer of Norway's entry in ESC,'FairyTale'");
                 this.questions.add("Which of the following did Lewis Capaldi sing?");
-                this.questions.add("Which band sings 'Here Without You'?");
-                this.questions.add("Which band is 'losing their religion'?");
-                this.questions.add("Whose album is 'Moral Panic'?");
-                this.questions.add("In which Imagine Dragons album does 'Warriors' belong?");
-                this.questions.add("When did Papa Roach release 'Last Resort'?");
+                this.questions.add("Which band sings \"Here Without You\"?");
+                this.questions.add("Which band is \"losing their religion\"?");
+                this.questions.add("Whose album is \"Moral Panic\"?");
+                this.questions.add("In which Imagine Dragons album does \"Warriors\" belong?");
+                this.questions.add("When did Papa Roach release \"Last Resort\"?");
+            }
+            case 1: {
+                this.questions.add("Which was the first book of John Verdon?");
+                this.questions.add("Which book is not written by Sophocles?");
+                this.questions.add("Which book is not classical literature?");
+                this.questions.add("Which book is not of police content?");
+                this.questions.add("What is the genre of the book \"Madame Bovary\"?");
+                this.questions.add("Which book is written by Oscar Wilde?");
+                this.questions.add("Which book made famous the writer \"J.K Rowling\"?");
+                this.questions.add("Who was considered as the best writer in the English-speaking world?");
+                this.questions.add("What is the content of Agatha Christie's books?");
+                this.questions.add("Which is the most widely read book?");
+                this.questions.add("Who wrote \"Parrot's Theorem\"?");
+                this.questions.add("Who wrote \"Gone With The Wind\"?");
+                this.questions.add("What was the second novel that Charles Dickens wrote?");
+                this.questions.add("George Orwell: Animal...?");
+                this.questions.add("Where was Fyodor Dostoevsky from?");
+                this.questions.add("When was William Shakespeare born?");
+                this.questions.add("In which language is \"Erotokritos\" composed?");
+                this.questions.add("When was \"Life Of Pi\" published?");
+                this.questions.add("How many copies did \"The Book Thief\" sell?");
+                this.questions.add("In what fictional towns do the characters of \"The Great Gatsby\" book live?");
+            }
+            case 2: {
+                this.questions.add("How many season had the TV series \"LOST\"?");
+                this.questions.add("Who was not main character in the TV series \"Supernatural\"?");
+                this.questions.add("Who was not appeared in every season of \"Game of Thrones\"?");
+                this.questions.add("In which season did Sara Tancredi left the TV series \"Prison Break\"?");
+                this.questions.add("What's the nickname of Silene Oliveira in the TV series \"La Casa De papel\"?");
+                this.questions.add("Who will continue to be main character in season 4 in the TV series \"Élite\"?");
+                this.questions.add("When was the \"Titanic\" filmed?");
+                this.questions.add("What is the name of the child in the movie\"Home Alone\"");
+                this.questions.add("What is the first film of \"Harry Potter\"?");
+                this.questions.add("Who stayed alive in \"Avengers: Endgame\"?");
+                this.questions.add("Who is the protagonist \"Annalise Keating\" in \"How To Get Away With Murder\"?");
+                this.questions.add("How is \"Walter's White\" wife called in \"Breaking Bad\"?");
+                this.questions.add("Who created \"The Good Place\"?");
+                this.questions.add("What is the name of Holt's dog in \"Brooklyn Nine-Nine\"?");
+                this.questions.add("What is the score of the series \"The Umbrella Academy\" in IMDb?");
+                this.questions.add("What is the name of Lucifer's nightclub in \"Lucifer\"?");
+                this.questions.add("How many \"Now You See Me\" movies exist?");
+                this.questions.add("Who is the protagonist of \"Shutter Island\"?");
+                this.questions.add("In which of the following factions did \"Beatrice\" grow up in \"Divergent\"?");
+                this.questions.add("Who plays \"Batman\" in \"The Dark Night\" (2008)?");
+            }
+            case 3: {
+                this.questions.add("Which country does not belong to europe?");
+                this.questions.add("Where the eiffel tower is located?");
+                this.questions.add("Which country does not belong to the continent \"Oceania\"?");
+                this.questions.add("Which country is known for its food");
+                this.questions.add("If you want to go to the Himalayas, which country will you choose to go to?");
+                this.questions.add("Where acropolis is located?");
+                this.questions.add("Where Glacier National Park is located?");
+                this.questions.add("France is the city of");
+                this.questions.add("Which part of portugal is mountainous?");
+                this.questions.add("Spanish is spoken in");
+                this.questions.add("What is the richest country of the world?");
+                this.questions.add("Which of the following is not a State of USA?");
+                this.questions.add("Where is \"La Bodeguita del Medio\"?");
+                this.questions.add("Which country is famous for its chocolates?");
+                this.questions.add("How many inhabited islands are there in Greece?");
+                this.questions.add("Where is the famous \"Burj Khalifa\"?");
+                this.questions.add("Which country is not part of the The Balkans?");
+                this.questions.add("What is the country of origin of \"Tacos\"?");
+                this.questions.add("Where the biggest carnival in the world is held?");
+                this.questions.add("What are the colors of the German flag?");
+            }
+        }
+    }
 
+    public void makeA (int numberOfCategory) {
+        this.numberOfCategory = numberOfCategory;
+
+        switch (this.numberOfCategory) {
+            case 0: {
                 this.possibleAnswers.add("pop");
                 this.possibleAnswers.add("rock");
                 this.possibleAnswers.add("r&b");
@@ -127,29 +207,6 @@ public abstract class QA {
                 this.possibleAnswers.add("1996");
             }
             case 1: {
-                this.questions.add("Which was the first book of John Verdon?");
-                this.questions.add("Which book is not written by Sophocles?");
-                this.questions.add("Which book is not classical literature?");
-                this.questions.add("Which book is not of police content?");
-                this.questions.add("What is the genre of the book \"Madame Bovary\"?");
-                this.questions.add("Which book is written by Oscar Wilde?");
-                this.questions.add("Which book made famous the writer \"J.K Rowling\"?");
-                this.questions.add("Who was considered as the best writer in the English-speaking world?");
-                this.questions.add("What is the content of Agatha Christie's books?");
-                this.questions.add("Which is the most widely read book?");
-                this.questions.add("Who wrote 'Parrot's Theorem'?");
-                this.questions.add("Who wrote 'Gone With The Wind'?");
-                this.questions.add("What was the second novel that Charles Dickens wrote?");
-                this.questions.add("George Orwell:Animal...?");
-                this.questions.add("Where was Fyodor Dostoevsky from?");
-                this.questions.add("When was William Shakespeare born?");
-                this.questions.add("In which language is 'Erotokritos' composed?");
-                this.questions.add("When was 'Life Of Pi' published?");
-                this.questions.add("How many copies did 'The Book Thief' sell?");
-                this.questions.add("In what fictional towns do the characters of 'The Great Gatsby' book live?");
-
-
-
                 this.possibleAnswers.add("Think of A Number");
                 this.possibleAnswers.add("Shut Your Eyes Tight");
                 this.possibleAnswers.add("Peter Pan Must Die");
@@ -158,7 +215,6 @@ public abstract class QA {
                 this.possibleAnswers.add("Antigone");
                 this.possibleAnswers.add("Ajax");
                 this.possibleAnswers.add("Electra");
-                this.possibleAnswers.add("Nicomachus Ethics");
                 this.possibleAnswers.add("Sapiens");
                 this.possibleAnswers.add("Animal Farm");
                 this.possibleAnswers.add("The Alchemist");
@@ -232,28 +288,6 @@ public abstract class QA {
                 this.possibleAnswers.add("West Flour and East Flour");
             }
             case 2: {
-                this.questions.add("How many season had the TV series \"LOST\"?");
-                this.questions.add("Who was not main character in the TV series \"Supernatural\"?");
-                this.questions.add("Who was not appeared in every season of \"Game of Thrones\"?");
-                this.questions.add("In which season did Sara Tancredi left the TV series \"Prison Break\"?");
-                this.questions.add("What's the nickname of Silene Oliveira in the TV series \"La Casa De papel\"?");
-                this.questions.add("Who will continue to be main character in season 4 in the TV series \"Élite\"?");
-                this.questions.add("When was the \"Titanic\" filmed?");
-                this.questions.add("What is the name of the child in the movie\"Home Alone\"");
-                this.questions.add("What is the first film of \"Harry Potter\"?");
-                this.questions.add("How stayed alive in \"Avengers: Endgame\"?");
-                this.questions.add("Who is the protagonist 'Annalise Keating' in 'How To Get Away With Murder'?");
-                this.questions.add("How is 'Walter's White' wife called in 'Breaking Bad'?");
-                this.questions.add("Who created 'The Good Place'?");
-                this.questions.add("What is the name of Holt's dog in 'Brooklyn Nine-Nine'?");
-                this.questions.add("What is the score of the series 'The Umbrella Academy' in IMDb?");
-                this.questions.add("What is the name of 'Lucifer's nightclub in 'Lucifer'?");
-                this.questions.add("How many 'Now You See Me' movies exist?");
-                this.questions.add("Who is the protagonist of 'Shutter Island'?");
-                this.questions.add("In which of the following factions did 'Beatrice' grow up in in 'Divergent?");
-                this.questions.add("Who plays 'Batman' in 'The Dark Night' (2008)?");
-
-
                 this.possibleAnswers.add("6");
                 this.possibleAnswers.add("5");
                 this.possibleAnswers.add("4");
@@ -336,27 +370,6 @@ public abstract class QA {
                 this.possibleAnswers.add("William Fichtner");
             }
             case 3: {
-                this.questions.add("Which country does not belong to europe?");
-                this.questions.add("Where the eiffel tower is located?");
-                this.questions.add("Which country does not belong to the continent \"Oceania\"?");
-                this.questions.add("Which country is known for its food");
-                this.questions.add("If you want to go to the Himalayas, which country will you choose to go to?");
-                this.questions.add("Where acropolis is located?");
-                this.questions.add("Where Glacier National Park is located?");
-                this.questions.add("France is the city of");
-                this.questions.add("Which part of portugal is mountainous?");
-                this.questions.add("Spanish is spoken in");
-                this.questions.add("What is the richest country of the world?");
-                this.questions.add("Which of the following is not a State of USA?");
-                this.questions.add("Where is 'La Bodeguita del Medio'?");
-                this.questions.add("Which country is famous for its chocolates?");
-                this.questions.add("How many inhabited islands are there in Greece?");
-                this.questions.add("Where is the famous 'Burj Khalifa'?");
-                this.questions.add("Which country is not part of the The Balkans?");
-                this.questions.add("What is the country of origin of 'Tacos'?");
-                this.questions.add("Where is the biggest carnival in the world being held?");
-                this.questions.add("What are the colors of the German flag?");
-
                 this.possibleAnswers.add("Australia");
                 this.possibleAnswers.add("Greece");
                 this.possibleAnswers.add("United Kingdom");
@@ -411,7 +424,7 @@ public abstract class QA {
                 this.possibleAnswers.add("Portugal");
                 this.possibleAnswers.add("Switzerland");
                 this.possibleAnswers.add("Germany");
-                this.possibleAnswers.add("Netherlands");
+                this.possibleAnswers.add("The Netherlands");
                 this.possibleAnswers.add("Austria");
                 this.possibleAnswers.add("227");
                 this.possibleAnswers.add("332");

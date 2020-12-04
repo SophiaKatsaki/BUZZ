@@ -7,7 +7,6 @@ public class Question extends QA {
     private int numberOfRandomQuestionInArray;
 
     public Question (){
-        makeQA();
     }
 
     public String getCategory () {
@@ -23,26 +22,25 @@ public class Question extends QA {
     }
 
     public void setRandomQuestion () {
-       /* Random rand = new Random();
-        this.question = questions.get(rand.nextInt(questions.size()));
-        for (String searchingString: usedQuestions) {
-            if (this.question.equals(searchingString)){
-                this.question = questions.get(rand.nextInt(questions.size()));
-            }
-        }
-        usedQuestions.add(this.question);
-        */
+        makeQ(getNumberOfCategory());
+        setNumberOFCategory();
+
         Random rand = new Random();
-        int counter;
-        do{
-            counter=0;
+
+        boolean isUsed;
+
+        do {
+            isUsed = false;
             this.question = questions.get(rand.nextInt(questions.size()));
-            for (String searchingString: usedQuestions) {
+
+            for (String searchingString : usedQuestions) {
                 if (this.question.equals(searchingString)) {
-                    counter++;
+                    isUsed = true;
+                    break;
                 }
             }
-        }while (counter>0);
+        } while (isUsed);
+
         usedQuestions.add(this.question);
     }
 
