@@ -23,7 +23,7 @@ public abstract class QA {
         this.numberOfCategory = rand.nextInt(this.categories.size());
 
         switch (this.numberOfCategory) {
-            case 0 -> {
+            case 0: {
                 this.questions.add("What is the mainstream genre of music?");
                 this.questions.add("What was one of the most popular subgenres of the 00s?");
                 this.questions.add("Who had earned the most #1 singles by the end of the 10s for that decade?");
@@ -126,7 +126,7 @@ public abstract class QA {
                 this.possibleAnswers.add("2001");
                 this.possibleAnswers.add("1996");
             }
-            case 1 -> {
+            case 1: {
                 this.questions.add("Which was the first book of John Verdon?");
                 this.questions.add("Which book is not written by Sophocles?");
                 this.questions.add("Which book is not classical literature?");
@@ -137,7 +137,18 @@ public abstract class QA {
                 this.questions.add("Who was considered as the best writer in the English-speaking world?");
                 this.questions.add("What is the content of Agatha Christie's books?");
                 this.questions.add("Which is the most widely read book?");
-                //this.questions.add("");
+                this.questions.add("Who wrote 'Parrot's Theorem'?");
+                this.questions.add("Who wrote 'Gone With The Wind'?");
+                this.questions.add("What was the second novel that Charles Dickens wrote?");
+                this.questions.add("George Orwell:Animal...?");
+                this.questions.add("Where was Fyodor Dostoevsky from?");
+                this.questions.add("When was William Shakespeare born?");
+                this.questions.add("In which language is 'Erotokritos' composed?");
+                this.questions.add("When was 'Life Of Pi' published?");
+                this.questions.add("How many copies did 'The Book Thief' sell?");
+                this.questions.add("In what fictional towns do the characters of 'The Great Gatsby' book live?");
+
+
 
                 this.possibleAnswers.add("Think of A Number");
                 this.possibleAnswers.add("Shut Your Eyes Tight");
@@ -179,8 +190,48 @@ public abstract class QA {
                 this.possibleAnswers.add("Da Vinci Code");
                 this.possibleAnswers.add("Gone With the Wind");
                 this.possibleAnswers.add("The Lord of the Rings");
+                this.possibleAnswers.add("Denis Guedj");
+                this.possibleAnswers.add("Frederic Dard");
+                this.possibleAnswers.add("Pierre Daninos");
+                this.possibleAnswers.add("Michael Houellebecq");
+                this.possibleAnswers.add("Margaret Mitchell");
+                this.possibleAnswers.add("Margaret Atwood");
+                this.possibleAnswers.add("Margaret Durrell");
+                this.possibleAnswers.add("Margaret Thatcher");
+                this.possibleAnswers.add("Oliver Twist");
+                this.possibleAnswers.add("A Christmas Carol");
+                this.possibleAnswers.add("A Tale Of Two Cities");
+                this.possibleAnswers.add("Great Expectations");
+                this.possibleAnswers.add("Farm");
+                this.possibleAnswers.add("Land");
+                this.possibleAnswers.add("Planet");
+                this.possibleAnswers.add("Life");
+                this.possibleAnswers.add("Russia");
+                this.possibleAnswers.add("Belarus");
+                this.possibleAnswers.add("Ukraine");
+                this.possibleAnswers.add("France");
+                this.possibleAnswers.add("1564");
+                this.possibleAnswers.add("1562");
+                this.possibleAnswers.add("1560");
+                this.possibleAnswers.add("1566");
+                this.possibleAnswers.add("Greek");
+                this.possibleAnswers.add("Italian");
+                this.possibleAnswers.add("Russian");
+                this.possibleAnswers.add("English");
+                this.possibleAnswers.add("2001");
+                this.possibleAnswers.add("2000");
+                this.possibleAnswers.add("2002");
+                this.possibleAnswers.add("2003");
+                this.possibleAnswers.add("16 Million");
+                this.possibleAnswers.add("13 Million");
+                this.possibleAnswers.add("22 Million");
+                this.possibleAnswers.add("26 Million");
+                this.possibleAnswers.add("West Egg and East Egg");
+                this.possibleAnswers.add("West Frie and East Frie");
+                this.possibleAnswers.add("West Banana and East Banana");
+                this.possibleAnswers.add("West Flour and East Flour");
             }
-            case 2 -> {
+            case 2: {
                 this.questions.add("How many season had the TV series \"LOST\"?");
                 this.questions.add("Who was not main character in the TV series \"Supernatural\"?");
                 this.questions.add("Who was not appeared in every season of \"Game of Thrones\"?");
@@ -284,7 +335,7 @@ public abstract class QA {
                 this.possibleAnswers.add("Aaron Eckhart");
                 this.possibleAnswers.add("William Fichtner");
             }
-            case 3 -> {
+            case 3: {
                 this.questions.add("Which country does not belong to europe?");
                 this.questions.add("Where the eiffel tower is located?");
                 this.questions.add("Which country does not belong to the continent \"Oceania\"?");
