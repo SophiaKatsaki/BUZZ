@@ -23,16 +23,26 @@ public class Question extends QA {
     }
 
     public void setRandomQuestion () {
-        Random rand = new Random();
-
+       /* Random rand = new Random();
         this.question = questions.get(rand.nextInt(questions.size()));
-
         for (String searchingString: usedQuestions) {
             if (this.question.equals(searchingString)){
                 this.question = questions.get(rand.nextInt(questions.size()));
             }
         }
-
+        usedQuestions.add(this.question);
+        */
+        Random rand = new Random();
+        int counter;
+        do{
+            counter=0;
+            this.question = questions.get(rand.nextInt(questions.size()));
+            for (String searchingString: usedQuestions) {
+                if (this.question.equals(searchingString)) {
+                    counter++;
+                }
+            }
+        }while (counter>0);
         usedQuestions.add(this.question);
     }
 

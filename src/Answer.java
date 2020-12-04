@@ -25,8 +25,6 @@ public class Answer extends Question {
     }
 
     public void showAnswers (int numberOfQuestionInArray) {
-        int numberInScreen=1;
-
         for (int i=numberOfQuestionInArray*4;i<numberOfQuestionInArray*4
                 +4;i++) {
             this.fourPossibleAnswers.add(possibleAnswers.get(i));
@@ -36,11 +34,10 @@ public class Answer extends Question {
 
             this.answer = this.fourPossibleAnswers.get(i);
 
-            System.out.printf("%d)", numberInScreen);
+            System.out.printf("%d)", i+1);
             System.out.print(" ");
             System.out.printf("%s", this.answer);
             System.out.println();
-            numberInScreen++;
         }
     }
 }
