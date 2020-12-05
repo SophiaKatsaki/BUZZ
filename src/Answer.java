@@ -27,8 +27,8 @@ public class Answer extends QA {
         }
     }
 
-    public void showAnswers (int numberOfQuestionInArray) {
-        makeA(getNumberOfCategory());
+    public void showAnswers (int numberOfQuestionInArray, int randomNumberOfCategory) {
+        makeA(randomNumberOfCategory);
 
         for (int i=numberOfQuestionInArray*4;i<numberOfQuestionInArray*4+4;i++) {
             this.fourPossibleAnswers.add(possibleAnswers.get(i));

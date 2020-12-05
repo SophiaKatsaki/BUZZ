@@ -8,15 +8,12 @@ import java.util.Scanner;
  * It stars by creating an object from the class Player.
  * It takes as a parameter the name of the user/ player, which is being taken from them when it asks to enter it.
  * That object gets destroyed when the game ends.
- *
  * Afterwards, an object from the class Game is being created.
  * It takes as a parameter an integer in order to create the number of rounds that the game will contain, which is
  * being taken from them when it asks to enter it.
  * That object gets destroyed when the game ends.
- *
  * The next object that is being created is the object from the class Round.
  * That object gets destroyed everytime one round ends and gets created again when a new round begins.
- *
  * Sooner than later, objects from the classes Question and Answer get created.
  * At the same time, the abstract class QA which has all the important data for the classes Question and Answer is
  * being called by them.
@@ -25,6 +22,9 @@ import java.util.Scanner;
  * In the end, there exists some last messages that make the last interface with the user/ player.
  * These messages inform them about the end of the game and ends the game, the main class and, at the same time,
  * the view.
+ *
+ * @author Stylianos Tozios
+ * @author Sophia Katsaki
  */
 
 public class Main
@@ -70,6 +70,11 @@ public class Main
             while (round.getCurrentNumberOfQuestion() <= round.getRandomNumberOfQuestions()) {
                 Question question = new Question();
 
+                question.setRandomQuestion();
+                question.setNumberOfRandomQuestionInArray();
+
+                Answer answer = new Answer();
+
                 System.out.println("Question " + round.getCurrentNumberOfQuestion());
                 if (round.getKind().equals("Bet")) {
                     System.out.println("\"" + question.getCategory() + "\"");
@@ -78,12 +83,9 @@ public class Main
                     round.setBetPoints(scanner.nextInt());
                 }
 
-                question.setRandomQuestion();
-                question.setNumberOfRandomQuestionInArray();
-                System.out.println("-" + question.getRandomQuestion());
+                System.out.println("\"" + question.getRandomQuestion() + "\"");
 
-                Answer answer = new Answer();
-                answer.showAnswers(question.getNumberOfRandomQuestionInArray());
+                answer.showAnswers(question.getNumberOfRandomQuestionInArray(), question.getNumberOfCategory());
 
                 System.out.println("Select an answer between 1 and 4");
                 player.setNumberOfAnswer(scanner.nextInt());
@@ -109,6 +111,7 @@ public class Main
                 round.setCurrentNumberOfQuestion();
 
                 question.questions.clear();
+                question.categories.clear();
                 question.possibleAnswers.clear();
             }
 

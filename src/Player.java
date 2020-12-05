@@ -2,7 +2,8 @@ import java.util.Scanner;
 
 /**
  * This class represents a player,playing the game.
- * It stores the name of the player, their points and their answers.It changes and returns the points the player has,when needed.
+ * It stores the name of the player, their points and their answers.It changes and returns the points the player has,
+ * when needed.
  * It also stores the number of the answer that the player gives when they are asked a question.
  *
  * @author Sophia Katsaki
@@ -27,6 +28,25 @@ public class Player {
         this.points = 0;
     }
 
+
+    /**
+     * This method set the answer of the player by questioning them what that answer is.
+     *
+     * @param answer the number for 1 to 4 of the answer the player chooses
+     */
+
+    public void setNumberOfAnswer(int answer) {
+        Scanner scanner = new Scanner(System.in);
+        //scanner.nextLine();
+
+        while ((answer != 1) && (answer != 2) && (answer != 3) && (answer != 4))
+        {
+            answer=scanner.nextInt();
+            //scanner.nextLine();
+        }
+
+        this.numberOfAnswer=answer;
+    }
 
     /**
      * This method gives the name of the player when is needed in the game.
@@ -62,27 +82,6 @@ public class Player {
     {
         return this.numberOfAnswer;
     }
-
-
-    /**
-     * This method set the answer of the player by questioning them what that answer is.
-     *
-     * @param answer the number for 1 to 4 of the answer the player chooses
-     */
-
-    public void setNumberOfAnswer(int answer) {
-        Scanner scanner = new Scanner(System.in);
-        //scanner.nextLine();
-
-        while ((answer != 1) && (answer != 2) && (answer != 3) && (answer != 4))
-        {
-            answer=scanner.nextInt();
-            //scanner.nextLine();
-        }
-
-        this.numberOfAnswer=answer;
-    }
-
 
     /**
      * This method changes the points of the player positively by the points the parameter says when they answer

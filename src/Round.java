@@ -3,18 +3,14 @@ import java.util.Random;
 import java.util.Scanner;
 
 /**
- * This class contains all the data that are important for a round.
+ * This class represents a round and it contains all the data that are important for its.
  * It has the kind of the round, the total amount of the questions in a round, the number of the current question and
  * the points that may be used as a bet.
- *
  * It has a constructor, useful for the creation of an object of this class.
- * That constructor randomizes the number of the questions when the object gets created.
- * At the same time, it initializes the current question to number 1 (as the first question).
- * It also creates an ArrayList with the possible kinds of rounds.
+ * It has six methods for handling the kind of the round and for handling the number of questions.
  *
- * It has six methods.
- * One for handling the kind of the round.
- * Two for handling the number of questions.
+ * @author Sophia Katsaki
+ * @author Stylianos Tozios
  */
 public class Round {
     protected ArrayList<String> kinds;
@@ -24,10 +20,10 @@ public class Round {
     protected int betPoints;
 
     /**
-     * The constructor randomizes the number of questions.
-     * It sets the total amount of questions randomly in the interval tow to eight.
+     * Constructor
      *
-     * It is also calling the constructor of the mother class Game with the command super().
+     * The constructor randomizes the number of questions.
+     * It sets the total amount of questions randomly in the interval two to eight.
      */
     public Round () {
         this.kinds = new ArrayList<>();

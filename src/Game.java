@@ -2,17 +2,13 @@ import java.util.Random;
 import java.util.Scanner;
 
 /**
- * This class contains all the data that are important for the game.
- * It has the total amount of rounds and the number of the current round that is being played.
- *
+ * This class is base for the game and it contains all the data that are important for that.
+ * It stores the total amount of rounds and the number of the current round that is being played.
  * It has a constructor, useful for the creation of an object of this class.
- * That constructor takes as a parameter a number between 1 and 2 and then creates the total amount of rounds of the
- * game by asking the player or randomly.
- * At the same time, it initializes the current round to number 1 (as the first round).
+ * It contains five methods for handling the total amount of rounds and for handling the current round.
  *
- * It contains five methods.
- * Three for handling the total amount of rounds.
- * Two for handling the current round.
+ * @author Stylianos Tozios
+ * @author Sophia Katsaki
  */
 
 public class Game {
@@ -20,6 +16,8 @@ public class Game {
     private int currentRound;
 
     /**
+     * Constructor
+     *
      * The constructor initializes the current round to number one, that is, the first round.
      *
      * @param answer is a number which must be 1 or 2 that will be used for the creation of the rounds.

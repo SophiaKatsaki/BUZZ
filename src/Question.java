@@ -16,15 +16,25 @@ public class Question extends QA {
     private static ArrayList<String> usedQuestions = new ArrayList<>();
     private String question;
     private int numberOfRandomQuestionInArray;
-
+    private int randomNumberOfCategory;
 
     /**
      * The constructor of the class Question just creates an object of the class Question.
     */
 
     public Question (){
+        this.categories.add("Music");
+        this.categories.add("Books");
+        this.categories.add("TV Series/ Movies");
+        this.categories.add("Travelling");
+
+        Random rand = new Random();
+        this.randomNumberOfCategory = rand.nextInt(this.categories.size());
     }
 
+    public int getNumberOfCategory () {
+        return this.randomNumberOfCategory;
+    }
 
     /**
        This method gives the category of the question appeared on screen.
@@ -33,7 +43,7 @@ public class Question extends QA {
      */
 
     public String getCategory () {
-        return categories.get(numberOfCategory);
+        return categories.get(this.randomNumberOfCategory);
     }
 
 
@@ -67,8 +77,7 @@ public class Question extends QA {
      */
 
     public void setRandomQuestion () {
-        makeQ(getNumberOfCategory());
-        //setNumberOFCategory();
+        makeQ(this.randomNumberOfCategory);
 
         Random rand = new Random();
 
