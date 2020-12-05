@@ -15,8 +15,9 @@ public class Answer extends QA {
     }
 
     public void setCorrectAnswer (int answerOfPlayer, int numberOfRandomQuestionInArray) {
+        this.answer = this.possibleAnswers.get(numberOfRandomQuestionInArray*4);
 
-        if(this.fourPossibleAnswers.get(answerOfPlayer-1).equals(this.possibleAnswers.get(numberOfRandomQuestionInArray*4)))
+        if(this.fourPossibleAnswers.get(answerOfPlayer-1).equals(this.answer))
         {
             this.correctAnswer=true;
         }
@@ -26,25 +27,23 @@ public class Answer extends QA {
         }
     }
 
-
     public void showAnswers (int numberOfQuestionInArray) {
         makeA(getNumberOfCategory());
 
-        for (int i=numberOfQuestionInArray*4;i<numberOfQuestionInArray*4
-                +4;i++) {
+        for (int i=numberOfQuestionInArray*4;i<numberOfQuestionInArray*4+4;i++) {
             this.fourPossibleAnswers.add(possibleAnswers.get(i));
         }
-        Collections.shuffle(this.fourPossibleAnswers);
-        int counter=0;
-        for (String s:this.fourPossibleAnswers) {
 
-            this.answer=this.fourPossibleAnswers.get(counter);
-            counter++;
-            System.out.printf("%d)", counter);
+        Collections.shuffle(this.fourPossibleAnswers);
+
+        for (int i=0;i<4;i++) {
+
+            this.answer=this.fourPossibleAnswers.get(i);
+
+            System.out.printf("%d)", i+1);
             System.out.print(" ");
             System.out.printf("%s", this.answer);
             System.out.println();
         }
     }
-
 }

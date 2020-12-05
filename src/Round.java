@@ -3,16 +3,17 @@ import java.util.Random;
 import java.util.Scanner;
 
 /**
- * This class is subclass of the class Game.
- * It has all the important information of the mother class Game such as the questions and their categories.
+ * This class contains all the data that are important for a round.
+ * It has the kind of the round, the total amount of the questions in a round, the number of the current question and
+ * the points that may be used as a bet.
  *
- * This class has also the number of the questions and the kind of the round.
+ * It has a constructor, useful for the creation of an object of this class.
+ * That constructor randomizes the number of the questions when the object gets created.
+ * At the same time, it initializes the current question to number 1 (as the first question).
+ * It also creates an ArrayList with the possible kinds of rounds.
  *
- * It contains a constructor that calls the constructor of the mother class Game and at the same time it initializes the
- * number of the questions to 8 by default when the object gets created.
- *
- * It has four methods.
- * Two for handling the kind of the round.
+ * It has six methods.
+ * One for handling the kind of the round.
  * Two for handling the number of questions.
  */
 public class Round {
@@ -23,7 +24,8 @@ public class Round {
     protected int betPoints;
 
     /**
-     * The constructor initializes the number of questions to 8.
+     * The constructor randomizes the number of questions.
+     * It sets the total amount of questions randomly in the interval tow to eight.
      *
      * It is also calling the constructor of the mother class Game with the command super().
      */
@@ -45,37 +47,56 @@ public class Round {
     }
 
     /**
-     * @return the information of the kind of the current round whenever it is asked.
+     * This method set the current question to the next one when the question ends.
      */
-    public String getKind() {
-        return this.kind;
-    }
-
-    public int getRandomNumberOfQuestions () {
-        return this.randomNumberOfQuestions;
-    }
-
-    public int getCurrentNumberOfQuestion () {
-        return this.currentNumberOfQuestion;
-    }
-
-    public int getBetPoints () {
-        return this.betPoints;
-    }
-
     public void setCurrentNumberOfQuestion () {
         this.currentNumberOfQuestion++;
     }
 
+    /**
+     * This method set the number of the points that the user/ player may bet in the "Bet" kind of round and it checks
+     * if the parameter is between the correct bet points.
+     *
+     * @param answer contains the points that the user/ player decided to bet in the "Bet" kind of round.
+     */
     public void setBetPoints (int answer) {
         Scanner scanner = new Scanner(System.in);
         //scanner.nextLine();
 
         while (answer != 250 && answer != 500 && answer != 750 && answer != 1000) {
             answer = scanner.nextInt();
-            scanner.nextLine();
+            //scanner.nextLine();
         }
 
         this.betPoints = answer;
+    }
+
+    /**
+     * @return statement gives back the information of the kind of the current round whenever it is asked.
+     */
+    public String getKind() {
+        return this.kind;
+    }
+
+    /**
+     * @return statement gives back the total amount of questions in a round whenever it is asked.
+     */
+    public int getRandomNumberOfQuestions () {
+        return this.randomNumberOfQuestions;
+    }
+
+    /**
+     * @return statement gives back the number of the current question whenever it is asked.
+     */
+    public int getCurrentNumberOfQuestion () {
+        return this.currentNumberOfQuestion;
+    }
+
+    /**
+     * @return statement gives back the points that the user/ player may bet in the "Bet" kind of round whenever it is
+     * asked.
+     */
+    public int getBetPoints () {
+        return this.betPoints;
     }
 }

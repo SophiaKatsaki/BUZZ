@@ -23,7 +23,7 @@ public class Question extends QA {
 
     public void setRandomQuestion () {
         makeQ(getNumberOfCategory());
-        setNumberOFCategory();
+        //setNumberOFCategory();
 
         Random rand = new Random();
 

@@ -1,33 +1,31 @@
 import java.util.Scanner;
 
 /**
- * In this class exists the view of our game.
+ * In this class exists the view the game and the interface with the user / player.
+ * The interface with the user/ player starts from the beginning through messages which are being displayed on the
+ * screen for the whole the duration.
  *
- * From the begin, it creates an object of the class Game that has the most important elements of the game.
- * That object gets destroyed only when the game ends.
- *
- * Afterwards, messages are displayed and the interface with the user/ player has already begun.
- *
- * When it asks to enter the name, an object from the class Player gets created.
- * That object contains the elements that the player will need.
+ * It stars by creating an object from the class Player.
+ * It takes as a parameter the name of the user/ player, which is being taken from them when it asks to enter it.
  * That object gets destroyed when the game ends.
  *
- * Messages are displayed again and the interface with the user/ player continues.
+ * Afterwards, an object from the class Game is being created.
+ * It takes as a parameter an integer in order to create the number of rounds that the game will contain, which is
+ * being taken from them when it asks to enter it.
+ * That object gets destroyed when the game ends.
  *
- * When all the important data got taken, then an object from the class Round gets created.
- * That object gets destroyed everytime a round ends and gets created again when a new round begins.
- *
- * The interface with the user/ player continues with some messages.
+ * The next object that is being created is the object from the class Round.
+ * That object gets destroyed everytime one round ends and gets created again when a new round begins.
  *
  * Sooner than later, objects from the classes Question and Answer get created.
- * The first one contains everything that a question must do.
- * The second one contains everything that an answer must do.
- * Both get destroyed everytime a question ends and get created again when a new question begins.
+ * At the same time, the abstract class QA which has all the important data for the classes Question and Answer is
+ * being called by them.
+ * Both objects get destroyed everytime a question ends and get created again when a new question begins.
  *
  * In the end, there exists some last messages that make the last interface with the user/ player.
  * These messages inform them about the end of the game and ends the game, the main class and, at the same time,
  * the view.
- * */
+ */
 
 public class Main
 {
@@ -82,7 +80,7 @@ public class Main
 
                 question.setRandomQuestion();
                 question.setNumberOfRandomQuestionInArray();
-                System.out.println("\"" + question.getRandomQuestion() + "\"");
+                System.out.println("-" + question.getRandomQuestion());
 
                 Answer answer = new Answer();
                 answer.showAnswers(question.getNumberOfRandomQuestionInArray());

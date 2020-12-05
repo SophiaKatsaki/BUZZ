@@ -3,14 +3,16 @@ import java.util.Scanner;
 
 /**
  * This class contains all the data that are important for the game.
- * For that reason, it is mother class for some other classes.
- *
- * It has the number of rounds that will be played, all the different kinds of rounds, all the questions and the answers
- * (correct or possible) and all their categories.
+ * It has the total amount of rounds and the number of the current round that is being played.
  *
  * It has a constructor, useful for the creation of an object of this class.
+ * That constructor takes as a parameter a number between 1 and 2 and then creates the total amount of rounds of the
+ * game by asking the player or randomly.
+ * At the same time, it initializes the current round to number 1 (as the first round).
  *
- * It contains two methods for the number of rounds.
+ * It contains five methods.
+ * Three for handling the total amount of rounds.
+ * Two for handling the current round.
  */
 
 public class Game {
@@ -18,12 +20,11 @@ public class Game {
     private int currentRound;
 
     /**
-     * The constructor defines which are the questions, the answers (correct or possible), the categories of the
-     * questions and the kinds of the rounds.
+     * The constructor initializes the current round to number one, that is, the first round.
      *
-     * The constructor also initializes the number of the rounds as 1.
-     *
-     * In general, the constructor creates the the key element of the game.
+     * @param answer is a number which must be 1 or 2 that will be used for the creation of the rounds.
+     *               If it is 1 then the player will choose how many rounds they will play.
+     *               If it is 2 then the total amount of rounds will be created randomly.
      */
     public Game (int answer) {
         this.numberOfRounds = answer;
@@ -38,13 +39,13 @@ public class Game {
     }
 
     /**
-     * This method set the number of rounds that a game will have.
-     * It has two possible ways to do this that varies from the parameter.
-     * It will get the information from the user/player.
-     * Or it will set this randomly.
+     * This method sets the number of rounds that a game will have.
+     * It will get the information from the user/player and will saves it in a variable after it is being checked that
+     * it is between the right interval.
      *
-     * @param answer contains the decision of the user/ player to choose the number of rounds or to be set randomly.
+     * @param answer contains the decision of the user/ player for the total amount of the rounds.
      */
+
     public void setNumberOfRounds (int answer) {
         this.numberOfRounds = answer;
         Scanner scanner = new Scanner(System.in);
@@ -56,16 +57,21 @@ public class Game {
         }
     }
 
+    /**
+     * This method sets the number of rounds that a game will have randomly in the interval one to ten.
+     */
     public void setRandomRounds () {
         Random rand = new Random();
+
         do {
             this.numberOfRounds = rand.nextInt(11);
         } while (this.numberOfRounds == 0);
     }
 
-    public void setCurrentRound () {
-        this.currentRound++;
-    }
+    /**
+     * This method set the current round to the next one when the round ends.
+     */
+    public void setCurrentRound () { this.currentRound++; }
 
     /**
      * @return statement gives back the information about the number of the rounds whenever it gets asked.
@@ -74,8 +80,8 @@ public class Game {
         return this.numberOfRounds;
     }
 
-    public int getCurrentRound()
-    {
-        return this.currentRound;
-    }
+    /**
+     * @return statement gives back the information about the number of the current round whenever it gets asked.
+     */
+    public int getCurrentRound() { return this.currentRound; }
 }

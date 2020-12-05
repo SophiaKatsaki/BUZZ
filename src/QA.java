@@ -1,12 +1,30 @@
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * This abstract class contains all the data that are important for the questions and answers.
+ * It has three ArrayLists for questions, possible answers and categories and a variable for the number of a category.
+ *
+ * It has a constructor, useful for the creation of the collections.
+ * It creates the three ArrayLists.
+ *
+ * It has four methods.
+ * Two for handling the categories of the questions/ answers.
+ * One for handling the data of the questions.
+ * One for handling the data of the answers.
+ */
 public abstract class QA {
     protected ArrayList<String> questions;
     protected ArrayList<String> possibleAnswers;
     protected ArrayList<String> categories;
     protected int numberOfCategory;
 
+    /**
+     * The constructor creates the ArrayList of the categories with the possible categories that the game will have.
+     *
+     * It also creates two ArrayLists.
+     * One for the questions and one for the possible answers without any elements inside neither of them.
+     */
     public QA () {
         this.categories = new ArrayList<>();
         this.categories.add("Music");
@@ -18,13 +36,26 @@ public abstract class QA {
         this.possibleAnswers = new ArrayList<>();
     }
 
+    /**
+     * @return statement gives back the information of the number of the category that was chosen randomly.
+     */
     public int getNumberOfCategory() {
         return this.numberOfCategory;
     }
+
+    /**
+     * This method sets randomly a number that will point to a category.
+     */
     public void setNumberOFCategory () {
         Random rand = new Random();
         this.numberOfCategory = rand.nextInt(this.categories.size());
     }
+
+    /**
+     * This method will fill the ArrayList of the questions with some elements depending on the parameter.
+     *
+     * @param numberOfCategory is the number of the category that was chosen randomly.
+     */
     public void makeQ (int numberOfCategory) {
         this.numberOfCategory = numberOfCategory;
 
@@ -42,7 +73,7 @@ public abstract class QA {
                 this.questions.add("When was disco emerged as a genre of dance music?");
                 this.questions.add("What is the biggest music platform?");
                 this.questions.add("Who is the winner of the ESC of 2019?");
-                this.questions.add("Which country has won the ESC 7 times?");
+                this.questions.add("Which country has won the ESC seven times?");
                 this.questions.add("Who is the singer of Norway's entry in ESC,'FairyTale'");
                 this.questions.add("Which of the following did Lewis Capaldi sing?");
                 this.questions.add("Which band sings \"Here Without You\"?");
@@ -93,7 +124,7 @@ public abstract class QA {
                 this.questions.add("How many \"Now You See Me\" movies exist?");
                 this.questions.add("Who is the protagonist of \"Shutter Island\"?");
                 this.questions.add("In which of the following factions did \"Beatrice\" grow up in \"Divergent\"?");
-                this.questions.add("Who plays \"Batman\" in \"The Dark Night\" (2008)?");
+                this.questions.add("Who plays Batman in \"The Dark Night\" (2008)?");
             }
             case 3: {
                 this.questions.add("Which country does not belong to europe?");
@@ -103,7 +134,7 @@ public abstract class QA {
                 this.questions.add("If you want to go to the Himalayas, which country will you choose to go to?");
                 this.questions.add("Where acropolis is located?");
                 this.questions.add("Where Glacier National Park is located?");
-                this.questions.add("France is the city of");
+                this.questions.add("Paris is the city of");
                 this.questions.add("Which part of portugal is mountainous?");
                 this.questions.add("Spanish is spoken in");
                 this.questions.add("What is the richest country of the world?");
@@ -120,6 +151,11 @@ public abstract class QA {
         }
     }
 
+    /**
+     * This method will fill the ArrayList of the possible answers with some elements depending on the parameter.
+     *
+     * @param numberOfCategory is the number of the category that was chosen randomly.
+     */
     public void makeA (int numberOfCategory) {
         this.numberOfCategory = numberOfCategory;
 
