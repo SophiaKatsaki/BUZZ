@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Answer extends QA {
     private String answer;
@@ -14,15 +15,17 @@ public class Answer extends QA {
     }
 
     public void setCorrectAnswer (int answerOfPlayer, int numberOfRandomQuestionInArray) {
-        this.answer = possibleAnswers.get(numberOfRandomQuestionInArray*4);
 
-        if (this.answer.equals(this.fourPossibleAnswers.get(answerOfPlayer-1))) {
-            this.correctAnswer = true;
+        if(this.fourPossibleAnswers.get(answerOfPlayer-1).equals(this.possibleAnswers.get(numberOfRandomQuestionInArray*4)))
+        {
+            this.correctAnswer=true;
         }
-        else {
-            this.correctAnswer = false;
+        else
+        {
+            this.correctAnswer=false;
         }
     }
+
 
     public void showAnswers (int numberOfQuestionInArray) {
         makeA(getNumberOfCategory());
@@ -31,15 +34,17 @@ public class Answer extends QA {
                 +4;i++) {
             this.fourPossibleAnswers.add(possibleAnswers.get(i));
         }
+        Collections.shuffle(this.fourPossibleAnswers);
+        int counter=0;
+        for (String s:this.fourPossibleAnswers) {
 
-        for (int i=0;i<4;i++) {
-
-            this.answer = this.fourPossibleAnswers.get(i);
-
-            System.out.printf("%d)", i+1);
+            this.answer=this.fourPossibleAnswers.get(counter);
+            counter++;
+            System.out.printf("%d)", counter);
             System.out.print(" ");
             System.out.printf("%s", this.answer);
             System.out.println();
         }
     }
+
 }

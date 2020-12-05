@@ -222,6 +222,7 @@ public abstract class QA {
                 this.possibleAnswers.add("Pride and Prejudice");
                 this.possibleAnswers.add("The Snowman");
                 this.possibleAnswers.add("Think of A Number");
+                this.possibleAnswers.add("The son");
                 this.possibleAnswers.add("Realist novel");
                 this.possibleAnswers.add("Romance novel");
                 this.possibleAnswers.add("Novel of manners");
