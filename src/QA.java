@@ -13,6 +13,7 @@ import java.util.Random;
  * One for handling the data of the questions.
  * One for handling the data of the answers.
  */
+
 public abstract class QA {
     protected ArrayList<String> questions;
     protected ArrayList<String> possibleAnswers;
