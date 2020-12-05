@@ -4,10 +4,10 @@ import java.util.ArrayList;
  * This abstract class represents a place that stores every important information for the questions and answers.
  * It has three ArrayLists for questions, possible answers and categories and the number of a category.
  * It has a constructor, useful for the creation of the collections.
- * It has tow methods for handling the categories of the questions/ answers.
+ * It has two methods for handling the categories of the questions/ answers.
  *
- * @author Stylianos Tozios
  * @author Sophia Katsaki
+ * @author Stylianos Tozios
  */
 public abstract class QA {
     protected ArrayList<String> questions;
@@ -15,10 +15,12 @@ public abstract class QA {
     protected ArrayList<String> categories;
     protected int numberOfCategory;
 
+
     /**
      * The constructor creates the ArrayLists of the categories, the questions and the possible answers.
      * Neither of them get initialized nor have elements.
      */
+
     public QA () {
         this.categories = new ArrayList<>();
         this.questions = new ArrayList<>();

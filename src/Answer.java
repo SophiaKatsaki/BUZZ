@@ -1,18 +1,52 @@
 import java.util.ArrayList;
 import java.util.Collections;
 
+/**
+ * This class represents an answer to a question of the game.It extends the abstract class 'QA'.It stores
+ * a String that is the correct possible answer,a boolean that is true if the answer the player gave is
+ * correct and false if it is wrong and an arraylist that holds the four possible answers of each question.
+ * The answer class is responsible for showing the possible answers of the question to the player and set
+ * the answer the player gave as correct or wrong in order to calculate the points that they deserve.
+ *
+ * @author Sophia Katsaki
+ * @author Stylianos Tozios
+ */
+
+
 public class Answer extends QA {
     private String answer;
     private boolean correctAnswer;
     private ArrayList<String> fourPossibleAnswers;
 
+    /**
+     * Constructor
+     *
+     * The constructor creates an arraylist of the four possible answers to a question.
+    */
+
     public Answer () {
         this.fourPossibleAnswers = new ArrayList<>();
     }
 
+
+    /**
+     * @return if the answer is correct
+     */
+
     public boolean getCorrectAnswer () {
         return this.correctAnswer;
     }
+
+
+    /**
+     * This method checks if the answer that the player gave is equal to the correct answer
+     * of the question that is held in an arraylist with all the possible answers.
+     *
+     * @param answerOfPlayer Answer from 1 to 4 that the player pressed.
+     *
+     *@param numberOfRandomQuestionInArray the number of the question chosen randomly,in the arraylist
+     *                                     that holds all the questions
+     */
 
     public void setCorrectAnswer (int answerOfPlayer, int numberOfRandomQuestionInArray) {
         this.answer = this.possibleAnswers.get(numberOfRandomQuestionInArray*4);
@@ -26,6 +60,17 @@ public class Answer extends QA {
             this.correctAnswer=false;
         }
     }
+
+
+    /**
+     * This method shows the answers to a question that is chosen randomly in random order everytime
+     * on screen.
+     *
+     * @param numberOfQuestionInArray the number of the question chosen in the arraylist in 'QA'
+     *                                that holds the questions of the game
+     * @param randomNumberOfCategory the number that corresponds to the number of the category
+     *                               of the random question that is chosen.
+     */
 
     public void showAnswers (int numberOfQuestionInArray, int randomNumberOfCategory) {
         makeA(randomNumberOfCategory);

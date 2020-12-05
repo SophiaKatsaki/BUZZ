@@ -9,6 +9,8 @@ import java.util.Scanner;
  * @author Sophia Katsaki
  * @author Stylianos Tozios
  */
+
+
 public class Player {
     private String name;
     private int points;
@@ -16,10 +18,12 @@ public class Player {
 
 
     /**
+     * Constructor
+     *
      * The constructor initializes the points of the player in the value 0 by default.
      * It also initializes the name of the player with the name they give when they are asked.
      *
-     * @param name contains the name of the player and it is given when the object gets created.
+     * @param name Contains the name of the player.
      */
 
     public Player(String name)
@@ -32,7 +36,7 @@ public class Player {
     /**
      * This method set the answer of the player by questioning them what that answer is.
      *
-     * @param answer the number for 1 to 4 of the answer the player chooses
+     * @param answer A number from 1 to 4 of the answer the player chooses.
      */
 
     public void setNumberOfAnswer(int answer) {
@@ -48,10 +52,10 @@ public class Player {
         this.numberOfAnswer=answer;
     }
 
+
     /**
-     * This method gives the name of the player when is needed in the game.
      *
-     * @return the information of the name of the player whenever it is asked.
+     * @return The name of the player when is needed in the game.
      */
 
     public String getName()
@@ -61,9 +65,8 @@ public class Player {
 
 
     /**
-     * This method gives the number of points the player has at a certain moment in the game.
      *
-     * @return the information of the points that the player has whenever it is asked.
+     * @return The information of the points that the player has at a certain moment whenever it is asked.
      */
 
     public int getPoints()
@@ -73,9 +76,8 @@ public class Player {
 
 
     /**
-     * This method returns the number of the answer the player gives
      *
-     * @return int the number of the answer
+     * @return The number of the answer the player gives.
     */
 
     public int getNumberOfAnswer()
@@ -83,14 +85,16 @@ public class Player {
         return this.numberOfAnswer;
     }
 
+
     /**
      * This method changes the points of the player positively by the points the parameter says when they answer
      * correctly in a question.
      *
-     * @param points are the points that the player wins.
+     * @param points Are the points that the player wins.
      */
 
-    public void winPoints(int points) {
+    public void winPoints(int points)
+    {
         this.points += points;
     }
 
@@ -99,7 +103,7 @@ public class Player {
      *  This method changes the points of the player negatively by the points the parameter says when
      *  the answer that they give is wrong.
      *
-     *  @param points are the points that the player loses.
+     *  @param points Are the points that the player loses.
      */
 
     public void losePoints(int points) {

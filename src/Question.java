@@ -5,13 +5,16 @@ import java.util.Random;
  * This class represents a question of the game.It extends the abstract class 'QA',which produces the questions,
  * the answers and the categories of the questions.It has a String that represents the question itself that
  * the player sees,an integer that is the number of the String in the arraylist that holds the questions
- * made in 'QA' and an arraylist that keeps the questions that the player has answered as strings in order
- * not to appear in the same game twice.It returns the random categories that are chosen and gets and sets
- * random questions from the arraylist of questions in 'QA' and the number of their place in the arraylist.
+ * made in 'QA',an arraylist that keeps the questions that the player has answered as strings in order
+ * not to appear in the same game twice and an integer that represents the category of the question.It
+ * returns the random categories that are chosen and gets and sets random questions from the arraylist
+ * that holds all questions in 'QA' and the number of their place in the arraylist.
  *
  * @author Sophia Katsaki
  * @author Stylianos Tozios
  */
+
+
 public class Question extends QA {
     private static ArrayList<String> usedQuestions = new ArrayList<>();
     private String question;
@@ -19,7 +22,12 @@ public class Question extends QA {
     private int randomNumberOfCategory;
 
     /**
-     * The constructor of the class Question just creates an object of the class Question.
+     * Constructor
+     *
+     * The constructor of the class Question adds the categories of the questions of the
+     * game to an arraylist and randomly selects a category for the question that is made
+     * when the constructor is called,while a Question object is created.
+     *
     */
 
     public Question (){
@@ -32,14 +40,21 @@ public class Question extends QA {
         this.randomNumberOfCategory = rand.nextInt(this.categories.size());
     }
 
+
+    /**
+     * @return number that corresponds to the category of the question that is chosen randomly.
+     */
+
     public int getNumberOfCategory () {
         return this.randomNumberOfCategory;
     }
 
-    /**
-       This method gives the category of the question appeared on screen.
 
-       @return String type of category
+    /**
+     * This method returns the category of the question appeared on screen,given the number
+     * that corresponds to the category that is chosen.
+     *
+     * @return type of category.
      */
 
     public String getCategory () {
@@ -48,9 +63,8 @@ public class Question extends QA {
 
 
     /**
-       This method returns the String of the question that the player sees.
-
-       @return String the String of the question needed.
+     *
+     * @return the String of the question that the player sees.
      */
 
     public String getRandomQuestion () {
@@ -59,10 +73,10 @@ public class Question extends QA {
 
 
     /**
-     * This method returns the integer that represents the number of the random question chosen,in the
-     * arraylist that holds the questions in the abstract class 'QA'
+     * This method returns the integer that represents the number of the random question chosen in the
+     * arraylist that holds the questions in the abstract class 'QA'.
      *
-     * @return int number of the question in the arraylist
+     * @return number of the question in the arraylist
      */
 
     public int getNumberOfRandomQuestionInArray () {
@@ -73,7 +87,7 @@ public class Question extends QA {
     /**
      * This method chooses a random question from the arraylist in 'QA' and updates the arraylist
      * of the questions that are used, with the question that was chosen,in order not to use
-     * the same question again in the same game.
+     * the same question again in the same game,given the category that is chosen for the question.
      */
 
     public void setRandomQuestion () {
@@ -100,8 +114,10 @@ public class Question extends QA {
 
 
     /**
-      This method
+     * This method sets the number of the question in the arraylist that holds all
+     * the questions,chosen randomly.
      */
+
     public void setNumberOfRandomQuestionInArray () {
         this.numberOfRandomQuestionInArray = questions.indexOf(this.question);
     }

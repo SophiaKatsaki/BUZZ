@@ -23,9 +23,10 @@ import java.util.Scanner;
  * These messages inform them about the end of the game and ends the game, the main class and, at the same time,
  * the view.
  *
- * @author Stylianos Tozios
  * @author Sophia Katsaki
+ * @author Stylianos Tozios
  */
+
 
 public class Main
 {

@@ -7,13 +7,15 @@ import java.util.Scanner;
  * It has a constructor, useful for the creation of an object of this class.
  * It contains five methods for handling the total amount of rounds and for handling the current round.
  *
- * @author Stylianos Tozios
  * @author Sophia Katsaki
+ * @author Stylianos Tozios
  */
+
 
 public class Game {
     private int numberOfRounds;
     private int currentRound;
+
 
     /**
      * Constructor
@@ -24,6 +26,7 @@ public class Game {
      *               If it is 1 then the player will choose how many rounds they will play.
      *               If it is 2 then the total amount of rounds will be created randomly.
      */
+
     public Game (int answer) {
         this.numberOfRounds = answer;
         Scanner scanner=new Scanner(System.in);
@@ -35,6 +38,7 @@ public class Game {
 
         this.currentRound=1;
     }
+
 
     /**
      * This method sets the number of rounds that a game will have.
@@ -55,6 +59,7 @@ public class Game {
         }
     }
 
+
     /**
      * This method sets the number of rounds that a game will have randomly in the interval one to ten.
      */
@@ -66,20 +71,26 @@ public class Game {
         } while (this.numberOfRounds == 0);
     }
 
+
     /**
      * This method set the current round to the next one when the round ends.
      */
+
     public void setCurrentRound () { this.currentRound++; }
+
 
     /**
      * @return statement gives back the information about the number of the rounds whenever it gets asked.
      */
+
     public int getNumberOfRounds () {
         return this.numberOfRounds;
     }
 
+
     /**
      * @return statement gives back the information about the number of the current round whenever it gets asked.
      */
+
     public int getCurrentRound() { return this.currentRound; }
 }
