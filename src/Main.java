@@ -32,6 +32,7 @@ public class Main
 {
     public static void main(String[] args)
     {
+        Game game = new Game();
         Player player1 = new Player(1);
         Player player2 = new Player(2);
 
@@ -41,7 +42,7 @@ public class Main
         System.out.println("Select: ");
         System.out.println("1) Solo Game.");
         System.out.println("2) Play with a friend.");
-        Game game = new Game(scanner.nextInt());
+        game.setAnswer(scanner.nextInt());
 
         System.out.println("Enter name:");
         scanner = new Scanner(System.in);
@@ -62,7 +63,7 @@ public class Main
         System.out.println("1) Choose the number of rounds.");
         System.out.println("2) Random rounds.");
         scanner = new Scanner(System.in);
-        game = new Game(scanner.nextInt());
+        game.setAnswer(scanner.nextInt());
 
         if (game.getAnswer()==1) {
             System.out.println("From 1 to 10,");

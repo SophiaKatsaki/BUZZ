@@ -5,13 +5,12 @@ import java.util.Scanner;
  * This class is base for the game and it contains all the data that are important for that. It stores
  * the amount of the players, the total amount of rounds and the number of the current round that is
  * being played. It has a constructor, useful for the creation of an object of this class. It contains
- * five methods for handling the total amount of rounds and for handling the current round and two for
- * handling the amount of the players.
+ * methods for handling the total amount of rounds and for handling the current round and for handling
+ * the amount of the players.
  *
  * @author Sophia Katsaki
  * @author Stylianos Tozios
  */
-
 
 public class Game {
     private int answer;
@@ -23,6 +22,14 @@ public class Game {
      * Constructor
      *
      * The constructor initializes the current round to number one, that is, the first round.
+     */
+
+    public Game () {
+        this.currentRound=1;
+    }
+
+    /**
+     * This method sets the answer to number 1 or 2.
      *
      * @param answer is a number which must be 1 or 2 that will be used either for the creation of the
      *               rounds or for the number of the players. The use of the answer vary and it
@@ -33,7 +40,7 @@ public class Game {
      *               represents the game with a friend.
      */
 
-    public Game (int answer) {
+    public void setAnswer (int answer) {
         this.answer = answer;
         Scanner scanner=new Scanner(System.in);
         //scanner.nextLine();
@@ -41,8 +48,6 @@ public class Game {
             this.answer=scanner.nextInt();
             scanner.nextLine();
         }
-
-        this.currentRound=1;
     }
 
     /**

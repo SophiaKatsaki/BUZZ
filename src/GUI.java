@@ -172,7 +172,8 @@ public class GUI {
 
         label2=new JLabel("Welcome "+player.getName()+"!Select one of the following.");
 
-        game=new Game(2);
+        game=new Game();
+        game.setAnswer(2);
         game.setNumberOfPlayers(1);
 
         panel2.add(label2);
@@ -215,7 +216,8 @@ public class GUI {
 
         label2=new JLabel("Welcome "+player.getName()+ " and "+player2.getName());
 
-        game=new Game(2);
+        game=new Game();
+        game.setAnswer(2);
         game.setNumberOfPlayers(2);
 
         panel2.add(label2);
