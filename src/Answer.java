@@ -22,10 +22,18 @@ public class Answer extends QA {
     /**
      * Constructor
      *
-     * The constructor creates an arraylist of the four possible answers to a question.
-    */
+     * The constructor of the class Answer adds the categories of the answers of the
+     * game to an arraylist. It also creates an arraylist of the four possible answers
+     * to a question.
+     */
 
     public Answer () {
+        this.categories.add("Music");
+        this.categories.add("Books");
+        this.categories.add("TV Series/ Movies");
+        this.categories.add("Travelling");
+        this.categories.add("Food & Drinks");
+
         this.fourPossibleAnswers = new ArrayList<>();
     }
 

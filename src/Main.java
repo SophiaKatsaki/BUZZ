@@ -113,7 +113,7 @@ public class Main
                     }
                 }
 
-                System.out.println("\"" + question.getRandomQuestion() + "\"");
+                System.out.println(question.getRandomQuestion());
 
                 answer1.setFourPossibleAnswers(question.getNumberOfRandomQuestionInArray(),
                         question.getNumberOfCategory());

@@ -17,7 +17,7 @@ import java.util.Random;
 
 public class Question extends QA {
     private static ArrayList<String> usedQuestions = new ArrayList<>();
-    private static int[] numberOfUsedQuestions = {0, 0, 0, 0};
+    private static int[] numberOfUsedQuestions = {0, 0, 0, 0, 0};
     private String question;
     private int numberOfRandomQuestionInArray;
     private int randomNumberOfCategory;
@@ -36,6 +36,7 @@ public class Question extends QA {
         this.categories.add("Books");
         this.categories.add("TV Series/ Movies");
         this.categories.add("Travelling");
+        this.categories.add("Food & Drinks");
 
         Random rand = new Random();
         this.randomNumberOfCategory = rand.nextInt(this.categories.size());
