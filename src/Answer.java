@@ -117,4 +117,12 @@ public class Answer extends QA {
             number++;
         }
     }
+
+    /**
+     * @return the shuffled four possible answers to a question
+     */
+    public ArrayList<String> getFourPossibleAnswers()
+    {
+        return this.fourPossibleAnswers;
+    }
 }

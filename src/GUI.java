@@ -2,56 +2,70 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class GUI {
-    private JFrame frame;
+    private JFrame beginTheGameFrame;
     private JPanel panel;
     private JPanel panel2;
-    private JButton button;
-    private JButton button2;
-    private JButton button3;
-    private JButton button4;
-    private JButton button5;
+    private JPanel panel3;
+    private JButton newGame;
+    private JButton statistics;
+    private JButton soloGame;
+    private JButton gameWithFriend;
+    private JButton soloGame2;
+    private JButton gameWithFriend2;
     private JButton s_rounds_solo;
     private JButton r_rounds_solo;
     private JButton s_rounds_two;
     private JButton r_rounds_two;
     private JLabel label;
     private JLabel label2;
-    private JTextField textField;
-    private JTextField textField2;
-    private Player player;
+    private JTextField InputOfFirstName;
+    private JTextField InputOfSecondName;
+    private Player player1;
     private Player player2;
     private Game game;
 
     public GUI()
     {
-        frame = new JFrame("BUZZ");
-        frame.setVisible(true);
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.setResizable(true);
-        frame.setSize(500, 270);
-        frame.setLocationRelativeTo(null);
+        beginTheGameFrame = new JFrame("BUZZ");
+        beginTheGameFrame.setVisible(true);
+        beginTheGameFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        beginTheGameFrame.setResizable(true);
+        beginTheGameFrame.setSize(500, 270);
+        beginTheGameFrame.setLocationRelativeTo(null);
 
         panel = new JPanel();
         panel.setVisible(true);
         panel.setLayout(new FlowLayout(FlowLayout.LEADING));
-        panel.setBackground(Color.BLUE);
-        frame.add(panel, BorderLayout.PAGE_START);
+        panel.setBackground(Color.cyan);
+        beginTheGameFrame.add(panel, BorderLayout.PAGE_START);
 
-        button= new JButton("New Game");
-        button.addActionListener(new ActionListener() {
+        newGame = new JButton("New Game");
+        newGame.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                button();
+                newGame();
             }
         });
-        panel.add(button);
+        panel.add(newGame);
+
+        statistics = new JButton("Statistics");
+        statistics.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null,"BOOM!You wanted statistics");
+
+            }
+        });
+        panel.add(statistics);
 
         panel2 = new JPanel();
         panel2.setVisible(true);
         panel2.setBackground(Color.white);
-        frame.add(panel2, BorderLayout.CENTER);
+        beginTheGameFrame.add(panel2, BorderLayout.CENTER);
 
         label=new JLabel("Hello and welcome to the best game ever...BUZZ!");
         label.setVisible(true);
@@ -63,9 +77,9 @@ public class GUI {
         panel2.add(label);
         panel2.add(label2);
     }
-    private void button()
+    private void newGame()
     {
-        button.setVisible(true);
+        newGame.setVisible(true);
 
         JFrame frame2=new JFrame("BUZZ");
         frame2.setVisible(true);
@@ -80,12 +94,12 @@ public class GUI {
         panel.setBackground(Color.white);
         frame2.add(panel, BorderLayout.PAGE_END);
 
-        button2=new JButton("Solo Game");
-        button2.setVisible(true);
-        button3=new JButton("Game With A Friend");
-        button3.setVisible(true);
-        panel.add(button2);
-        panel.add(button3);
+        soloGame =new JButton("Solo Game");
+        soloGame.setVisible(true);
+        gameWithFriend =new JButton("Game With A Friend");
+        gameWithFriend.setVisible(true);
+        panel.add(soloGame);
+        panel.add(gameWithFriend);
 
         panel2=new JPanel();
         panel2 = new JPanel();
@@ -98,85 +112,94 @@ public class GUI {
 
         panel2.add(label);
 
-        button2.addActionListener(new ActionListener() {
+        soloGame.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                button2();
+                soloGame();
             }
         });
 
-        button3.addActionListener(new ActionListener() {
+        gameWithFriend.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                button3();
+                gameWithFriend();
             }
         });
     }
 
-    private void button2()
+    private void soloGame()
     {
-        button2.setVisible(false);
-        button3.setVisible(false);
+        soloGame.setVisible(false);
+        gameWithFriend.setVisible(false);
 
         label.setText("Solo game is chosen!The only one who can win you is yourself!");
         panel.add(label);
+        panel3=new JPanel(new GridLayout(3,1,4,5));
         label2=new JLabel("Enter your name");
-        panel2.add(label2);
+        panel3.add(label2);
 
-        textField=new JTextField(30);
-        panel2.add(textField);
+        InputOfFirstName =new JTextField(30);
+        panel3.add(InputOfFirstName);
 
-        button4=new JButton("Ready to play");
-        button4.addActionListener(new ActionListener() {
+        soloGame2 =new JButton("Ready to play");
+        soloGame2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                button4();
+                soloGame2();
             }
         });
-        panel2.add(button4);
+        panel3.add(soloGame2);
+        panel2.add(panel3);
     }
 
-    private void button3()
+    private void gameWithFriend()
     {
-        button2.setVisible(false);
-        button3.setVisible(false);
+        soloGame.setVisible(false);
+        gameWithFriend.setVisible(false);
 
         label.setText("I see two players in here!Only one will be the master of BUZZ!");
         panel.add(label);
         label2=new JLabel("Enter your names");
-        panel2.add(label2);
+        panel3=new JPanel(new GridLayout(4,1,4,5));
+        panel3.add(label2);
 
-        textField=new JTextField(30);
-        textField2=new JTextField(30);
-        panel2.add(textField);
-        panel2.add(textField2);
+        InputOfFirstName =new JTextField(30);
+        InputOfSecondName =new JTextField(30);
+        panel3.add(InputOfFirstName);
+        panel3.add(InputOfSecondName);
 
-        button5=new JButton("Ready to play");
-        button5.addActionListener(new ActionListener() {
+
+        gameWithFriend2 =new JButton("Ready to play");
+        gameWithFriend2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                button5();
+                gameWithFriend2();
             }
         });
-        panel2.add(button5);
+        panel3.add(gameWithFriend2);
+        panel2.add(panel3);
     }
 
-    private void button4()
+    private void soloGame2()
     {
+        panel3.setVisible(false);
         label2.setVisible(false);
-        textField.setVisible(false);
-        button4.setVisible(false);
+        InputOfFirstName.setVisible(false);
+        soloGame2.setVisible(false);
 
-        player=new Player(1);
-        player.setName(textField.getText());
+        player1=new Player(1);
+        player1.setName(InputOfFirstName.getText());
 
-        label2=new JLabel("Welcome "+player.getName()+"!Select one of the following.");
+        label2=new JLabel("Welcome "+player1.getName()+"!Select one of the following.");
 
         game=new Game();
         game.setAnswer(2);
         game.setNumberOfPlayers(1);
 
         panel2.add(label2);
+        panel3=new JPanel(new GridLayout(3,1,4,5));
+        panel3.add(label2);
+        panel2.add(panel3);
 
         s_rounds_solo=new JButton("Select Rounds");
         s_rounds_solo.setVisible(true);
@@ -189,7 +212,7 @@ public class GUI {
                 s_rounds_solo();
             }
         });
-        panel2.add(s_rounds_solo);
+        panel3.add(s_rounds_solo);
 
         r_rounds_solo.addActionListener(new ActionListener() {
             @Override
@@ -197,24 +220,26 @@ public class GUI {
                 r_rounds_solo();
             }
         });
-        panel2.add(r_rounds_solo);
+        panel3.add(r_rounds_solo);
+
     }
 
-    private void button5()
+    private void gameWithFriend2()
     {
+        panel3.setVisible(false);
         label2.setVisible(false);
 
-        textField.setVisible(false);
-        textField2.setVisible(false);
+        InputOfFirstName.setVisible(false);
+        InputOfSecondName.setVisible(false);
 
-        button5.setVisible(false);
+        gameWithFriend2.setVisible(false);
 
-        player=new Player(1);
+        player1=new Player(1);
         player2=new Player(2);
-        player.setName(textField.getText());
-        player2.setName(textField2.getText());
+        player1.setName(InputOfFirstName.getText());
+        player2.setName(InputOfSecondName.getText());
 
-        label2=new JLabel("Welcome "+player.getName()+ " and "+player2.getName());
+        label2=new JLabel("Welcome "+player1.getName()+ " and "+player2.getName());
 
         game=new Game();
         game.setAnswer(2);
@@ -222,6 +247,8 @@ public class GUI {
 
         panel2.add(label2);
 
+        panel3=new JPanel(new GridLayout(3,1,4,5));
+        panel3.add(label2);
         s_rounds_two=new JButton("Select Rounds");
         s_rounds_two.setVisible(true);
         r_rounds_two=new JButton("Random Rounds");
@@ -233,7 +260,7 @@ public class GUI {
                 s_rounds_two();
             }
         });
-        panel2.add(s_rounds_two);
+        panel3.add(s_rounds_two);
 
         r_rounds_two.addActionListener(new ActionListener() {
             @Override
@@ -241,7 +268,8 @@ public class GUI {
                 r_rounds_two();
             }
         });
-        panel2.add(r_rounds_two);
+        panel3.add(r_rounds_two);
+        panel2.add(panel3);
 
 
     }
@@ -249,7 +277,7 @@ public class GUI {
     private void s_rounds_solo()
     {
         String h=JOptionPane.showInputDialog(null,"Write how many rounds you want from 1 to 10");
-
+        panel3.setVisible(false);
         label2.setVisible(false);
         label.setVisible(false);
         s_rounds_solo.setVisible(false);
@@ -258,16 +286,98 @@ public class GUI {
         int i=Integer.parseInt(h);
         game.setNumberOfRounds(i);
 
-        label=new JLabel("Your rounds will be: "+game.getNumberOfRounds()+".");
+        label=new JLabel("Your round/s will be: "+game.getNumberOfRounds()+".");
         label2=new JLabel("In order to answer to the questions press the keys 1,2,3 and 4!");
 
         panel2.add(label);
         panel2.add(label2);
 
+
+        JButton startTheGame=new JButton("Let the game begin");
+        startTheGame.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                JFrame startingGameFrame=new JFrame("BUZZ");
+                startingGameFrame.setVisible(true);
+                startingGameFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                startingGameFrame.setResizable(true);
+                startingGameFrame.setSize(500, 270);
+                startingGameFrame.setLocationRelativeTo(null);
+
+                Round round = new Round();
+                label = new JLabel("Round: " + game.getCurrentRound()+".Your round is: "+round.getKind());
+
+                Question question = new Question();
+                question.setRandomQuestion();
+                question.setNumberOfRandomQuestionInArray();
+                Answer answer = new Answer();
+                label2=new JLabel("Question " + round.getCurrentNumberOfQuestion()+":");
+
+                JLabel label3=new JLabel(question.getRandomQuestion());
+                answer.setFourPossibleAnswers(question.getNumberOfRandomQuestionInArray(),
+                        question.getNumberOfCategory());
+
+                JPanel panel5=new JPanel(new GridLayout(4,1));
+                panel5.add(new JLabel("A) "+answer.getFourPossibleAnswers().get(0)));
+                panel5.add(new JLabel("B) "+answer.getFourPossibleAnswers().get(1)));
+                panel5.add(new JLabel("C) "+answer.getFourPossibleAnswers().get(2)));
+                panel5.add(new JLabel("D) "+answer.getFourPossibleAnswers().get(3)));
+
+                panel3 = new JPanel(new GridLayout(3,1));
+                panel3.setVisible(true);
+                //panel3.setLayout(new FlowLayout(FlowLayout.LEADING));
+                startingGameFrame.add(panel3, BorderLayout.CENTER);
+
+                JPanel panel4 = new JPanel(new GridLayout(3,1));
+                panel4.add(label);
+                panel4.add(label2);
+                panel4.add(label3);
+
+                panel3.add(panel4);
+                panel3.add(panel5);
+
+                JPanel panel6=new JPanel(new GridLayout(1,2));
+                JLabel label5 = new JLabel("5000");
+                panel6.add(label5);
+
+                JButton countdown = new JButton("Begin Counting Down 5 Seconds!");
+                countdown.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        label5.setText("5000");
+                        Timer timer = new Timer(100, new ActionListener() {
+                            private int count = 5000;
+
+                            @Override
+                            public void actionPerformed(ActionEvent e) {
+                                if (count <= 0) {
+                                    ((Timer) e.getSource()).stop();
+                                } else {
+                                    count -= 100;
+                                }
+                                label5.setText(Integer.toString(count));
+
+                            }
+
+                        });
+                        timer.start();
+
+                    }
+                });
+                panel6.add(label5);
+                panel6.add(countdown);
+                panel3.add(panel6);
+
+            }
+        });
+        panel2.add(startTheGame);
+
     }
 
     private void r_rounds_solo()
     {
+        panel3.setVisible(false);
         label.setVisible(false);
         label2.setVisible(false);
 
@@ -282,12 +392,40 @@ public class GUI {
         panel2.add(label);
         panel2.add(label2);
 
+        JButton startTheGame=new JButton("Let the game begin");
+        startTheGame.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                JFrame startingGameFrame=new JFrame("BUZZ");
+                startingGameFrame.setVisible(true);
+                startingGameFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                startingGameFrame.setResizable(true);
+                startingGameFrame.setSize(500, 270);
+                startingGameFrame.setLocationRelativeTo(null);
+
+                panel3 = new JPanel();
+                panel3.setVisible(true);
+                panel3.setLayout(new FlowLayout(FlowLayout.LEADING));
+                panel3.setBackground(Color.DARK_GRAY);
+                startingGameFrame.add(panel3, BorderLayout.CENTER);
+
+                Round round = new Round();
+                label = new JLabel("Round: " + game.getCurrentRound());
+                label.setVisible(true);
+                //label.setHorizontalAlignment(JLabel.CENTER);
+                panel3.add(label, BorderLayout.CENTER);
+            }
+        });
+        panel2.add(startTheGame);
     }
 
     private void s_rounds_two()
     {
+
         String k=JOptionPane.showInputDialog(null,"Write how many rounds you want from 1 to 10");
 
+        panel3.setVisible(false);
         label2.setVisible(false);
         label.setVisible(false);
 
@@ -299,14 +437,42 @@ public class GUI {
 
         JLabel label3=new JLabel("Your rounds will be: "+game.getNumberOfRounds());
         panel2.add(label3);
-        label2=new JLabel(player.getName()+",in order to answer to the questions press the keys 1,2,3 and 4 " +
+        label2=new JLabel(player1.getName()+",in order to answer to the questions press the keys 1,2,3 and 4 " +
                 "and "+player2.getName()+" the keys 6,7,8,9 are for you!");
         panel2.add(label2);
+
+        JButton startTheGame=new JButton("Let the game begin");
+        startTheGame.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                JFrame startingGameFrame=new JFrame("BUZZ");
+                startingGameFrame.setVisible(true);
+                startingGameFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                startingGameFrame.setResizable(true);
+                startingGameFrame.setSize(500, 270);
+                startingGameFrame.setLocationRelativeTo(null);
+
+                panel3 = new JPanel();
+                panel3.setVisible(true);
+                panel3.setLayout(new FlowLayout(FlowLayout.LEADING));
+                panel3.setBackground(Color.DARK_GRAY);
+                startingGameFrame.add(panel3, BorderLayout.CENTER);
+
+                Round round = new Round();
+                label = new JLabel("Round: " + game.getCurrentRound());
+                label.setVisible(true);
+                //label.setHorizontalAlignment(JLabel.CENTER);
+                panel3.add(label, BorderLayout.CENTER);
+            }
+        });
+        panel2.add(startTheGame);
 
     }
 
     private void r_rounds_two()
     {
+        panel3.setVisible(false);
         label.setVisible(false);
         label2.setVisible(false);
 
@@ -316,11 +482,39 @@ public class GUI {
         game.setRandomRounds();
 
         label=new JLabel("You lucky people!Our masters have picked: "+game.getNumberOfRounds()+" rounds for you.");
-        label2=new JLabel(player.getName()+",in order to answer to the questions press the keys 1,2,3 and 4 " +
+        label2=new JLabel(player1.getName()+",in order to answer to the questions press the keys 1,2,3 and 4 " +
                 "and "+player2.getName()+" the keys 6,7,8,9 are for you!");
         panel2.add(label);
         panel2.add(label2);
 
+        JButton startTheGame=new JButton("Let the game begin");
+        startTheGame.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                JFrame startingGameFrame=new JFrame("BUZZ");
+                startingGameFrame.setVisible(true);
+                startingGameFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                startingGameFrame.setResizable(true);
+                startingGameFrame.setSize(500, 270);
+                startingGameFrame.setLocationRelativeTo(null);
+
+                panel3 = new JPanel();
+                panel3.setVisible(true);
+                panel3.setLayout(new FlowLayout(FlowLayout.LEADING));
+                panel3.setBackground(Color.DARK_GRAY);
+                startingGameFrame.add(panel3, BorderLayout.CENTER);
+
+                Round round = new Round();
+                label = new JLabel("Round: " + game.getCurrentRound());
+                label.setVisible(true);
+                //label.setHorizontalAlignment(JLabel.CENTER);
+                panel3.add(label, BorderLayout.CENTER);
+
+
+            }
+        });
+        panel2.add(startTheGame);
     }
 
     public static void main(String[] args) {
