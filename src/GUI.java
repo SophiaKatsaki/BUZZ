@@ -1,3 +1,4 @@
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -22,6 +23,7 @@ public class GUI {
     private JButton r_rounds_two;
     private JLabel label;
     private JLabel label2;
+    private JLabel label3;
     private JTextField InputOfFirstName;
     private JTextField InputOfSecondName;
     private Player player1;
@@ -32,9 +34,6 @@ public class GUI {
     {
         beginTheGameFrame = new JFrame("BUZZ");
         beginTheGameFrame.setVisible(true);
-        beginTheGameFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        beginTheGameFrame.setResizable(true);
-        beginTheGameFrame.setSize(500, 270);
         beginTheGameFrame.setLocationRelativeTo(null);
 
         panel = new JPanel();
@@ -312,41 +311,33 @@ public class GUI {
                 question.setRandomQuestion();
                 question.setNumberOfRandomQuestionInArray();
                 Answer answer = new Answer();
-                label2=new JLabel("Question " + round.getCurrentNumberOfQuestion()+":");
-
-                JLabel label3=new JLabel(question.getRandomQuestion());
                 answer.setFourPossibleAnswers(question.getNumberOfRandomQuestionInArray(),
                         question.getNumberOfCategory());
 
-                JPanel panel5=new JPanel(new GridLayout(4,1));
-                panel5.add(new JLabel("A) "+answer.getFourPossibleAnswers().get(0)));
-                panel5.add(new JLabel("B) "+answer.getFourPossibleAnswers().get(1)));
-                panel5.add(new JLabel("C) "+answer.getFourPossibleAnswers().get(2)));
-                panel5.add(new JLabel("D) "+answer.getFourPossibleAnswers().get(3)));
-
-                panel3 = new JPanel(new GridLayout(3,1));
-                panel3.setVisible(true);
-                //panel3.setLayout(new FlowLayout(FlowLayout.LEADING));
-                startingGameFrame.add(panel3, BorderLayout.CENTER);
-
-                JPanel panel4 = new JPanel(new GridLayout(3,1));
+                label2=new JLabel("Question " + round.getCurrentNumberOfQuestion()+":"+question.getRandomQuestion());
+                JPanel panel4=new JPanel(new GridLayout(3,1));
+                startingGameFrame.add(panel4);
                 panel4.add(label);
                 panel4.add(label2);
-                panel4.add(label3);
 
-                panel3.add(panel4);
-                panel3.add(panel5);
-
-                JPanel panel6=new JPanel(new GridLayout(1,2));
-                JLabel label5 = new JLabel("5000");
-                panel6.add(label5);
-
-                JButton countdown = new JButton("Begin Counting Down 5 Seconds!");
-                countdown.addActionListener(new ActionListener() {
+                JButton showAnswersStartTime=new JButton("Show Answers");
+                showAnswersStartTime.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        label5.setText("5000");
+                        showAnswersStartTime.setVisible(false);
+                        JPanel panel5=new JPanel(new GridLayout(1,2));
+
+                        JPanel panel6=new JPanel(new GridLayout(4,1));
+                        panel6.add(new JLabel("A) "+answer.getFourPossibleAnswers().get(0)));
+                        panel6.add(new JLabel("B) "+answer.getFourPossibleAnswers().get(1)));
+                        panel6.add(new JLabel("C) "+answer.getFourPossibleAnswers().get(2)));
+                        panel6.add(new JLabel("D) "+answer.getFourPossibleAnswers().get(3)));
+
+                        panel5.add(panel6);
+
+                        label3=new JLabel("5000");
                         Timer timer = new Timer(100, new ActionListener() {
+
                             private int count = 5000;
 
                             @Override
@@ -356,18 +347,93 @@ public class GUI {
                                 } else {
                                     count -= 100;
                                 }
-                                label5.setText(Integer.toString(count));
-
+                                label3.setText(Integer.toString(count));
                             }
 
                         });
+                        /*if (round.getCurrentNumberOfQuestion()!=1)
+                        {
+                            timer.stop();
+                        }
+                        */
                         timer.start();
+
+                        panel5.add(label3);
+                        panel4.add(panel5);
+
 
                     }
                 });
-                panel6.add(label5);
-                panel6.add(countdown);
-                panel3.add(panel6);
+                panel4.add(showAnswersStartTime);
+
+
+                startingGameFrame.setFocusable(true);
+                startingGameFrame.addKeyListener(new KeyAdapter() {
+                    @Override
+                    public void keyTyped(KeyEvent e) {
+                        super.keyTyped(e);
+                        if (e.getKeyChar()=='1')
+                        {
+                            player1.setNumberOfAnswer(1);
+                            startTheGame.doClick();
+
+                            answer.setCorrectAnswer(player1.getNumberOfAnswer(),question.getNumberOfRandomQuestionInArray());
+
+                            if(answer.getCorrectAnswer()==true)
+                            {
+                                double points= Integer.parseInt(label3.getText())*0.2;
+                                player1.winPoints(points);
+                                JOptionPane.showMessageDialog(null,"You win :"+points+" points");
+                            }
+
+
+                        }
+                        if (e.getKeyChar()=='2')
+                        {
+                            player1.setNumberOfAnswer(2);
+                            startTheGame.doClick();
+
+                            answer.setCorrectAnswer(player1.getNumberOfAnswer(),question.getNumberOfRandomQuestionInArray());
+
+                            if(answer.getCorrectAnswer()==true)
+                            {
+                                double points= Integer.parseInt(label3.getText())*0.2;
+
+                                player1.winPoints(points);
+                                JOptionPane.showMessageDialog(null,"You win :"+points+" points");
+                            }
+                        }
+                        if (e.getKeyChar()=='3')
+                        {
+                            player1.setNumberOfAnswer(3);
+                            startTheGame.doClick();
+
+                            answer.setCorrectAnswer(player1.getNumberOfAnswer(),question.getNumberOfRandomQuestionInArray());
+
+                            if(answer.getCorrectAnswer()==true)
+                            {
+                                double points=Integer.parseInt(label3.getText())*0.2;
+
+                                player1.winPoints(points);
+                                JOptionPane.showMessageDialog(null,"You win :"+points+" points");
+                            }
+                        }
+                        if (e.getKeyChar()=='4')
+                        {
+                            player1.setNumberOfAnswer(4);
+                            startTheGame.doClick();
+
+                            answer.setCorrectAnswer(player1.getNumberOfAnswer(),question.getNumberOfRandomQuestionInArray());
+
+                            if(answer.getCorrectAnswer()==true)
+                            {
+                                double points= Integer.parseInt(label3.getText())*0.2;
+                                player1.winPoints(points);
+                                JOptionPane.showMessageDialog(null,"You win :"+points+" points");
+                            }
+                        }
+                    }
+                });
 
             }
         });
@@ -404,19 +470,143 @@ public class GUI {
                 startingGameFrame.setSize(500, 270);
                 startingGameFrame.setLocationRelativeTo(null);
 
-                panel3 = new JPanel();
-                panel3.setVisible(true);
-                panel3.setLayout(new FlowLayout(FlowLayout.LEADING));
-                panel3.setBackground(Color.DARK_GRAY);
-                startingGameFrame.add(panel3, BorderLayout.CENTER);
-
                 Round round = new Round();
-                label = new JLabel("Round: " + game.getCurrentRound());
-                label.setVisible(true);
-                //label.setHorizontalAlignment(JLabel.CENTER);
-                panel3.add(label, BorderLayout.CENTER);
+                label = new JLabel("Round: " + game.getCurrentRound()+".Your round is: "+round.getKind());
+
+                Question question = new Question();
+                question.setRandomQuestion();
+                question.setNumberOfRandomQuestionInArray();
+                Answer answer = new Answer();
+                answer.setFourPossibleAnswers(question.getNumberOfRandomQuestionInArray(),
+                        question.getNumberOfCategory());
+
+                label2=new JLabel("Question " + round.getCurrentNumberOfQuestion()+":"+question.getRandomQuestion());
+
+                JPanel panel4=new JPanel(new GridLayout(3,1));
+                startingGameFrame.add(panel4);
+                panel4.add(label);
+                panel4.add(label2);
+
+                JButton showAnswersStartTime=new JButton("Show Answers");
+                showAnswersStartTime.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        showAnswersStartTime.setVisible(false);
+                        JPanel panel5=new JPanel(new GridLayout(1,2));
+
+                        JPanel panel6=new JPanel(new GridLayout(4,1));
+                        panel6.add(new JLabel("A) "+answer.getFourPossibleAnswers().get(0)));
+                        panel6.add(new JLabel("B) "+answer.getFourPossibleAnswers().get(1)));
+                        panel6.add(new JLabel("C) "+answer.getFourPossibleAnswers().get(2)));
+                        panel6.add(new JLabel("D) "+answer.getFourPossibleAnswers().get(3)));
+
+
+
+                        label3=new JLabel("5000");
+                        Timer timer = new Timer(100, new ActionListener() {
+                            private int count = 5000;
+
+                            @Override
+                            public void actionPerformed(ActionEvent e) {
+                                if (count <= 0) {
+                                    ((Timer) e.getSource()).stop();
+                                } else {
+                                    count -= 100;
+                                }
+                                label3.setText(Integer.toString(count));
+                            }
+
+                        });
+
+                        panel5.add(label3);
+                        panel5.add(panel6);
+                        panel4.add(panel5);
+
+                        timer.start();
+                    }
+                });
+                panel4.add(showAnswersStartTime);
+
+
+                startingGameFrame.setFocusable(true);
+                startingGameFrame.addKeyListener(new KeyAdapter() {
+                    @Override
+                    public void keyTyped(KeyEvent e) {
+                        super.keyTyped(e);
+                        if (e.getKeyChar()=='1')
+                        {
+                            player1.setNumberOfAnswer(1);
+                            startTheGame.doClick();
+
+                            answer.setCorrectAnswer(player1.getNumberOfAnswer(),question.getNumberOfRandomQuestionInArray());
+
+                            if(answer.getCorrectAnswer()==true)
+                            {
+                                double points= Integer.parseInt(label3.getText())*0.2;
+
+                                player1.winPoints(points);
+                                JOptionPane.showMessageDialog(null,"You win :"+points+" points");
+
+                            }
+
+
+                        }
+                        if (e.getKeyChar()=='2')
+                        {
+                            player1.setNumberOfAnswer(2);
+                            startTheGame.doClick();
+
+                            answer.setCorrectAnswer(player1.getNumberOfAnswer(),question.getNumberOfRandomQuestionInArray());
+
+                            if(answer.getCorrectAnswer()==true)
+                            {
+                                double points= Integer.parseInt(label3.getText())*0.2;
+
+                                player1.winPoints(points);
+                                JOptionPane.showMessageDialog(null,"You win :"+points+" points");
+
+                            }
+
+                        }
+                        if (e.getKeyChar()=='3')
+                        {
+                            player1.setNumberOfAnswer(3);
+                            startTheGame.doClick();
+
+                            answer.setCorrectAnswer(player1.getNumberOfAnswer(),question.getNumberOfRandomQuestionInArray());
+
+                            if(answer.getCorrectAnswer()==true)
+                            {
+                                double points= Integer.parseInt(label3.getText())*0.2;
+
+                                player1.winPoints(points);
+                                JOptionPane.showMessageDialog(null,"You win :"+points+" points");
+
+                            }
+
+                        }
+                        if (e.getKeyChar()=='4')
+                        {
+                            player1.setNumberOfAnswer(4);
+                            startTheGame.doClick();
+
+                            answer.setCorrectAnswer(player1.getNumberOfAnswer(),question.getNumberOfRandomQuestionInArray());
+
+                            if(answer.getCorrectAnswer()==true)
+                            {
+                                double points= Integer.parseInt(label3.getText())*0.2;
+
+                                player1.winPoints(points);
+                                JOptionPane.showMessageDialog(null,"You win :"+points+" points");
+                            }
+
+                        }
+                    }
+                });
+
             }
         });
+        panel2.add(startTheGame);
         panel2.add(startTheGame);
     }
 
@@ -466,6 +656,7 @@ public class GUI {
                 panel3.add(label, BorderLayout.CENTER);
             }
         });
+
         panel2.add(startTheGame);
 
     }

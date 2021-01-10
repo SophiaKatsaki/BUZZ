@@ -14,9 +14,10 @@ import java.util.Scanner;
 public class Player {
     private int playerNumber;
     private String name;
-    private int points;
+    private double points;
     private int numberOfAnswer;
     private int betPoints;
+    private int correctAnswersInThermometer;
 
     /**
      * Constructor
@@ -44,29 +45,22 @@ public class Player {
     }
 
     /**
-     * This method set the answer of the player by questioning them what that answer is.
+     * This method sets the answer of the first player and the second one, depending on the keys they use
+     * to answer (first player 1-4 and second player 6-9)
      *
      * @param answer A number from 1 to 4 (or 6 to 9) of the answer the player chooses.
      */
 
     public void setNumberOfAnswer(int answer) {
-        Scanner scanner = new Scanner(System.in);
-        //scanner.nextLine();
 
         if (this.playerNumber == 1) {
-            while ((answer != 1) && (answer != 2) && (answer != 3) && (answer != 4)) {
-                answer = scanner.nextInt();
-                //scanner.nextLine();
-            }
+            this.numberOfAnswer = answer;
         }
         else {
-            while ((answer != 6) && (answer != 7) && (answer != 8) && (answer != 9)) {
-                answer = scanner.nextInt();
-                //scanner.nextLine();
-            }
+            this.numberOfAnswer = answer-5;
         }
 
-        this.numberOfAnswer = answer;
+
     }
 
     /**
@@ -111,7 +105,7 @@ public class Player {
      * @return The information of the points that the player has at a certain moment whenever it is asked.
      */
 
-    public int getPoints() {
+    public double getPoints() {
         return this.points;
     }
 
@@ -139,7 +133,7 @@ public class Player {
      * @param points Are the points that the player wins.
      */
 
-    public void winPoints(int points) {
+    public void winPoints(double points) {
         this.points += points;
     }
 
@@ -150,10 +144,57 @@ public class Player {
      *  @param points Are the points that the player loses.
      */
 
-    public void losePoints(int points) {
+    public void losePoints(double points) {
         this.points -= points;
         if (this.points < 0){
             this.points = 0;
         }
     }
+
+    /**
+     *  This method sets the correct answers of the player in the Thermometer round as 0 and
+     *  is called in the beginning of the round because everytime the Thermometer round
+     *  starts,the player has not given any (correct) answers for the current round.
+     *
+     */
+
+    public void setCorrectAnswersInThermometerAsZeroInTheBeginningOfThermometerRound()
+    {
+        this.correctAnswersInThermometer=0;
+    }
+
+    /**
+     *  This method increases the number of the correct answers that one of the players has given
+     * in the Thermometer round.The int variable that represents the times the player gave
+     * a right answer can have a maximum value of 5,because when they reach 5 correct answers,
+     * they win(if they are also the fastest to do so).
+     *
+     * When the next Thermometer round begins,the
+     * setCorrectAnswersInThermometerAsZeroInTheBeginningOfThermometerRound method will be called,
+     * in order to set the correct answers of the new round as zero again.
+     *
+     */
+
+    public void increaseCorrectAnswersInThermometer()
+    {
+        this.correctAnswersInThermometer++;
+    }
+
+    /**
+     *  This method returns the correct answers that one of the players has given
+     *  in the Thermometer round
+     *
+     *  @param correctAnswersInThermometer are the correct answers they gave in the
+     *  Thermometer round they are playing.
+     */
+
+    public int getCorrectAnswersInThermometer(int correctAnswersInThermometer)
+    {
+        return this.correctAnswersInThermometer;
+    }
+
+
+
+
+
 }

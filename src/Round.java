@@ -26,6 +26,9 @@ public class Round {
         this.kinds = new ArrayList<>();
         this.kinds.add("Correct Answer");
         this.kinds.add("Bet");
+        this.kinds.add("Stop The Timer");
+        this.kinds.add("Quick Answer");
+        this.kinds.add("Thermometer");
 
         Random rand = new Random();
         int randInt;
