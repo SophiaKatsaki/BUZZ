@@ -43,8 +43,7 @@ public abstract class QA {
 
         String currentCategory = categories.get(this.numberOfCategory);
 
-        try (BufferedReader reader = new BufferedReader(new FileReader("src/Questions.txt") {
-        })){
+        try (BufferedReader reader = new BufferedReader(new FileReader("src/Questions.txt"))) {
             String line;
             String category = categories.get(0);
 

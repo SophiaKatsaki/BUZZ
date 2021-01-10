@@ -14,7 +14,7 @@ import java.util.Scanner;
 public class Player {
     private int playerNumber;
     private String name;
-    private double points;
+    private int points;
     private int numberOfAnswer;
     private int betPoints;
     private int correctAnswersInThermometer;
@@ -52,15 +52,23 @@ public class Player {
      */
 
     public void setNumberOfAnswer(int answer) {
+        Scanner scanner = new Scanner(System.in);
+        //scanner.nextLine();
 
         if (this.playerNumber == 1) {
-            this.numberOfAnswer = answer;
+            while ((answer != 1) && (answer != 2) && (answer != 3) && (answer != 4)) {
+                answer = scanner.nextInt();
+                //scanner.nextLine();
+            }
         }
         else {
-            this.numberOfAnswer = answer-5;
+            while ((answer != 6) && (answer != 7) && (answer != 8) && (answer != 9)) {
+                answer = scanner.nextInt();
+                //scanner.nextLine();
+            }
         }
 
-
+        this.numberOfAnswer=answer;
     }
 
     /**
@@ -105,7 +113,7 @@ public class Player {
      * @return The information of the points that the player has at a certain moment whenever it is asked.
      */
 
-    public double getPoints() {
+    public int getPoints() {
         return this.points;
     }
 
@@ -158,35 +166,32 @@ public class Player {
      *
      */
 
-    public void setCorrectAnswersInThermometerAsZeroInTheBeginningOfThermometerRound()
+    public void initializeCorrectAnswersOfRound()
     {
         this.correctAnswersInThermometer=0;
     }
 
     /**
-     *  This method increases the number of the correct answers that one of the players has given
+     * This method increases the number of the correct answers that one of the players has given
      * in the Thermometer round.The int variable that represents the times the player gave
      * a right answer can have a maximum value of 5,because when they reach 5 correct answers,
-     * they win(if they are also the fastest to do so).
+     * they win (if they are also the fastest to do so).
      *
-     * When the next Thermometer round begins,the
-     * setCorrectAnswersInThermometerAsZeroInTheBeginningOfThermometerRound method will be called,
-     * in order to set the correct answers of the new round as zero again.
-     *
+     * When the next Thermometer round begins,the initializeCorrectAnswersOfRound method will
+     * be called, in order to set the correct answers of the new round as zero again.
      */
 
-    public void increaseCorrectAnswersInThermometer()
+    public void increaseCorrectAnswers()
     {
         this.correctAnswersInThermometer++;
     }
 
     /**
-     *  This method returns the correct answers that one of the players has given
-     *  in the Thermometer round
-     *
+     *  @return the number of the correct answers that one of the players has given in
+     *  a round tha will use in the Thermometer round.
      */
 
-    public int getCorrectAnswersInThermometer()
+    public int getCorrectAnswers()
     {
         return this.correctAnswersInThermometer;
     }

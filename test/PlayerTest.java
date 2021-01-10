@@ -50,7 +50,7 @@ public class PlayerTest {
     public void setZeroCorrectAnswersInTheBeginningOfThermometer()
     {
         Player player=new Player(1);
-        player.setCorrectAnswersInThermometerAsZeroInTheBeginningOfThermometerRound();
-        assertEquals(0,player.getCorrectAnswersInThermometer());
+        player.initializeCorrectAnswersOfRound();
+        assertEquals(0,player.getCorrectAnswers());
     }
 }

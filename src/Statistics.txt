@@ -1,0 +1,6 @@
+Solo Game
+Top Score: Player = 0
+
+Multiplayer
+Top Score of "Player" is 0!
+Top Score of "Player2" is 0!
