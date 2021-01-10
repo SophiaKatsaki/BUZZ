@@ -184,17 +184,11 @@ public class Player {
      *  This method returns the correct answers that one of the players has given
      *  in the Thermometer round
      *
-     *  @param correctAnswersInThermometer are the correct answers they gave in the
-     *  Thermometer round they are playing.
      */
 
-    public int getCorrectAnswersInThermometer(int correctAnswersInThermometer)
+    public int getCorrectAnswersInThermometer()
     {
         return this.correctAnswersInThermometer;
     }
-
-
-
-
 
 }

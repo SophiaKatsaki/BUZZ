@@ -45,4 +45,12 @@ public class PlayerTest {
         player.losePoints(player.getBetPoints());
         assertEquals(0, player.getPoints());
     }
+
+    @Test
+    public void setZeroCorrectAnswersInTheBeginningOfThermometer()
+    {
+        Player player=new Player(1);
+        player.setCorrectAnswersInThermometerAsZeroInTheBeginningOfThermometerRound();
+        assertEquals(0,player.getCorrectAnswersInThermometer());
+    }
 }

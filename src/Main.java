@@ -35,6 +35,8 @@ public class Main
         Game game = new Game();
         Player player1 = new Player(1);
         Player player2 = new Player(2);
+        player1.setCorrectAnswersInThermometerAsZeroInTheBeginningOfThermometerRound();
+        player2.setCorrectAnswersInThermometerAsZeroInTheBeginningOfThermometerRound();
 
         System.out.println("Hello and welcome to the best game ever,Buzz!");
 
