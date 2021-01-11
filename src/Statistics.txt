@@ -1,6 +1,6 @@
 Solo Game
-Top Score: Player = 0
+Top Score: "Player" has 0 points!
 
 Multiplayer
-Top Score of "Player" is 0!
-Top Score of "Player2" is 0!
+Top Score of "Player1" is 0 points!
+Top Score of "Player2" is 0 points!

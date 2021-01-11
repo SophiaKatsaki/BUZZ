@@ -1,17 +1,15 @@
 import java.util.Scanner;
 
 /**
- * In this class exists the view the game and the interface with the user / player.
- * The interface with the user/ player starts from the beginning through messages which are being displayed on the
+ * In this class exists the view of the game and the interface with the user(s)/ player(s).
+ * The interface with the user(s)/ player(s) starts from the beginning through messages which are being displayed on the
  * screen for the whole the duration.
  *
- * It stars by creating an object from the class Player.
- * It takes as a parameter the name of the user/ player, which is being taken from them when it asks to enter it.
- * That object gets destroyed when the game ends.
- * Afterwards, an object from the class Game is being created.
- * It takes as a parameter an integer in order to create the number of rounds that the game will contain, which is
- * being taken from them when it asks to enter it.
- * That object gets destroyed when the game ends.
+ * It stars by creating an object from the class Game, an object from the class Statistics and two objects from the
+ * class Player for the providing modes "Solo Game" and "Game With a Friend".
+ * Then it asks whether the user(s)/ player(s) wants to know the Statistics for any mode of the game.
+ * Afterwards, it asks the number of the players and setting the mode of the game and the name/s of the player/s.
+ * That four objects get destroyed when the game ends and the program closes.
  * The next object that is being created is the object from the class Round.
  * That object gets destroyed everytime one round ends and gets created again when a new round begins.
  * Sooner than later, objects from the classes Question and Answer get created.
@@ -20,8 +18,10 @@ import java.util.Scanner;
  * Both objects get destroyed everytime a question ends and get created again when a new question begins.
  *
  * In the end, there exists some last messages that make the last interface with the user/ player.
- * These messages inform them about the end of the game and ends the game, the main class and, at the same time,
- * the view.
+ * These messages inform them about the end of the game.
+ * Before the program ends it refreshes the statistics depending on the performance of the one player or the players
+ * and asks for one last time if the user(s)/ player(s) wants to know the Statistics for any mode of the game and if
+ * they do not want it ends the game, the main class and, at the same time the view.
  *
  * @author Sophia Katsaki
  * @author Stylianos Tozios
@@ -33,15 +33,23 @@ public class Main
     public static void main(String[] args)
     {
         Game game = new Game();
+        Statistics statistics = new Statistics() {};
         Player player1 = new Player(1);
         Player player2 = new Player(2);
-        player1.initializeCorrectAnswersOfRound();
-        player2.initializeCorrectAnswersOfRound();
 
         System.out.println("Hello and welcome to the best game ever,Buzz!");
 
         Scanner scanner = new Scanner(System.in);
+        System.out.println("Statistics: ");
         System.out.println("Select: ");
+        System.out.println("1) Solo Game.");
+        System.out.println("2) Play with a friend.");
+        System.out.println("3) Don't want Statistics.");
+        statistics.makeStatistics(scanner.nextInt());
+
+        scanner = new Scanner(System.in);
+        System.out.println("Let's begin!");
+        System.out.println("Select Mode: ");
         System.out.println("1) Solo Game.");
         System.out.println("2) Play with a friend.");
         game.setAnswer(scanner.nextInt());
@@ -190,20 +198,37 @@ public class Main
 
         System.out.println("The game is over.");
 
-        System.out.println(player1.getName() + ", you got " + player1.getPoints() + " points.");
-        if (game.getNumberOfPlayers()==2){
+        if (game.getNumberOfPlayers() == 1) {
+            System.out.println(player1.getName() + ", you got " + player1.getPoints() + " points.");
+            statistics.refreshSoloGame(statistics.getOldStatistics(), player1.getName(), player1.getPoints());
+        }
+        else if (game.getNumberOfPlayers()==2) {
             System.out.println(player2.getName() + ", you got " + player2.getPoints() + " points.");
 
             if (player1.getPoints() > player2.getPoints()) {
                 System.out.println(player1.getName() + ", you won!");
+                statistics.refreshMultiplayer(statistics.getOldStatistics(), player1.getName(),
+                        player2.getName(), player1.getPoints(), player2.getPoints());
             }
             else if (player1.getPoints() < player2.getPoints()) {
                 System.out.println(player2.getName() + ", you won!");
+                statistics.refreshMultiplayer(statistics.getOldStatistics(), player2.getName(),
+                        player1.getName(), player2.getPoints(), player1.getPoints());
             }
             else {
                 System.out.println("Tie!");
+                statistics.refreshMultiplayer(statistics.getOldStatistics(), player1.getName(),
+                        player2.getName(), player1.getPoints(), player2.getPoints());
             }
         }
+
+        scanner = new Scanner(System.in);
+        System.out.println("Statistics: ");
+        System.out.println("Select: ");
+        System.out.println("1) Solo Game.");
+        System.out.println("2) Play with a friend.");
+        System.out.println("3) Don't want Statistics.");
+        statistics.makeStatistics(scanner.nextInt());
 
         System.out.println("See you next time!");
     }

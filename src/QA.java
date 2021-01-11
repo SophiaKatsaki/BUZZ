@@ -32,8 +32,8 @@ public abstract class QA {
     }
 
     /**
-     * This method will fill the ArrayList of the questions with some elements from the file "Questions.txt"
-     * depending on the number of the category in Arraylist of categories.
+     * This method will fill the ArrayList of the questions with some elements from the file "Questions.txt" and
+     * the file "Questions with Image.txt" depending on the number of the category in Arraylist of categories.
      *
      * @param randomNumberOfCategory is the number of the category in its ArrayList.
      */
@@ -41,20 +41,35 @@ public abstract class QA {
     public void makeQ (int randomNumberOfCategory) {
         this.numberOfCategory = randomNumberOfCategory;
 
-        String currentCategory = categories.get(this.numberOfCategory);
+        String category = categories.get(this.numberOfCategory);
 
         try (BufferedReader reader = new BufferedReader(new FileReader("src/Questions.txt"))) {
-            String line;
-            String category = categories.get(0);
+            try (BufferedReader secondReader = new BufferedReader(new
+                    FileReader("src/Questions with Image.txt"))) {
+                String line;
+                String word = categories.get(0);
 
-            while ((line = reader.readLine()) != null) {
-                if (!(line.contains("\""))) {
-                    category = line;
+                while ((line = secondReader.readLine()) != null) {
+                    if (!(line.contains("\""))) {
+                        word = line;
+                    }
+
+                    if (word.equals(category) && !(line.equals(word))) {
+                        this.questions.add(line);
+                    }
                 }
 
-                if (category.equals(currentCategory) && !(line.equals(category))) {
-                    this.questions.add(line);
+                while ((line = reader.readLine()) != null) {
+                    if (!(line.contains("\""))) {
+                        word = line;
+                    }
+
+                    if (word.equals(category) && !(line.equals(word))) {
+                        this.questions.add(line);
+                    }
                 }
+            } catch (IOException exception) {
+                exception.printStackTrace();
             }
         } catch (IOException exception) {
             exception.printStackTrace();
@@ -63,7 +78,7 @@ public abstract class QA {
 
     /**
      * This method will fill the ArrayList of the possible answers with some elements from the file "Answers.txt"
-     * depending on the number of the category in ArrayList of categories.
+     * and the file "Answers with Image.txt" depending on the number of the category in ArrayList of categories.
      *
      * @param randomNumberOfCategory is the number of the category in its ArrayList.
      */
@@ -71,20 +86,35 @@ public abstract class QA {
     public void makeA (int randomNumberOfCategory) {
         this.numberOfCategory = randomNumberOfCategory;
 
-        String currentCategory = categories.get(this.numberOfCategory);
+        String category = categories.get(this.numberOfCategory);
 
-        try (BufferedReader reader = new BufferedReader(new FileReader("src/Answers.txt"))){
-            String line;
-            String category = categories.get(0);
+        try (BufferedReader reader = new BufferedReader(new FileReader("src/Answers.txt"))) {
+            try (BufferedReader secondReader = new BufferedReader(new
+                    FileReader("src/Answers with Image.txt"))) {
+                String line;
+                String word = categories.get(0);
 
-            while ((line = reader.readLine()) != null) {
-                if (!(line.contains("\""))) {
-                    category = line;
+                while ((line = secondReader.readLine()) != null) {
+                    if (!(line.contains("\""))) {
+                        word = line;
+                    }
+
+                    if (word.equals(category) && !(line.equals(word))) {
+                        this.possibleAnswers.add(line);
+                    }
                 }
 
-                if (category.equals(currentCategory) && !(line.equals(category))) {
-                    this.possibleAnswers.add(line);
+                while ((line = reader.readLine()) != null) {
+                    if (!(line.contains("\""))) {
+                        word = line;
+                    }
+
+                    if (word.equals(category) && !(line.equals(word))) {
+                        this.possibleAnswers.add(line);
+                    }
                 }
+            } catch (IOException exception) {
+                exception.printStackTrace();
             }
         } catch (IOException exception) {
             exception.printStackTrace();

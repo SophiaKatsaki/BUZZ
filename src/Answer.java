@@ -64,14 +64,7 @@ public class Answer extends QA {
             answerOfPlayer -= 5;
         }
 
-        if(this.fourPossibleAnswers.get(answerOfPlayer-1).equals(this.answer))
-        {
-            this.correctAnswer=true;
-        }
-        else
-        {
-            this.correctAnswer=false;
-        }
+        this.correctAnswer= this.fourPossibleAnswers.get(answerOfPlayer - 1).equals(this.answer);
     }
 
     /**
