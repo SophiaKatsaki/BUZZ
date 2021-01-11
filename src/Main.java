@@ -45,22 +45,21 @@ public class Main
         System.out.println("1) Solo Game.");
         System.out.println("2) Play with a friend.");
         System.out.println("3) Don't want Statistics.");
-        statistics.makeStatistics(scanner.nextInt());
+        System.out.println(statistics.makeStatistics(scanner.nextInt()));
 
         scanner = new Scanner(System.in);
         System.out.println("Let's begin!");
         System.out.println("Select Mode: ");
-        System.out.println("1) Solo Game.");
+        System.out.println("1) Solo Game");
         System.out.println("2) Play with a friend.");
-        game.setAnswer(scanner.nextInt());
+        game.setNumberOfPlayers(scanner.nextInt());
 
         System.out.println("Enter name:");
         scanner = new Scanner(System.in);
         player1.setName(scanner.nextLine());
         System.out.println("Welcome " + player1.getName() + "!");
 
-        if (game.getAnswer() == 2) {
-            game.setNumberOfPlayers(2);
+        if (game.getNumberOfPlayers() == 2) {
             System.out.println("Enter name:");
             scanner = new Scanner(System.in);
             player2.setName(scanner.nextLine());
@@ -107,8 +106,7 @@ public class Main
                 question.setRandomQuestion();
                 question.setNumberOfRandomQuestionInArray();
 
-                Answer answer1 = new Answer();
-                Answer answer2 = new Answer();
+                Answer answer = new Answer();
 
                 System.out.println("Question " + round.getCurrentNumberOfQuestion());
                 if (round.getKind().equals("Bet")) {
@@ -125,23 +123,15 @@ public class Main
 
                 System.out.println(question.getRandomQuestion());
 
-                answer1.setFourPossibleAnswers(question.getNumberOfRandomQuestionInArray(),
+                answer.setFourPossibleAnswers(question.getNumberOfRandomQuestionInArray(),
                         question.getNumberOfCategory());
-                if (game.getNumberOfPlayers() == 2) {
-                    answer2.setFourPossibleAnswers(question.getNumberOfRandomQuestionInArray(),
-                            question.getNumberOfCategory());
-                }
-
-                answer1.showAnswers(player1.getPlayerNumber());
-                if (game.getNumberOfPlayers() == 2) {
-                    answer2.showAnswers(player2.getPlayerNumber());
-                }
+                answer.showAnswers(player1.getPlayerNumber());
 
                 System.out.println("Select an answer:");
                 player1.setNumberOfAnswer(scanner.nextInt());
-                answer1.setCorrectAnswer(player1.getNumberOfAnswer(), question.getNumberOfRandomQuestionInArray());
+                answer.setCorrectAnswer(player1.getNumberOfAnswer(), question.getNumberOfRandomQuestionInArray());
 
-                if (answer1.getCorrectAnswer()) {
+                if (answer.getCorrectAnswer()) {
                     if(round.getKind().equals("Bet")){
                         player1.winPoints(player1.getBetPoints());
                         System.out.println(player1.getName() + " +" + player1.getBetPoints());
@@ -153,7 +143,7 @@ public class Main
                     }
                 }
 
-                if ((round.getKind().equals("Bet")) && (!(answer1.getCorrectAnswer()))) {
+                if ((round.getKind().equals("Bet")) && (!(answer.getCorrectAnswer()))) {
                     player1.losePoints(player1.getBetPoints());
                     System.out.println(player1.getName() + " -" + player1.getBetPoints());
                 }
@@ -161,9 +151,9 @@ public class Main
                 if (game.getNumberOfPlayers()==2) {
                     scanner = new Scanner(System.in);
                     player2.setNumberOfAnswer(scanner.nextInt());
-                    answer2.setCorrectAnswer(player2.getNumberOfAnswer(), question.getNumberOfRandomQuestionInArray());
+                    answer.setCorrectAnswer(player2.getNumberOfAnswer(), question.getNumberOfRandomQuestionInArray());
 
-                    if (answer2.getCorrectAnswer()) {
+                    if (answer.getCorrectAnswer()) {
                         if(round.getKind().equals("Bet")){
                             player2.winPoints(player2.getBetPoints());
                             System.out.println(player2.getName() + " +" + player2.getBetPoints());
@@ -175,7 +165,7 @@ public class Main
                         }
                     }
 
-                    if ((round.getKind().equals("Bet")) && (!(answer2.getCorrectAnswer()))) {
+                    if ((round.getKind().equals("Bet")) && (!(answer.getCorrectAnswer()))) {
                         player2.losePoints(player2.getBetPoints());
                         System.out.println(player2.getName() + " -" + player2.getBetPoints());
                     }
@@ -203,6 +193,7 @@ public class Main
             statistics.refreshSoloGame(statistics.getOldStatistics(), player1.getName(), player1.getPoints());
         }
         else if (game.getNumberOfPlayers()==2) {
+            System.out.println(player1.getName() + ", you got " + player1.getPoints() + " points.");
             System.out.println(player2.getName() + ", you got " + player2.getPoints() + " points.");
 
             if (player1.getPoints() > player2.getPoints()) {
@@ -228,7 +219,7 @@ public class Main
         System.out.println("1) Solo Game.");
         System.out.println("2) Play with a friend.");
         System.out.println("3) Don't want Statistics.");
-        statistics.makeStatistics(scanner.nextInt());
+        System.out.println(statistics.makeStatistics(scanner.nextInt()));
 
         System.out.println("See you next time!");
     }

@@ -31,7 +31,7 @@ public abstract class Statistics {
      *               the statistics of any mode.
      */
 
-    public void makeStatistics(int answer) {
+    public String makeStatistics(int answer) {
         int statisticAnswer = answer;
         Scanner scanner = new Scanner(System.in);
         //scanner.nextLine();
@@ -46,18 +46,17 @@ public abstract class Statistics {
                 String line;
 
                 while ((line = reader.readLine()) != null) {
-                    if (line.contains("Solo Game") && statisticAnswer == 1) {
-                        System.out.println(reader.readLine());
-                        break;
-                    } else if (line.contains("Multiplayer") && statisticAnswer == 2) {
-                        System.out.println(reader.readLine() + "\n" + reader.readLine());
-                        break;
-                    }
+                    if (line.contains("Solo Game") && statisticAnswer == 1)
+                        return (reader.readLine());
+                    else if (line.contains("Multiplayer") && statisticAnswer == 2)
+                        return (reader.readLine() + "\n" + reader.readLine());
                 }
             } catch (IOException exception) {
                 exception.printStackTrace();
             }
         }
+
+        return "";
     }
 
     /**
