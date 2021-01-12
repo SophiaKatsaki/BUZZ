@@ -2,10 +2,11 @@ import java.util.ArrayList;
 import java.util.Random;
 
 /**
- * This class represents a round and it contains all the data that are important for its. It has the
- * kind of the round, the total amount of the questions in a round and the number of the current question.
- * It has a constructor, useful for the creation of an object of this class. It has four methods for
- * handling the kind of the round and for handling the number of questions.
+ * This class represents a round and it contains all the data that are important for
+ * its. It has the kind of the round, the total amount of the questions in a round
+ * and the number of the current question.It has a constructor, useful for the creation
+ * of an object of this class. It has four methods for handling the kind of the round
+ * and for handling the number of questions.
  *
  * @author Sophia Katsaki
  * @author Stylianos Tozios
@@ -21,9 +22,10 @@ public class Round {
      * Constructor
      *
      * The constructor randomizes the number of questions. It sets the total amount of
-     * questions randomly in the interval two to eight. It also sets categories for both
-     * of modes of game "Solo Game" and "Multiplayer" and set a random one for the current
-     * round.
+     * questions randomly in the interval two to eight. It also sets categories for
+     * both of modes of game "Solo Game" and "Multiplayer" and sets a random one for
+     * the current round.Finally,it sets the number of the questions asked in the
+     * round when its being created by default as 1.
      */
 
     public Round () {
@@ -45,7 +47,8 @@ public class Round {
     }
 
     /**
-     * This method set the current question to the next one when the question ends.
+     * This method increases the number of the current question by one when the
+     * question ends.
      */
 
     public void setCurrentNumberOfQuestion () {
@@ -53,7 +56,8 @@ public class Round {
     }
 
     /**
-     * @return statement gives back the information of the kind of the current round whenever it is asked.
+     * @return statement gives back the information of the kind of the current
+     * round whenever it is asked.
      */
 
     public String getKind() {
@@ -61,7 +65,8 @@ public class Round {
     }
 
     /**
-     * @return statement gives back the total amount of questions in a round whenever it is asked.
+     * @return statement gives back the total amount of questions in a round
+     * whenever it is asked.
      */
 
     public int getRandomNumberOfQuestions () {
@@ -69,7 +74,8 @@ public class Round {
     }
 
     /**
-     * @return statement gives back the number of the current question whenever it is asked.
+     * @return statement gives back the number of the current question whenever
+     * it is asked.
      */
 
     public int getCurrentNumberOfQuestion () {
@@ -77,8 +83,8 @@ public class Round {
     }
 
     /**
-     * This method adds the rounds that are only used in "Multiplayer" mode when that mode is
-     * chosen. It also randomize the kind of the current round.
+     * This method adds the rounds that are only used in "Multiplayer" mode when
+     * that mode is chosen. It also randomizes the kind of the current round.
      */
 
     public void makeMultiplayerRounds() {
@@ -92,7 +98,8 @@ public class Round {
     }
 
     /**
-     * This method sets the last round to one specific kind of rounds that was
+     * This method sets the last round to one specific kind of round that was
+     * selected as a final one(we choose the Thermometer round).
      */
 
     public void makeLastRound() {

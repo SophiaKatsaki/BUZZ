@@ -2,13 +2,16 @@ import java.util.ArrayList;
 import java.util.Random;
 
 /**
- * This class represents a question of the game.It extends the abstract class 'QA',which produces the questions,
- * the answers and the categories of the questions.It has a String that represents the question itself that
- * the player sees,an integer that is the number of the String in the arraylist that holds the questions
- * made in 'QA',an arraylist that keeps the questions that the player has answered as strings and an array with
- * the number of used questions in order not to appear in the same game twice and an integer that represents
- * the category of the question.It returns the random categories that are chosen and gets and sets random
- * questions from the arraylist that holds all questions in 'QA' and the number of their place in the arraylist.
+ * This class represents a question of the game.It extends the abstract class 'QA',
+ * which produces the questions,the answers and the categories of the questions.It has
+ * a String that represents the question itself that the player sees,an integer that
+ * is the number of the String in the arraylist that holds the questions made in 'QA',
+ * an arraylist that keeps the questions that the player has answered as strings,
+ * an array with the number of used questions in order not to appear in the same game
+ * twice and an integer that represents the category of the question.It returns the
+ * random categories that are chosen and gets and sets random questions from the
+ * arraylist that holds all questions in 'QA' and the number of their place in the
+ * arraylist.
  *
  * @author Sophia Katsaki
  * @author Stylianos Tozios
@@ -25,10 +28,10 @@ public class Question extends QA {
     /**
      * Constructor
      *
-     * The constructor of the class Question adds the categories of the questions of the
-     * game to an arraylist by using one method from the class QA which this class extends
-     * and randomly selects a category for the question that is made when the constructor
-     * is called,while a Question object is created.
+     * The constructor of the class Question adds the categories of the questions of
+     * the game to an arraylist by using one method from the class QA which this class
+     * extends and randomly selects a category for the question that is made when the
+     * constructor is called,while a Question object is created.
      *
     */
 
@@ -40,7 +43,8 @@ public class Question extends QA {
     }
 
     /**
-     * @return number that corresponds to the category of the question that is chosen randomly.
+     * @return number that corresponds to the category of the question that is
+     * chosen randomly.
      */
 
     public int getNumberOfCategory () {
@@ -48,8 +52,8 @@ public class Question extends QA {
     }
 
     /**
-     * This method returns the category of the question appeared on screen,given the number
-     * that corresponds to the category that is chosen.
+     * This method returns the category of the question appeared on screen,given the
+     * number that corresponds to the category that is chosen.
      *
      * @return type of category.
      */
@@ -68,8 +72,9 @@ public class Question extends QA {
     }
 
     /**
-     * This method returns the integer that represents the number of the random question chosen in the
-     * arraylist that holds the questions in the abstract class 'QA'.
+     * This method returns the integer that represents the number of the random
+     * question chosen in the arraylist that holds the questions in the abstract
+     * class 'QA'.
      *
      * @return number of the question in the arraylist
      */
@@ -80,10 +85,11 @@ public class Question extends QA {
 
 
     /**
-     * This method chooses a random question from the arraylist in 'QA' and updates the arraylist
-     * of the questions that are used, with the question that was chosen,in order not to use
-     * the same question again in the same game,given the category that is chosen for the question.
-     * It also changes the category if there are no other existing questions in the chosen category.
+     * This method chooses a random question from the arraylist in 'QA' and updates
+     * the arraylist of the questions that are used, with the question that was chosen,
+     * in order not to use the same question again in the same game,given the category
+     * that is chosen for the question.It also changes the category if there are no
+     * other existing questions in the chosen category.
      */
 
     public void setRandomQuestion () {
