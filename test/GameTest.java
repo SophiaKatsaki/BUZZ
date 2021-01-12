@@ -1,5 +1,10 @@
+import org.junit.Assert;
 import org.junit.Test;
+
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class GameTest {
 
@@ -38,4 +43,28 @@ public class GameTest {
         }
         assertEquals(10, game.getCurrentRound());
     }
+
+    @Test
+    public void setRandomNumberOfRounds() {
+        List<Integer> howMany = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        Game game = new Game();
+        game.setRandomRounds();
+        assertTrue(howMany.contains(game.getNumberOfRounds()));
+        System.out.println(game.getNumberOfRounds());
+
+    }
+
+    @Test
+    public void setAnswer()
+    {
+        Game game=new Game();
+        Game game2=new Game();
+        game.setAnswer(1);
+        game2.setAnswer(2);
+        assertEquals(1,game.getAnswer());
+        assertEquals(2,game2.getAnswer());
+
+    }
+
+
 }

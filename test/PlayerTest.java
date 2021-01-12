@@ -53,4 +53,20 @@ public class PlayerTest {
         player.initializeCorrectAnswersOfRound();
         assertEquals(0,player.getCorrectAnswers());
     }
+
+    @Test
+    public void numberOfPlayersOne()
+    {
+        Player player=new Player(1);
+        assertEquals(1, player.getPlayerNumber());
+    }
+
+    @Test
+    public void numberOfPlayerTwo()
+    {
+        Player player1=new Player(1);
+        Player player2=new Player(2);
+        assertEquals(1,player1.getPlayerNumber());
+        assertEquals(2,player2.getPlayerNumber());
+    }
 }
