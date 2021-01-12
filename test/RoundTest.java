@@ -38,6 +38,7 @@ public class RoundTest {
         kindOfRounds.add("Quick Answer");
         kindOfRounds.add("Thermometer");
         Round round = new Round();
+        round.makeMultiplayerRounds();
         assertTrue(kindOfRounds.contains(round.getKind()));
         System.out.println(round.getKind());
 

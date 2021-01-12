@@ -17,7 +17,7 @@ public class Player {
     private int points;
     private int numberOfAnswer;
     private int betPoints;
-    private int correctAnswersInThermometer;
+    private int correctAnswers;
 
     /**
      * Constructor
@@ -163,12 +163,11 @@ public class Player {
      *  This method sets the correct answers of the player in the Thermometer round as 0 and
      *  is called in the beginning of the round because everytime the Thermometer round
      *  starts,the player has not given any (correct) answers for the current round.
-     *
      */
 
     public void initializeCorrectAnswersOfRound()
     {
-        this.correctAnswersInThermometer=0;
+        this.correctAnswers=0;
     }
 
     /**
@@ -183,7 +182,7 @@ public class Player {
 
     public void increaseCorrectAnswers()
     {
-        this.correctAnswersInThermometer++;
+        this.correctAnswers++;
     }
 
     /**
@@ -193,7 +192,7 @@ public class Player {
 
     public int getCorrectAnswers()
     {
-        return this.correctAnswersInThermometer;
+        return this.correctAnswers;
     }
 
 }

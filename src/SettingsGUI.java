@@ -82,7 +82,7 @@ public class SettingsGUI {
                     logic.setName(1, textField.getText());
                     JOptionPane.showMessageDialog(settingsFrame,
                             "You can select an answer with the keys 1, 2, 3 or 4\n" +
-                            "or by clicking with the mouse!",
+                                    "or by clicking with the mouse!",
                             "Welcome " + logic.getName(1) + "!",
                             JOptionPane.INFORMATION_MESSAGE);
                     settingsPanel.setVisible(false);
@@ -104,11 +104,11 @@ public class SettingsGUI {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     logic.setName(1, textField.getText());
-                    logic.setName(2, textField.getText());
+                    logic.setName(2, textField2.getText());
                     JOptionPane.showMessageDialog(settingsFrame,
                             logic.getName(1) + ", you select an answer with the keys 1, 2, 3 or 4!"
-                            + "\n" + logic.getName(2) + ", you select an answer with the keys 6, 7, 8 or 9!",
-                            "Welcome " + logic.getName(1) + "and " + logic.getName(2) + "!",
+                                    + "\n" + logic.getName(2) + ", you select an answer with the keys 6, 7, 8 or 9!",
+                            "Welcome " + logic.getName(1) + " and " + logic.getName(2) + "!",
                             JOptionPane.INFORMATION_MESSAGE);
                     settingsPanel.setVisible(false);
 
@@ -169,7 +169,7 @@ public class SettingsGUI {
 
                 this.settingsPanel.setVisible(true);
                 this.messageLabel = new JLabel("We have decided that your round/s will be: " +
-                                               this.logic.getRounds() + ".");
+                        this.logic.getRounds() + ".");
                 this.settingsPanel.add(this.messageLabel, BorderLayout.PAGE_START);
             }
         }
@@ -178,8 +178,8 @@ public class SettingsGUI {
         ready.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                BuzzGameGUI BUZZ = new BuzzGameGUI(logic);
                 settingsFrame.dispose();
+                BuzzGameGUI BUZZ = new BuzzGameGUI(logic);
             }
         });
     }

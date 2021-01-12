@@ -51,7 +51,6 @@ public class GameTest {
         game.setRandomRounds();
         assertTrue(howMany.contains(game.getNumberOfRounds()));
         System.out.println(game.getNumberOfRounds());
-
     }
 
     @Test
@@ -63,8 +62,5 @@ public class GameTest {
         game2.setAnswer(2);
         assertEquals(1,game.getAnswer());
         assertEquals(2,game2.getAnswer());
-
     }
-
-
 }

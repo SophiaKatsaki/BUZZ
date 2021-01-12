@@ -19,7 +19,7 @@ import static java.lang.String.valueOf;
 public abstract class Statistics {
 
     /**
-     * This method loads the statistics of the game for the file that contains that information.
+     * This method loads the statistics of the game of the file that contains that information.
      * When it gets called it makes visible the statistics only for the mode of the game that
      * the user(s)/ player(s) said that they want to see.
      *
@@ -29,6 +29,10 @@ public abstract class Statistics {
      *               Number 2 is the "Play With a Friend" or "Multiplayer"/
      *               At last the number 3 is used for the option that they do not want to see
      *               the statistics of any mode.
+     *
+     * @return statement gives back a String that contains the statistics for the mode of the game
+     * that the user(s)/ player(s) said that they want to see or nothing if they said that they do
+     * not want to see any statistic.
      */
 
     public String makeStatistics(int answer) {
@@ -40,22 +44,29 @@ public abstract class Statistics {
             scanner.nextLine();
         }
 
+        StringBuilder multiplayer = new StringBuilder();
+
         if (!(statisticAnswer == 3)) {
             try (BufferedReader reader = new BufferedReader(new
                     FileReader("src/Statistics.txt"))) {
                 String line;
+                boolean ok = false;
 
                 while ((line = reader.readLine()) != null) {
                     if (line.contains("Solo Game") && statisticAnswer == 1)
                         return (reader.readLine());
-                    else if (line.contains("Multiplayer") && statisticAnswer == 2)
-                        return (reader.readLine() + "\n" + reader.readLine());
+                    else if (line.contains("Multiplayer") && statisticAnswer == 2) {
+                        ok = true;
+                    }
+                    if (ok && !line.contains("Multiplayer") && !line.isBlank()) {
+                        multiplayer.append(line).append("\n");
+                    }
                 }
+                return (multiplayer.toString());
             } catch (IOException exception) {
                 exception.printStackTrace();
             }
         }
-
         return "";
     }
 
@@ -67,20 +78,19 @@ public abstract class Statistics {
      */
 
     public String getOldStatistics() {
-        String oldStatistics = "";
+        StringBuilder oldStatistics = new StringBuilder();
 
         try (BufferedReader reader = new BufferedReader(new
                 FileReader("src/Statistics.txt"))) {
             String line;
 
-            while ((line = reader.readLine()) != null) {
-                oldStatistics = oldStatistics + line + System.lineSeparator();
-            }
+            while ((line = reader.readLine()) != null)
+                oldStatistics.append(line).append(System.lineSeparator());
         }
         catch (IOException exception) {
             exception.printStackTrace();
         }
-        return oldStatistics;
+        return oldStatistics.toString();
     }
 
     /**
@@ -103,9 +113,9 @@ public abstract class Statistics {
                 if (line.contains("Solo Game")) {
                     line = reader.readLine();
                     String[] words = line.split(" ");
-                    if (Integer.parseInt(words[4]) <= points) {
-                        oldStatistics = oldStatistics.replaceFirst(words[2], "\"" + playerName + "\"");
-                        newStatistics = oldStatistics.replaceFirst(words[4], valueOf(points));
+                    if (Integer.parseInt(words[6]) <= points) {
+                        oldStatistics = oldStatistics.replaceFirst(words[0], "\"" + playerName + "\"");
+                        newStatistics = oldStatistics.replaceFirst(words[6], valueOf(points));
                     }
                     break;
                 }
@@ -122,66 +132,37 @@ public abstract class Statistics {
     }
 
     /**
-     * This method is used from the program when the mode is "Game With a Friend" / "Multiplayer"
-     * and it refreshes the statistics to one of the players each time.
-     *
-     * @param line is the line of the file that has been loaded when that this method is called.
-     * @param points are the points of one of the players at the end of the game.
-     * @param playerName is the name of the player that the points are belong to.
-     * @param oldStatistics is the statistics which are not refreshed yet.
-     * @return statement gives back the refreshed statistics.
-     */
-
-    public String getNewStatisticsInMultiplayer(String line, int points, String playerName,
-                                                String oldStatistics) {
-        String newStatistics = oldStatistics;
-
-        String[] words = line.split(" ");
-        if (Integer.parseInt(words[5]) <= points) {
-            oldStatistics = oldStatistics.replace(words[3], "\"" + playerName + "\"");
-            newStatistics = oldStatistics.replace(words[5], valueOf(points));
-        }
-
-        return newStatistics;
-    }
-
-    /**
      * This method is used from the program when the mode "Game With a Friend" / "Multiplayer" comes to
      * an end and it is responsible for the refreshing part of the the statistics to that mode.
      *
      * @param oldStatistics is the statistics which are not refreshed yet.
-     * @param player1Name is the name of the player that won the game or if there was a tie then it
-     *                    is the name of the player that was firstly introduced to the game and
-     *                    they have unique number 1 and so their keys are 1, 2, 3 and 4.
-     * @param player2Name is the name of the player that lost in the game or if there was a tie then it
-     *                    is the name of the player that was secondly introduced to the game and
-     *                    they have unique number 2 and so their keys are 6, 7, 8 and 9.
-     * @param points1 are the points at the end of the game that belongs to the player who won the
-     *                game or in case of "Tie" the points of the the player with the unique number 1.
-     * @param points2 are the points at the end of the game that belongs to the player who lost in the
-     *                game or in the case of "Tie" the points of the player with with the unique
-     *                number 2.
+     * @param playerName is the name of the player that won the game.
      */
 
-    public void refreshMultiplayer(String oldStatistics, String player1Name, String player2Name,
-                                   int points1, int points2) {
+    public void refreshMultiplayer(String oldStatistics, String playerName) {
         String newStatistics = oldStatistics;
 
         try (BufferedReader reader = new BufferedReader(new
                 FileReader("src/Statistics.txt"))) {
             String line;
+            boolean ok = false;
 
             while ((line = reader.readLine()) != null) {
-                if (line.contains("Multiplayer")) {
-                    line = reader.readLine();
-                    oldStatistics = getNewStatisticsInMultiplayer(line, points1, player1Name, oldStatistics);
+                if (line.contains("Multiplayer"))
+                    ok = true;
+                if (ok) {
+                    if (line.contains(playerName)) {
+                        String[] words = line.split(" ");
+                        int temp = Integer.parseInt(words[2]);
+                        temp++;
+                        newStatistics = oldStatistics.replace(words[2], valueOf(temp));
 
-                    line = reader.readLine();
-                    newStatistics = getNewStatisticsInMultiplayer(line, points2, player2Name, oldStatistics);
-
-                    break;
+                        break;
+                    }
                 }
             }
+            if (oldStatistics.equals(newStatistics))
+                newStatistics += "\"" + playerName + "\" has 1 wins!";
 
             FileWriter writer = new FileWriter("src/Statistics.txt");
 

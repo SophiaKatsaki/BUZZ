@@ -11,14 +11,6 @@ public class AnswerTest {
     public AnswerTest() {}
 
     @Test
-    public void getCorrectAnswer() {
-       Answer answer=new Answer();
-       answer.getCorrectAnswer();
-       assertEquals(false,answer.getCorrectAnswer());
-       System.out.println("By default: "+answer.getCorrectAnswer());
-    }
-
-    @Test
     public void fourAnswers()
     {
         Question question=new Question();
@@ -26,8 +18,6 @@ public class AnswerTest {
         answer.setFourPossibleAnswers(question.getNumberOfRandomQuestionInArray(),question.getNumberOfCategory());
         answer.makeA(question.getNumberOfCategory());
         System.out.println(answer.getFourPossibleAnswers());
-
-
     }
 
 }

@@ -32,6 +32,24 @@ public abstract class QA {
     }
 
     /**
+     * This method will fill the ArrayList of the categories of the game with all the categories that the
+     * game contains. The information that it needs are in a file with a name "Categories.txt" and this
+     * method loads these data when it is called.
+     */
+
+    public void makeCategories() {
+        try (BufferedReader reader = new BufferedReader(new FileReader("src/Categories.txt"))) {
+            String line;
+
+            while ((line = reader.readLine()) != null)
+                this.categories.add(line);
+
+        } catch (IOException exception) {
+            exception.printStackTrace();
+        }
+    }
+
+    /**
      * This method will fill the ArrayList of the questions with some elements from the file "Questions.txt" and
      * the file "Questions with Image.txt" depending on the number of the category in Arraylist of categories.
      *

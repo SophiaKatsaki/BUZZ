@@ -91,16 +91,26 @@ public class Main
         }
 
         while (game.getCurrentRound() <= game.getNumberOfRounds()) {
+            player1.initializeCorrectAnswersOfRound();
+            player2.initializeCorrectAnswersOfRound();
+
             Round round = new Round();
+            if (game.getNumberOfPlayers() == 2)
+                round.makeMultiplayerRounds();
 
             System.out.println("Round " + game.getCurrentRound());
             if (game.getCurrentRound() == game.getNumberOfRounds()) {
                 System.out.println("Last Round");
+                if (game.getNumberOfPlayers() == 2)
+                    round.makeLastRound();
             }
 
             System.out.println(round.getKind());
 
-            while (round.getCurrentNumberOfQuestion() <= round.getRandomNumberOfQuestions()) {
+            while (round.getCurrentNumberOfQuestion() <= round.getRandomNumberOfQuestions() ||
+                    (game.getNumberOfPlayers() == 2 && game.getCurrentRound() == game.getNumberOfRounds()
+                            && (player1.getCorrectAnswers() <5  && player2.getCorrectAnswers() <5))) {
+
                 Question question = new Question();
 
                 question.setRandomQuestion();
@@ -136,6 +146,13 @@ public class Main
                         player1.winPoints(player1.getBetPoints());
                         System.out.println(player1.getName() + " +" + player1.getBetPoints());
                     }
+                    else if (round.getKind().equals("Thermometer")) {
+                        player1.increaseCorrectAnswers();
+                        System.out.println(player1.getName() + " +1 correct answer!");
+                        if (player1.getCorrectAnswers() == 5) {
+                            player1.winPoints(5000);
+                        }
+                    }
                     else
                     {
                         player1.winPoints(1000);
@@ -157,6 +174,13 @@ public class Main
                         if(round.getKind().equals("Bet")){
                             player2.winPoints(player2.getBetPoints());
                             System.out.println(player2.getName() + " +" + player2.getBetPoints());
+                        }
+                        else if (round.getKind().equals("Thermometer")) {
+                            player2.increaseCorrectAnswers();
+                            System.out.println(player2.getName() + " +1 correct answer!");
+                            if (player2.getCorrectAnswers() == 5 && player1.getCorrectAnswers() < 5) {
+                                player2.winPoints(5000);
+                            }
                         }
                         else
                         {
@@ -198,19 +222,14 @@ public class Main
 
             if (player1.getPoints() > player2.getPoints()) {
                 System.out.println(player1.getName() + ", you won!");
-                statistics.refreshMultiplayer(statistics.getOldStatistics(), player1.getName(),
-                        player2.getName(), player1.getPoints(), player2.getPoints());
+                statistics.refreshMultiplayer(statistics.getOldStatistics(), player1.getName());
             }
             else if (player1.getPoints() < player2.getPoints()) {
                 System.out.println(player2.getName() + ", you won!");
-                statistics.refreshMultiplayer(statistics.getOldStatistics(), player2.getName(),
-                        player1.getName(), player2.getPoints(), player1.getPoints());
+                statistics.refreshMultiplayer(statistics.getOldStatistics(), player2.getName());
             }
-            else {
+            else
                 System.out.println("Tie!");
-                statistics.refreshMultiplayer(statistics.getOldStatistics(), player1.getName(),
-                        player2.getName(), player1.getPoints(), player2.getPoints());
-            }
         }
 
         scanner = new Scanner(System.in);

@@ -8,6 +8,7 @@ public class GUILogic {
     private Round round;
     private Question question;
     private Answer answer;
+    private boolean firstHere = true;
 
     public GUILogic() {
         this.game = new Game();
@@ -57,26 +58,25 @@ public class GUILogic {
         return this.game.getNumberOfRounds();
     }
 
-    public void setAnswer(int answer, int numberOfPlayer) {
-        if (numberOfPlayer == this.player1.getPlayerNumber()) {
-            this.player1.setNumberOfAnswer(answer);
-        }
-        else
-            this.player2.setNumberOfAnswer(answer);
-    }
-
     public boolean endOfRounds(){
         if (this.game.getCurrentRound() > this.game.getNumberOfRounds())
             return true;
         else {
+            this.player1.initializeCorrectAnswersOfRound();
+            this.player2.initializeCorrectAnswersOfRound();
+
             this.round = new Round();
+            if (this.game.getNumberOfPlayers() == 2)
+                round.makeMultiplayerRounds();
 
             return false;
         }
     }
 
     public boolean isLastRound() {
-        return game.getCurrentRound() == game.getNumberOfRounds();
+        if (this.game.getNumberOfPlayers() == 2 && this.game.getCurrentRound() == this.game.getNumberOfRounds())
+            this.round.makeLastRound();
+        return this.game.getCurrentRound() == this.game.getNumberOfRounds();
     }
 
     public void setCurrentRound() {
@@ -92,20 +92,39 @@ public class GUILogic {
     }
 
     public boolean endOfQuestions(){
-        if (this.round.getCurrentNumberOfQuestion() > this.round.getRandomNumberOfQuestions())
-            return true;
+        if (this.game.getNumberOfPlayers() == 2 && game.getCurrentRound() == game.getNumberOfRounds()){
+            if ((this.player1.getCorrectAnswers() < 5  && this.player2.getCorrectAnswers() < 5)) {
+                this.question = new Question();
+
+                this.question.setRandomQuestion();
+                this.question.setNumberOfRandomQuestionInArray();
+
+                this.answer = new Answer();
+
+                this.answer.setFourPossibleAnswers(this.question.getNumberOfRandomQuestionInArray(),
+                        this.question.getNumberOfCategory());
+
+                return false;
+            }
+            else
+                return true;
+        }
         else {
-            this.question = new Question();
+            if (this.round.getCurrentNumberOfQuestion() > this.round.getRandomNumberOfQuestions())
+                return true;
+            else {
+                this.question = new Question();
 
-            this.question.setRandomQuestion();
-            this.question.setNumberOfRandomQuestionInArray();
+                this.question.setRandomQuestion();
+                this.question.setNumberOfRandomQuestionInArray();
 
-            this.answer = new Answer();
+                this.answer = new Answer();
 
-            this.answer.setFourPossibleAnswers(this.question.getNumberOfRandomQuestionInArray(),
-                    this.question.getNumberOfCategory());
+                this.answer.setFourPossibleAnswers(this.question.getNumberOfRandomQuestionInArray(),
+                        this.question.getNumberOfCategory());
 
-            return false;
+                return false;
+            }
         }
     }
 
@@ -133,17 +152,18 @@ public class GUILogic {
         return possibleAnswers.get(i);
     }
 
-    public void checkCorrectAnswer(int numberOfPlayer) {
-        if (numberOfPlayer == this.player1.getPlayerNumber())
+    public boolean checkCorrectAnswer(int numberOfPlayer, int answer) {
+        if (numberOfPlayer == this.player1.getPlayerNumber()) {
+            this.player1.setNumberOfAnswer(answer);
             this.answer.setCorrectAnswer(this.player1.getNumberOfAnswer(),
                     this.question.getNumberOfRandomQuestionInArray());
-        else
-            answer.setCorrectAnswer(this.player2.getNumberOfAnswer(),
+        }
+        else {
+            this.player2.setNumberOfAnswer(answer);
+            this.answer.setCorrectAnswer(this.player2.getNumberOfAnswer(),
                     this.question.getNumberOfRandomQuestionInArray());
+        }
         setPoints(numberOfPlayer);
-    }
-
-    public boolean getCorrectAnswer(){
         return this.answer.getCorrectAnswer();
     }
 
@@ -174,12 +194,40 @@ public class GUILogic {
                     }
                 }
             }
-            case "Quick Answer" -> {}
-            case "Thermometer" -> {}
+            case "Quick Answer" -> {
+                if (this.answer.getCorrectAnswer() && this.firstHere) {
+                    if (numberOfPlayer == 1) {
+                        player1.winPoints(1000);
+                    } else {
+                        this.player2.winPoints(1000);
+                    }
+                    firstHere = false;
+                }
+                else if (this.answer.getCorrectAnswer()) {
+                    if (numberOfPlayer == 1) {
+                        player1.winPoints(500);
+                    } else {
+                        this.player2.winPoints(500);
+                    }
+                    firstHere = true;
+                }
+            }
+            case "Thermometer" -> {
+                if (numberOfPlayer == this.player1.getPlayerNumber()) {
+                    this.player1.increaseCorrectAnswers();
+                    if (this.player1.getCorrectAnswers() == 5)
+                        this.player1.winPoints(5000);
+                }
+                else {
+                    this.player2.increaseCorrectAnswers();
+                    if (this.player2.getCorrectAnswers() == 5)
+                        this.player2.winPoints(5000);
+                }
+            }
         }
     }
 
-    public int getPoints(int numberOfPlayer) {
+    public int getBetPoints(int numberOfPlayer) {
         if (numberOfPlayer == this.player1.getPlayerNumber())
             return this.player1.getBetPoints();
         else
@@ -207,14 +255,10 @@ public class GUILogic {
             this.statistics.refreshSoloGame(this.statistics.getOldStatistics(),
                     this.player1.getName(), this.player1.getPoints());
         else {
-            if (winner == this.player1.getPlayerNumber()) {
-                this.statistics.refreshMultiplayer(this.statistics.getOldStatistics(), this.player1.getName(),
-                        this.player2.getName(), this.player1.getPoints(), this.player2.getPoints());
-            }
-            else {
-                this.statistics.refreshMultiplayer(this.statistics.getOldStatistics(), this.player2.getName(),
-                        this.player1.getName(), this.player2.getPoints(), this.player1.getPoints());
-            }
+            if (winner == this.player1.getPlayerNumber())
+                this.statistics.refreshMultiplayer(this.statistics.getOldStatistics(), this.player1.getName());
+            else
+                this.statistics.refreshMultiplayer(this.statistics.getOldStatistics(), this.player2.getName());
         }
     }
 
@@ -227,9 +271,7 @@ public class GUILogic {
             refreshStatistics(2, 2);
             return player2.getName() + ", you won!";
         }
-        else {
-            refreshStatistics(2, 1);
+        else
             return "Tie!";
-        }
     }
 }

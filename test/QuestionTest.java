@@ -32,8 +32,5 @@ public class  QuestionTest {
         question.setRandomQuestion();
         assertTrue(allCategories.contains(question.getCategory()));
         System.out.println(question.getCategory());
-
     }
-
-
 }

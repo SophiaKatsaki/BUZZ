@@ -10,6 +10,7 @@ import java.util.Random;
  * @author Sophia Katsaki
  * @author Stylianos Tozios
  */
+
 public class Round {
     protected ArrayList<String> kinds;
     protected String kind;
@@ -19,16 +20,17 @@ public class Round {
     /**
      * Constructor
      *
-     * The constructor randomizes the number of questions.
-     * It sets the total amount of questions randomly in the interval two to eight.
+     * The constructor randomizes the number of questions. It sets the total amount of
+     * questions randomly in the interval two to eight. It also sets categories for both
+     * of modes of game "Solo Game" and "Multiplayer" and set a random one for the current
+     * round.
      */
+
     public Round () {
         this.kinds = new ArrayList<>();
         this.kinds.add("Correct Answer");
         this.kinds.add("Bet");
         this.kinds.add("Stop The Timer");
-        this.kinds.add("Quick Answer");
-        this.kinds.add("Thermometer");
 
         Random rand = new Random();
         int randInt;
@@ -45,6 +47,7 @@ public class Round {
     /**
      * This method set the current question to the next one when the question ends.
      */
+
     public void setCurrentNumberOfQuestion () {
         this.currentNumberOfQuestion++;
     }
@@ -52,6 +55,7 @@ public class Round {
     /**
      * @return statement gives back the information of the kind of the current round whenever it is asked.
      */
+
     public String getKind() {
         return this.kind;
     }
@@ -59,6 +63,7 @@ public class Round {
     /**
      * @return statement gives back the total amount of questions in a round whenever it is asked.
      */
+
     public int getRandomNumberOfQuestions () {
         return this.randomNumberOfQuestions;
     }
@@ -66,7 +71,31 @@ public class Round {
     /**
      * @return statement gives back the number of the current question whenever it is asked.
      */
+
     public int getCurrentNumberOfQuestion () {
         return this.currentNumberOfQuestion;
+    }
+
+    /**
+     * This method adds the rounds that are only used in "Multiplayer" mode when that mode is
+     * chosen. It also randomize the kind of the current round.
+     */
+
+    public void makeMultiplayerRounds() {
+        this.kinds.add("Quick Answer");
+        this.kinds.add("Thermometer");
+
+        Random rand = new Random();
+        int randInt;
+        randInt = rand.nextInt(this.kinds.size()-1);
+        this.kind = kinds.get(randInt);
+    }
+
+    /**
+     * This method sets the last round to one specific kind of rounds that was
+     */
+
+    public void makeLastRound() {
+        this.kind = this.kinds.get(4);
     }
 }

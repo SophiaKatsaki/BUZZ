@@ -26,17 +26,14 @@ public class Question extends QA {
      * Constructor
      *
      * The constructor of the class Question adds the categories of the questions of the
-     * game to an arraylist and randomly selects a category for the question that is made
-     * when the constructor is called,while a Question object is created.
+     * game to an arraylist by using one method from the class QA which this class extends
+     * and randomly selects a category for the question that is made when the constructor
+     * is called,while a Question object is created.
      *
     */
 
     public Question (){
-        this.categories.add("Music");
-        this.categories.add("Books");
-        this.categories.add("TV Series/ Movies");
-        this.categories.add("Travelling");
-        this.categories.add("Food & Drinks");
+        makeCategories();
 
         Random rand = new Random();
         this.randomNumberOfCategory = rand.nextInt(this.categories.size());
