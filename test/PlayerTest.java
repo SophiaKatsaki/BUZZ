@@ -5,6 +5,13 @@ public class PlayerTest {
 
     public PlayerTest(){}
 
+    @Test public void Player()
+    {
+        Player player=new Player(1);
+        assertEquals(0,player.getPoints());
+        System.out.println("By default: "+player.getPoints()+" points");
+
+    }
     @Test
     public void name () {
         Player player = new Player(1);
@@ -47,12 +54,36 @@ public class PlayerTest {
     }
 
     @Test
-    public void zeroCorrectAnswersInTheBeginningOfThermometer()
+    public void zeroCorrectAnswers()
     {
         Player player=new Player(1);
         player.initializeCorrectAnswersOfRound();
         assertEquals(0,player.getCorrectAnswers());
     }
+
+    @Test
+    public void CorrectAnswers()
+    {
+        Player player=new Player(1);
+        player.initializeCorrectAnswersOfRound();
+        player.increaseCorrectAnswers();
+        assertEquals(1,player.getCorrectAnswers());
+    }
+
+    @Test
+    public void CorrectAnswersBackAtZero()
+    {
+        Player player=new Player(1);
+        player.initializeCorrectAnswersOfRound();
+        player.increaseCorrectAnswers();
+        player.increaseCorrectAnswers();
+        player.increaseCorrectAnswers();
+        player.increaseCorrectAnswers();
+        player.increaseCorrectAnswers();
+        player.initializeCorrectAnswersOfRound();
+        assertEquals(0,player.getCorrectAnswers());
+    }
+
 
     @Test
     public void uniqueNumberOfPlayerOne()
@@ -62,7 +93,7 @@ public class PlayerTest {
     }
 
     @Test
-    public void uniqueNumberOfPlayerTwo()
+    public void uniqueNumberOfTheTwoPlayers()
     {
         Player player1=new Player(1);
         Player player2=new Player(2);

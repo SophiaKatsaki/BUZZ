@@ -11,6 +11,15 @@ public class GameTest {
     public GameTest(){}
 
     @Test
+    public void Game()
+    {
+        Game game=new Game();
+        assertEquals(1,game.getCurrentRound());
+        System.out.println("By default we are in the: "+game.getCurrentRound()+" round");
+
+    }
+
+    @Test
     public void numberOfPlayers () {
         Game game = new Game();
         game.setNumberOfPlayers(1);
@@ -45,7 +54,7 @@ public class GameTest {
     }
 
     @Test
-    public void setRandomNumberOfRounds() {
+    public void RandomNumberOfRounds() {
         List<Integer> howMany = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
         Game game = new Game();
         game.setRandomRounds();
@@ -54,7 +63,7 @@ public class GameTest {
     }
 
     @Test
-    public void setAnswer()
+    public void Answer()
     {
         Game game=new Game();
         Game game2=new Game();

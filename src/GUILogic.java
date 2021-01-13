@@ -453,12 +453,12 @@ public class GUILogic {
      * in solo game and updates the number of wins of the winner of the current
      * game in multiplayer mode.
      *
-     * @param numberOfPlayer the number that the player has.
+     * @param numberOfPlayers the number of players this game has
      * @param winner is the number of the player that won the "Multiplayer" mode.
      */
 
-    public void refreshStatistics(int numberOfPlayer, int winner) {
-        if (numberOfPlayer == this.player1.getPlayerNumber())
+    public void refreshStatistics(int numberOfPlayers, int winner) {
+        if (numberOfPlayers == this.player1.getPlayerNumber())
             this.statistics.refreshSoloGame(this.statistics.getOldStatistics(),
                     this.player1.getName(), this.player1.getPoints());
         else {

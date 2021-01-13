@@ -11,6 +11,23 @@ public class  QuestionTest {
     public QuestionTest(){}
 
     @Test
+    public void CategoriesOfQuestion()
+    {
+        ArrayList<String> allCategories=new ArrayList<>();
+        allCategories.add("Music");
+        allCategories.add("Books");
+        allCategories.add("TV Series/ Movies");
+        allCategories.add("Travelling");
+        allCategories.add("Food & Drinks");
+        Question question= new Question();
+        assertEquals(allCategories.get(0),question.categories.get(0));
+        assertEquals(allCategories.get(1),question.categories.get(1));
+        assertEquals(allCategories.get(2),question.categories.get(2));
+        assertEquals(allCategories.get(3),question.categories.get(3));
+        assertEquals(allCategories.get(4),question.categories.get(4));
+
+    }
+    @Test
     public void NumberOfCategory() {
         List<Integer> howMany = List.of(0,1,2,3,4);
         Question question= new Question();
@@ -21,7 +38,7 @@ public class  QuestionTest {
     }
 
     @Test
-    public void Category() {
+    public void CategoryOfQuestion() {
         ArrayList<String> allCategories=new ArrayList<>();
         allCategories.add("Music");
         allCategories.add("Books");
@@ -33,4 +50,16 @@ public class  QuestionTest {
         assertTrue(allCategories.contains(question.getCategory()));
         System.out.println(question.getCategory());
     }
+
+    @Test
+    public void sizeOfArrayCreatedWithQuestions()
+    {
+        Question question=new Question();
+        question.setRandomQuestion();
+        assertEquals(30,question.questions.size());
+
+    }
+
+
+
 }

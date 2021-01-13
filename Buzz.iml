@@ -6,6 +6,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/test" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/codemr/Main.java 1/html" />
+      <excludeFolder url="file://$MODULE_DIR$/codemr/Main.java 10/html" />
       <excludeFolder url="file://$MODULE_DIR$/codemr/Main.java 2/html" />
       <excludeFolder url="file://$MODULE_DIR$/codemr/Main.java 3/html" />
       <excludeFolder url="file://$MODULE_DIR$/codemr/Main.java 4/html" />
@@ -13,6 +14,7 @@
       <excludeFolder url="file://$MODULE_DIR$/codemr/Main.java 6/html" />
       <excludeFolder url="file://$MODULE_DIR$/codemr/Main.java 7/html" />
       <excludeFolder url="file://$MODULE_DIR$/codemr/Main.java 8/html" />
+      <excludeFolder url="file://$MODULE_DIR$/codemr/Main.java 9/html" />
       <excludeFolder url="file://$MODULE_DIR$/codemr/Main.java/html" />
     </content>
     <orderEntry type="inheritedJdk" />
