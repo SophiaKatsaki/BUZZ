@@ -115,6 +115,7 @@ public class Main
 
                 question.setRandomQuestion();
                 question.setNumberOfRandomQuestionInArray();
+                question.setLinkOfImage();
 
                 Answer answer = new Answer();
 

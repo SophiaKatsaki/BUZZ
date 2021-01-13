@@ -6,8 +6,6 @@ import java.awt.event.ActionListener;
 public class InformationGUI {
     private JFrame infoFrame;
     private JPanel infoPanel;
-    private JLabel messageLabel;
-    private JLabel imageLabel;
     private GUILogic logic;
 
     public InformationGUI() {
@@ -21,26 +19,35 @@ public class InformationGUI {
 
         this.infoPanel = new JPanel();
         this.infoPanel.setLayout(new FlowLayout(FlowLayout.LEADING));
-        this.infoPanel.setBackground(Color.WHITE);
-        this.infoFrame.add(this.infoPanel);
+        this.infoPanel.setBackground(Color.YELLOW);
+        this.infoFrame.add(this.infoPanel, BorderLayout.PAGE_START);
 
-        this.messageLabel = new JLabel("Hello and welcome to the best game ever,Buzz!");
-        this.messageLabel.setVisible(true);
-        this.infoPanel.add(this.messageLabel, BorderLayout.CENTER);
+        JLabel messageLabel = new JLabel("Hello and welcome to the best game ever,Buzz!");
+        messageLabel.setVisible(true);
+        this.infoPanel.add(messageLabel, BorderLayout.PAGE_END);
 
-        /*ImageIcon icon = new ImageIcon(getClass().getResource("mainIcon.jpg"));
-        this.imageLabel = new JLabel(icon);
-        this.imageLabel.setVisible(true);
-        this.infoPanel.add(this.imageLabel, BorderLayout.PAGE_END);
-
-        this.infoFrame.setIconImage(icon.getImage());*/
-
+        setImage();
         startNewGame();
         showStatistics();
     }
 
     public void start(){
         this.infoFrame.setVisible(true);
+    }
+
+    public void setImage() {
+        JPanel imagePanel = new JPanel();
+        imagePanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        imagePanel.setBackground(Color.WHITE);
+        imagePanel.setSize(300, 300);
+        this.infoFrame.add(imagePanel);
+
+        ImageIcon icon = new ImageIcon(getClass().getResource("openingImage.jpg"));
+        JLabel imageLabel = new JLabel(icon);
+        imageLabel.setVisible(true);
+        imagePanel.add(imageLabel);
+
+        this.infoFrame.setIconImage(icon.getImage());
     }
 
     public void startNewGame() {
@@ -52,7 +59,7 @@ public class InformationGUI {
                 SettingsGUI settingsGUI = new SettingsGUI(logic);
             }
         });
-        this.infoPanel.add(newGame, BorderLayout.PAGE_START);
+        this.infoPanel.add(newGame, BorderLayout.PAGE_END);
     }
 
     public void showStatistics() {
@@ -71,22 +78,20 @@ public class InformationGUI {
                         statistics[1]);
 
                 switch (temp){
-                    case 0 -> {
+                    case 0 ->
                         JOptionPane.showMessageDialog(infoFrame,
                                 logic.getStatistics(temp+1),
                                 "Solo Game",
                                 JOptionPane.INFORMATION_MESSAGE);
-                    }
-                    case 1 -> {
+                    case 1 ->
                         JOptionPane.showMessageDialog(infoFrame,
                                 logic.getStatistics(temp+1),
                                 "Game With A Friend",
                                 JOptionPane.INFORMATION_MESSAGE);
-                    }
                 }
             }
         });
-        this.infoPanel.add(statistics, BorderLayout.PAGE_START);
+        this.infoPanel.add(statistics, BorderLayout.PAGE_END);
     }
 
     public static void main(String[] args) {

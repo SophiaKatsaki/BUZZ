@@ -12,10 +12,10 @@ public class PlayerTest {
         assertEquals("Player", player.getName());
         player = new Player(2);
         player.setName("1Player2");
-        assertEquals("1Player2", player.getName());
+        assertEquals("Player", player.getName());
         player = new Player(2);
         player.setName("!? /&");
-        assertEquals("!? /&", player.getName());
+        assertEquals("!?/&", player.getName());
     }
 
     @Test
@@ -47,7 +47,7 @@ public class PlayerTest {
     }
 
     @Test
-    public void setZeroCorrectAnswersInTheBeginningOfThermometer()
+    public void zeroCorrectAnswersInTheBeginningOfThermometer()
     {
         Player player=new Player(1);
         player.initializeCorrectAnswersOfRound();
@@ -55,14 +55,14 @@ public class PlayerTest {
     }
 
     @Test
-    public void numberOfPlayersOne()
+    public void uniqueNumberOfPlayerOne()
     {
         Player player=new Player(1);
         assertEquals(1, player.getPlayerNumber());
     }
 
     @Test
-    public void numberOfPlayerTwo()
+    public void uniqueNumberOfPlayerTwo()
     {
         Player player1=new Player(1);
         Player player2=new Player(2);

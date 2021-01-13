@@ -1,3 +1,6 @@
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class GUILogic {
@@ -117,6 +120,7 @@ public class GUILogic {
 
                 this.question.setRandomQuestion();
                 this.question.setNumberOfRandomQuestionInArray();
+                this.question.setLinkOfImage();
 
                 this.answer = new Answer();
 
@@ -147,12 +151,16 @@ public class GUILogic {
         return  this.question.getRandomQuestion();
     }
 
+    public String getImage() {
+        return this.question.getLinkOfImage();
+    }
+
     public String getAPossibleAnswer(int i) {
         ArrayList<String> possibleAnswers= this.answer.getFourPossibleAnswers();
         return possibleAnswers.get(i);
     }
 
-    public boolean checkCorrectAnswer(int numberOfPlayer, int answer) {
+    public boolean checkCorrectAnswer(int numberOfPlayer, int answer, double time) {
         if (numberOfPlayer == this.player1.getPlayerNumber()) {
             this.player1.setNumberOfAnswer(answer);
             this.answer.setCorrectAnswer(this.player1.getNumberOfAnswer(),
@@ -163,11 +171,11 @@ public class GUILogic {
             this.answer.setCorrectAnswer(this.player2.getNumberOfAnswer(),
                     this.question.getNumberOfRandomQuestionInArray());
         }
-        setPoints(numberOfPlayer);
+        setPoints(numberOfPlayer, time);
         return this.answer.getCorrectAnswer();
     }
 
-    public void setPoints(int numberOfPlayer) {
+    public void setPoints(int numberOfPlayer, double time) {
         switch (this.round.getKind()) {
             case "Correct Answer" -> {
                 if (this.answer.getCorrectAnswer()) {
@@ -178,7 +186,15 @@ public class GUILogic {
                     }
                 }
             }
-            case "Stop The Watch" -> {}
+            case "Stop The Watch" -> {
+                if (this.answer.getCorrectAnswer()) {
+                    if (numberOfPlayer == 1) {
+                        player1.winPoints((int)time);
+                    } else {
+                        this.player2.winPoints((int)time);
+                    }
+                }
+            }
             case "Bet" -> {
                 if (this.answer.getCorrectAnswer()) {
                     if (numberOfPlayer == 1) {

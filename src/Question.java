@@ -19,6 +19,7 @@ public class Question extends QA {
     private static ArrayList<String> usedQuestions = new ArrayList<>();
     private static int[] numberOfUsedQuestions = {0, 0, 0, 0, 0};
     private String question;
+    private String linkToImage;
     private int numberOfRandomQuestionInArray;
     private int randomNumberOfCategory;
 
@@ -78,6 +79,14 @@ public class Question extends QA {
         return this.numberOfRandomQuestionInArray;
     }
 
+    /**
+     * @return statement gives back the link to the image that is for the questions
+     * that was chosen.
+     */
+
+    public String getLinkOfImage () {
+        return this.linkToImage;
+    }
 
     /**
      * This method chooses a random question from the arraylist in 'QA' and updates the arraylist
@@ -121,5 +130,23 @@ public class Question extends QA {
 
     public void setNumberOfRandomQuestionInArray () {
         this.numberOfRandomQuestionInArray = questions.indexOf(this.question);
+    }
+
+    /**
+     * This method makes a String that will point to the link of the image that will
+     * be needed if the question contains image.
+     */
+
+    public void setLinkOfImage() {
+        if (this.numberOfRandomQuestionInArray < 5) {
+            if (this.categories.get(this.randomNumberOfCategory).equals("TV Series/ Movies"))
+                this.linkToImage = "tv" + this.numberOfRandomQuestionInArray + ".jpg";
+            else if (this.categories.get(this.randomNumberOfCategory).equals("Food & Drinks"))
+                this.linkToImage = "food" + this.numberOfRandomQuestionInArray + ".jpg";
+            else
+                this.linkToImage = this.categories.get(this.randomNumberOfCategory).toLowerCase()
+                        + this.numberOfRandomQuestionInArray + ".jpg";
+        }
+        this.linkToImage = "";
     }
 }

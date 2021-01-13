@@ -2,4 +2,4 @@ Solo Game
 "Player" has the top score with 0 points!
 
 Multiplayer
-"Player1" has 0 wins!
+"Player" has 0 wins!
