@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 /**
- *This class represents the logic of the game.It is used in the classes that
+ * This class represents the logic of the game.It is used in the classes that
  * implement the graphical user interface.It stores an object of the class Game,
  * a Statistics one,two objects of the class Player,one of the class Round,Question,
  * Answer and a boolean variable that holds the value of true when one of the players
@@ -22,7 +22,6 @@ public class GUILogic {
     private Answer answer;
     private boolean firstHere = true;
 
-
     /**
      * Constructor
      *
@@ -39,17 +38,14 @@ public class GUILogic {
         this.player2 = new Player(2);
     }
 
-
     /**
-     *
      * @return the statistics of the game mode that is chosen that the
-     * makeStatistics method returns in the class Statistics
+     * makeStatistics method returns in the class Statistics.
      */
 
     public String getStatistics(int answer){
         return this.statistics.makeStatistics(answer);
     }
-
 
     /**
      *This method sets the number of the players in the object game that is held
@@ -62,16 +58,13 @@ public class GUILogic {
         this.game.setNumberOfPlayers(answer);
     }
 
-
     /**
-     *
-     * @return the number of the players of the game object
+     * @return the number of the players of the game object.
      */
 
     public int getNumberOfPlayers() {
         return this.game.getNumberOfPlayers();
     }
-
 
     /**
      *This method sets the name of the player either on the first object of
@@ -80,18 +73,15 @@ public class GUILogic {
      *
      * @param playerNumber the number 1 or 2 that gives the information of
      *                     wether is the first player or the second one.
-     * @param name the name that the player typed in order to play
+     * @param name the name that the player typed in order to play.
      */
 
     public void setName(int playerNumber, String name) {
-        if (playerNumber == player1.getPlayerNumber()) {
+        if (playerNumber == player1.getPlayerNumber())
             player1.setName(name);
-        }
-        else {
+        else
             player2.setName(name);
-        }
     }
-
 
     /**
      * @param playerNumber the number that represents the player.
@@ -101,14 +91,11 @@ public class GUILogic {
      */
 
     public String getName(int playerNumber) {
-        if (playerNumber == player1.getPlayerNumber()) {
+        if (playerNumber == player1.getPlayerNumber())
             return player1.getName();
-        }
-        else {
+        else
             return player2.getName();
-        }
     }
-
 
     /**
      *This method sets the rounds in the game object of the class either randomly
@@ -125,16 +112,13 @@ public class GUILogic {
             this.game.setNumberOfRounds(answer);
     }
 
-
     /**
-     *
-     * @return the number of the rounds of the game object
+     * @return the number of the rounds of the game object.
      */
 
     public int getRounds() {
         return this.game.getNumberOfRounds();
     }
-
 
     /**
      *This method checks if the current number of round became bigger than the
@@ -162,7 +146,6 @@ public class GUILogic {
         }
     }
 
-
     /**
      *This method checks if the current round is the last one and if it is,it
      * returns true by comparing the number of the current round with the
@@ -180,7 +163,6 @@ public class GUILogic {
         return this.game.getCurrentRound() == this.game.getNumberOfRounds();
     }
 
-
     /**
      *This method increases the number of the current round of the object game in
      * the GUILogic class.
@@ -190,26 +172,21 @@ public class GUILogic {
         this.game.setCurrentRound();
     }
 
-
     /**
-     *
-     * @return the number of the current round of the object of the class Game
+     * @return the number of the current round of the object of the class Game.
      */
 
     public int getCurrentRound() {
         return this.game.getCurrentRound();
     }
 
-
     /**
-     *
-     * @return the kind of the current round of the object of the class Game
+     * @return the kind of the current round of the object of the class Game.
      */
 
     public String getKind() {
         return this.round.getKind();
     }
-
 
     /**
      *This method checks whether the number of the current question is bigger than
@@ -261,32 +238,27 @@ public class GUILogic {
         }
     }
 
-
     /**
-     *
-     * @return the number of the current question of the object round
+     * @return the number of the current question of the object round.
      */
 
     public int getCurrentQuestion() {
         return this.round.getCurrentNumberOfQuestion();
     }
 
-
     /**
-     *
-     * @return the category of the current question
+     * @return the category of the current question.
      */
 
     public String getCategory(){
         return this.question.getCategory();
     }
 
-
     /**
-     * This method sets the points that one player bet in the proper round
+     * This method sets the points that one player bet in the proper round.
      *
      * @param numberOfPlayer this number defines whether the points will be bet
-     *                       for the first or the second player
+     *                       for the first or the second player.
      * @param betPoints the number (250,500,750,1000) that the player bet.
      */
 
@@ -297,23 +269,29 @@ public class GUILogic {
             this.player2.setBetPoints(betPoints);
     }
 
-
     /**
-     *
-     * @return the String of the current question
+     * @return the String of the current question.
      */
 
     public String getQuestion() {
-        return  this.question.getRandomQuestion();
+        return this.question.getRandomQuestion();
     }
 
+    /**
+     * @return statement gives back the Stings of the link to the image that the question
+     * may has.
+     */
+
+    public String getImage() {
+        return this.question.getLinkOfImage();
+    }
 
     /**
      * This method sets the arraylist of the possible answers and returns the
      * desired answer.
      *
-     * @param i the number of a possible answer
-     * @return the desired number of a possible answer in the four possible answers
+     * @param i the number of a possible answer.
+     * @return the desired number of a possible answer in the four possible answers.
      */
 
     public String getAPossibleAnswer(int i) {
@@ -321,18 +299,18 @@ public class GUILogic {
         return possibleAnswers.get(i);
     }
 
-
     /**
      * This method sets the answer of one of the players and checks whether is
-     * the correct one or not.
+     * the correct one or not and then sets the points they either win or lose.
      *
      * @param numberOfPlayer the number that the player that gave the answer has
      * @param answer the number of the answer he chose.
+     * @param time is the number of points that got from the round "Stop The Watch".
      *
      * @return whether is the correct one or not.
      */
 
-    public boolean checkCorrectAnswer(int numberOfPlayer, int answer) {
+    public boolean checkCorrectAnswer(int numberOfPlayer, int answer, double time) {
         if (numberOfPlayer == this.player1.getPlayerNumber()) {
             this.player1.setNumberOfAnswer(answer);
             this.answer.setCorrectAnswer(this.player1.getNumberOfAnswer(),
@@ -343,10 +321,9 @@ public class GUILogic {
             this.answer.setCorrectAnswer(this.player2.getNumberOfAnswer(),
                     this.question.getNumberOfRandomQuestionInArray());
         }
-        setPoints(numberOfPlayer);
+        setPoints(numberOfPlayer, time);
         return this.answer.getCorrectAnswer();
     }
-
 
     /**
      * This method sets the points of the player deserves depending on the kind of
@@ -355,10 +332,11 @@ public class GUILogic {
      * win 5000 points),lose the points they bet in the Bet Round if their answer
      * was incorrect or keep their score the same.
      *
-     * @param numberOfPlayer the number that the player has
+     * @param numberOfPlayer the number that the player has.
+     * @param time is the points to the round "Stop The Watch".
      */
 
-    public void setPoints(int numberOfPlayer) {
+    public void setPoints(int numberOfPlayer, double time) {
         switch (this.round.getKind()) {
             case "Correct Answer" -> {
                 if (this.answer.getCorrectAnswer()) {
@@ -369,7 +347,15 @@ public class GUILogic {
                     }
                 }
             }
-            case "Stop The Watch" -> {}
+            case "Stop The Watch" -> {
+                if (this.answer.getCorrectAnswer()) {
+                    if (numberOfPlayer == 1) {
+                        player1.winPoints((int)time);
+                    } else {
+                        this.player2.winPoints((int)time);
+                    }
+                }
+            }
             case "Bet" -> {
                 if (this.answer.getCorrectAnswer()) {
                     if (numberOfPlayer == 1) {
@@ -418,12 +404,10 @@ public class GUILogic {
         }
     }
 
-
     /**
+     * @param numberOfPlayer the number that the player has.
      *
-     * @param numberOfPlayer the number that the player has
-     *
-     * @return the points that one of the player bet
+     * @return the points that one of the player bet.
      */
 
     public int getBetPoints(int numberOfPlayer) {
@@ -433,10 +417,8 @@ public class GUILogic {
             return  this.player2.getBetPoints();
     }
 
-
     /**
-     *
-     * @param numberOfPlayer the number that the player has
+     * @param numberOfPlayer the number that the player has.
      *
      * @return the points of the player in the end of the round.
      */
@@ -448,12 +430,10 @@ public class GUILogic {
             return this.player2.getPoints();
     }
 
-
     /**
      * This method sets the current number of question in the round and clears
      * all the arraylists that held the information of the questions,categories
      * and possible answers in the question and answer object.
-     *
      */
 
     public void setCurrentQuestion() {
@@ -465,15 +445,13 @@ public class GUILogic {
         this.answer.categories.clear();
     }
 
-
     /**
      * This method updates the score of the player if they made a high score,
      * in solo game and updates the number of wins of the winner of the current
      * game in multiplayer mode.
      *
-     * @param numberOfPlayer the number that the player has
-     * @param winner the
-     *
+     * @param numberOfPlayer the number that the player has.
+     * @param winner is the number of the player that won the "Multiplayer" mode.
      */
 
     public void refreshStatistics(int numberOfPlayer, int winner) {
@@ -488,11 +466,10 @@ public class GUILogic {
         }
     }
 
-
     /**
-     * This method lets the winner of the game know that they won
+     * This method lets the winner of the game know that they won.
      *
-     * @return a string that uses the name of the winner to tell them they won
+     * @return a string that uses the name of the winner to tell them they won.
      */
 
     public String getWinner() {

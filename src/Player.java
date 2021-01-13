@@ -37,12 +37,19 @@ public class Player {
     }
 
     /**
-     * This method sets the name of each player, when they are asked.
+     * This method sets the name of each player, when they are asked. If the name contains
+     * numbers or white characters this method deletes them before it sets the name.
      *
      * @param name is the name of the player.
      */
 
     public void setName (String name) {
+        for (int i=0;i<10;i++)
+            if (name.contains(String.valueOf(i)))
+                name =name.replace(String.valueOf(i),"");
+        if (name.contains(" "))
+            name = name.replace(" ", "");
+
         this.name = name;
     }
 
