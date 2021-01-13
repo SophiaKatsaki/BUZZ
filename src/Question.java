@@ -153,6 +153,7 @@ public class Question extends QA {
                 this.linkToImage = this.categories.get(this.randomNumberOfCategory).toLowerCase()
                         + this.numberOfRandomQuestionInArray + ".jpg";
         }
-        this.linkToImage = "";
+        else
+            this.linkToImage = "";
     }
 }

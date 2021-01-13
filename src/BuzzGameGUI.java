@@ -322,8 +322,18 @@ public class BuzzGameGUI {
 
         this.mainPanel.add(this.answerPanel, BorderLayout.CENTER);
         this.questionLabel.setText(this.logic.getQuestion());
-        //this.logic.getImage();
         this.questionLabel.setVisible(true);
+
+        JPanel imagePanel = new JPanel();
+        imagePanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
+        imagePanel.setBackground(Color.WHITE);
+        imagePanel.setSize(this.mainFrame.getWidth()*5,this.mainFrame.getHeight()*5);
+        this.mainFrame.add(imagePanel, BorderLayout.EAST);
+
+        ImageIcon icon = new ImageIcon(getClass().getResource(this.logic.getImage()));
+        JLabel imageLabel = new JLabel(icon);
+        imageLabel.setVisible(true);
+        imagePanel.add(imageLabel);
     }
 
     public void showPoints(int numberOfPlayer, boolean correctAnswer) {

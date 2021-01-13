@@ -1,9 +1,11 @@
 import java.util.ArrayList;
 
 /**
- * This class represents the logic of the game.It is used in the classes that
- * implement the graphical user interface.It stores an object of the class Game,
- * a Statistics one,two objects of the class Player,one of the class Round,Question,
+ * This class is the logic before the main interface with the user(s).
+ *
+ * This class represents the logic of the game. It is used in the classes that
+ * implement the graphical user interface. It stores an object of the class Game,
+ * a Statistics one, two objects of the class Player, one of the class Round, Question,
  * Answer and a boolean variable that holds the value of true when one of the players
  * in "Game With a Friend" / "Multiplayer" mode is the first one to answer to a
  * question.
@@ -227,6 +229,7 @@ public class GUILogic {
 
                 this.question.setRandomQuestion();
                 this.question.setNumberOfRandomQuestionInArray();
+                this.question.setLinkOfImage();
 
                 this.answer = new Answer();
 

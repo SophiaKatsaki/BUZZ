@@ -12,7 +12,7 @@ Music
 "What is the biggest music platform?"
 "Who is the winner of the ESC of 2019?"
 "Which country has won the ESC 7 times?"
-"Who is the singer of Norway's entry in ESC,'FairyTale'"
+"Who is the singer of Norway's entry in ESC,'FairyTale' "
 "Which of the following did Lewis Capaldi sing?"
 "Which band sings "Here Without You"?"
 "Which band is "losing their religion"?"
