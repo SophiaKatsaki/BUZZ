@@ -327,10 +327,19 @@ public class BuzzGameGUI {
         JPanel imagePanel = new JPanel();
         imagePanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
         imagePanel.setBackground(Color.WHITE);
-        imagePanel.setSize(this.mainFrame.getWidth()*5,this.mainFrame.getHeight()*5);
-        this.mainFrame.add(imagePanel, BorderLayout.EAST);
+        imagePanel.setSize(300, 300);
+        this.mainFrame.add(imagePanel, BorderLayout.PAGE_END);
 
-        ImageIcon icon = new ImageIcon(getClass().getResource(this.logic.getImage()));
+        ImageIcon icon;
+        if(!this.logic.getImage().equals(""))
+            icon = new ImageIcon(getClass().getResource(this.logic.getImage()));
+        else if (this.logic.getNumberOfPlayers() == 1)
+            icon = new ImageIcon(getClass().getResource("soloMode.jpg"));
+        else
+            icon = new ImageIcon(getClass().getResource("gameWithAFriend.jpg"));
+        Image image = icon.getImage().getScaledInstance(200, 200,  java.awt.Image.SCALE_SMOOTH);
+        icon = new ImageIcon(image);
+        image.flush();
         JLabel imageLabel = new JLabel(icon);
         imageLabel.setVisible(true);
         imagePanel.add(imageLabel);
