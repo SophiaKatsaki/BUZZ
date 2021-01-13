@@ -19,20 +19,20 @@ import static java.lang.String.valueOf;
 public abstract class Statistics {
 
     /**
-     * This method loads the statistics of the game of the file that contains that information.
-     * When it gets called it makes visible the statistics only for the mode of the game that
-     * the user(s)/ player(s) said that they want to see.
+     * This method loads the statistics of the game of the file that contains that
+     * information.When it gets called it makes visible the statistics only for
+     * the mode of the game that the user(s)/ player(s) said that they want to see.
      *
-     * @param answer is an int that suggests for which mode of the game the user(s)/ player(s)
-     *               want to see the the statistics.
+     * @param answer is an int that suggests for which mode of the game the
+     *               user(s)/ player(s) want to see the the statistics.
      *               Number 1 is the "Solo Game".
-     *               Number 2 is the "Play With a Friend" or "Multiplayer"/
-     *               At last the number 3 is used for the option that they do not want to see
-     *               the statistics of any mode.
+     *               Number 2 is the "Play With a Friend"/"Multiplayer".
+     *               At last the number 3 is used for the option that they do not
+     *               want to see the statistics of any mode.
      *
-     * @return statement gives back a String that contains the statistics for the mode of the game
-     * that the user(s)/ player(s) said that they want to see or nothing if they said that they do
-     * not want to see any statistic.
+     * @return statement gives back a String that contains the statistics for the
+     * mode of the game that the user(s)/ player(s) said that they want to see or
+     * nothing if they said that they not want to see any statistic.
      */
 
     public String makeStatistics(int answer) {
@@ -71,8 +71,8 @@ public abstract class Statistics {
     }
 
     /**
-     * This method loads the statistic that are not refreshed yet and it is called from the
-     * program whenever it needs that information.
+     * This method loads the statistic that are not refreshed yet and it is called
+     * from the program whenever it needs that information.
      *
      * @return statement gives back the statistics before they got refreshed.
      */
@@ -132,8 +132,9 @@ public abstract class Statistics {
     }
 
     /**
-     * This method is used from the program when the mode "Game With a Friend" / "Multiplayer" comes to
-     * an end and it is responsible for the refreshing part of the the statistics to that mode.
+     * This method is used from the program when the mode
+     * "Game With a Friend" / "Multiplayer" comes to an end and it is responsible
+     * for the refreshing part of the the statistics to that mode.
      *
      * @param oldStatistics is the statistics which are not refreshed yet.
      * @param playerName is the name of the player that won the game.

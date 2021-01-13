@@ -4,9 +4,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- * This abstract class represents a place that stores every important information for the questions and answers.
- * It has three ArrayLists for questions, possible answers and categories and the number of a category.
- * It has a constructor, useful for the creation of the collections.
+ * This abstract class represents a place that stores every important information for
+ * the questions and answers.It has three ArrayLists for questions, possible answers
+ * and categories of the questions and the number of a category.It has a constructor,
+ * useful for the creation of the collections.
  * It has two methods for handling the categories of the questions/ answers.
  *
  * @author Sophia Katsaki
@@ -21,8 +22,8 @@ public abstract class QA {
 
 
     /**
-     * The constructor creates the ArrayLists of the categories, the questions and the possible answers.
-     * Neither of them get initialized nor have elements.
+     * The constructor creates the ArrayLists of the categories, the questions and the
+     * possible answers.Neither of them get initialized nor have elements.
      */
 
     public QA () {
@@ -32,9 +33,9 @@ public abstract class QA {
     }
 
     /**
-     * This method will fill the ArrayList of the categories of the game with all the categories that the
-     * game contains. The information that it needs are in a file with a name "Categories.txt" and this
-     * method loads these data when it is called.
+     * This method will fill the ArrayList of the categories of the game with all the
+     * categories that the game contains. The information that it needs are in a file
+     * with a name "Categories.txt" and this method loads these data when it is called.
      */
 
     public void makeCategories() {
@@ -50,8 +51,9 @@ public abstract class QA {
     }
 
     /**
-     * This method will fill the ArrayList of the questions with some elements from the file "Questions.txt" and
-     * the file "Questions with Image.txt" depending on the number of the category in Arraylist of categories.
+     * This method will fill the ArrayList of the questions with some elements from the
+     * file "Questions.txt" and the file "Questions with Image.txt" depending on the
+     * number of the category in Arraylist of categories.
      *
      * @param randomNumberOfCategory is the number of the category in its ArrayList.
      */
@@ -95,8 +97,9 @@ public abstract class QA {
     }
 
     /**
-     * This method will fill the ArrayList of the possible answers with some elements from the file "Answers.txt"
-     * and the file "Answers with Image.txt" depending on the number of the category in ArrayList of categories.
+     * This method will fill the ArrayList of the possible answers with some elements
+     * from the file "Answers.txt" and the file "Answers with Image.txt" depending
+     * on the number of the category in ArrayList of categories.
      *
      * @param randomNumberOfCategory is the number of the category in its ArrayList.
      */

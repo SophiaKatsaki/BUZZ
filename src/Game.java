@@ -2,11 +2,11 @@ import java.util.Random;
 import java.util.Scanner;
 
 /**
- * This class is base for the game and it contains all the data that are important for that. It stores
- * the amount of the players, the total amount of rounds and the number of the current round that is
- * being played. It has a constructor, useful for the creation of an object of this class. It contains
- * methods for handling the total amount of rounds and for handling the current round and for handling
- * the amount of the players.
+ * This class is base for the game and it contains all the data that are important for
+ * that. It stores the amount of the players, the total amount of rounds and the number
+ * of the current round that is being played. It has a constructor, useful for the
+ * creation of an object of this class. It contains methods for setting the total amount
+ * of rounds and for handling the current round and the number of the players.
  *
  * @author Sophia Katsaki
  * @author Stylianos Tozios
@@ -21,7 +21,8 @@ public class Game {
     /**
      * Constructor
      *
-     * The constructor initializes the current round to number one, that is, the first round.
+     * The constructor initializes the current round to number one, that is, the first
+     * round.
      */
 
     public Game () {
@@ -31,13 +32,13 @@ public class Game {
     /**
      * This method sets the answer to number 1 or 2.
      *
-     * @param answer is a number which must be 1 or 2 that will be used either for the creation of the
-     *               rounds or for the number of the players. The use of the answer vary and it
-     *               depends to when it is asked.
-     *               If it is 1 then the player will choose how many rounds they will play. It also
-     *               represents the solo game.
-     *               If it is 2 then the total amount of rounds will be created randomly. It also
-     *               represents the game with a friend.
+     * @param answer is a number which must be 1 or 2 that will be used either for the
+     *               creation of the rounds or for the number of the players. The use
+     *               of the answer vary and it depends to when it is asked.
+     *               If the answer is 1 then the player will choose how many rounds
+     *               they want to play.It also represents the solo game.
+     *               If the answer is 2 then the total amount of rounds will be
+     *               created randomly. It also represents the game with a friend.
      */
 
     public void setAnswer (int answer) {
@@ -62,10 +63,12 @@ public class Game {
 
     /**
      * This method sets the number of rounds that a game will have.
-     * It will get the information from the user/player and will saves it in a variable after it is being checked that
-     * it is between the right interval.
+     * It will get the information from the user/player and will save it in
+     * a variable after it is being checked that it is between the right
+     * interval.
      *
-     * @param answer contains the decision of the user/ player for the total amount of the rounds.
+     * @param answer contains the decision of the user/ player for the total amount
+     *               of the rounds.
      */
 
     public void setNumberOfRounds (int answer) {
@@ -80,7 +83,8 @@ public class Game {
     }
 
     /**
-     * This method sets the number of rounds that a game will have randomly in the interval one to ten.
+     * This method sets the number of rounds that a game will have randomly in the
+     * interval one to ten.
      */
 
     public void setRandomRounds () {
@@ -92,7 +96,7 @@ public class Game {
     }
 
     /**
-     * This method set the current round to the next one when the round ends.
+     * This method increases number of the round by one,everytime the round ends.
      */
 
     public void setCurrentRound () {
@@ -101,7 +105,8 @@ public class Game {
 
     /**
      *
-     * @return statement gives back the information about the number of the rounds whenever it gets asked.
+     * @return statement gives back the information about the number of the rounds
+     * whenever it gets asked.
      */
 
     public int getNumberOfRounds () {
@@ -113,20 +118,22 @@ public class Game {
      * @return statement gives back the amount of the players in the game.
      */
     public int getNumberOfPlayers () {
-        return numberOfPlayers;
+        return this.numberOfPlayers;
     }
 
     /**
      *
      * @return statement gives back the answer that the user gave.
      */
+
     public int getAnswer () {
         return this.answer;
     }
 
     /**
      *
-     * @return statement gives back the information about the number of the current round whenever it gets asked.
+     * @return statement gives back the information about the number of the current
+     * round whenever it is asked.
      */
 
     public int getCurrentRound() {

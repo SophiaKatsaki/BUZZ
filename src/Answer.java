@@ -1,13 +1,15 @@
+
 import java.util.ArrayList;
 import java.util.Collections;
 
 /**
- * This class represents an answer to a question of the game.It extends the abstract class 'QA'.It stores
- * a String that is the correct possible answer,a boolean that is true if the answer the player gave is
- * correct and false if it is wrong and an arraylist that holds the four possible answers of each question.
- * The answer class is responsible for setting and for showing the possible answers of the question to the
- * player and set the answer the player gave as correct or wrong in order to calculate the points that they
- * deserve.
+ * This class represents an answer to a question of the game.It extends the abstract
+ * class 'QA'.It stores a String that is the correct possible answer,a boolean that is
+ * true if the answer the player gave is correct and false if it is wrong and an
+ * arraylist that holds the four possible answers of each question.The answer class is
+ * responsible for setting and for showing the possible answers of the question to the
+ * player and set the answer the player gave as correct or wrong in order to calculate
+ * the points that they deserve.
  *
  * @author Sophia Katsaki
  * @author Stylianos Tozios
@@ -23,14 +25,13 @@ public class Answer extends QA {
      * Constructor
      *
      * The constructor of the class Answer adds the categories of the answers of the
-     * game to an arraylist by using one method of the class QA that this class
-     * extends. It also creates an arraylist of the four possible answers to a
-     * question.
+     * game to an arraylist by using the method makeCategories of the abstract class QA
+     * that this class extends. It also creates an arraylist of the four possible
+     * answers to a question.
      */
 
     public Answer () {
         makeCategories();
-
         this.fourPossibleAnswers = new ArrayList<>();
     }
 
@@ -45,13 +46,17 @@ public class Answer extends QA {
 
 
     /**
-     * This method checks if the answer that the player gave is equal to the correct answer
-     * of the question that is held in an arraylist with all the possible answers.
+     * This method checks if the answer that the player gave is equal to the correct
+     * answer of the question that is held in an arraylist with all the possible
+     * answers to this
+     * question.
      *
-     * @param answerOfPlayer Answer from 1 to 4 (or 6 to 9) that the player pressed.
+     * @param answerOfPlayer Answer from 1 to 4 (keys that the first player uses to
+     *                       answer or 6 to 9 (the keys of the second one) that the
+     *                       player pressed.
      *
      * @param numberOfRandomQuestionInArray the number of the question chosen randomly,in the arraylist
-     *                                     that holds all the questions
+     *                                      that holds all the questions
      */
 
     public void setCorrectAnswer (int answerOfPlayer, int numberOfRandomQuestionInArray) {
@@ -65,13 +70,14 @@ public class Answer extends QA {
     }
 
     /**
-     * This method sets the four possible answers in the arraylist and then it puts them in a random
-     * position.
+     * This method sets the four possible answers to a question in the arraylist and
+     * then it shuffles them,in order to appear in a random order everytime the
+     * question is used.
      *
-     * @param numberOfQuestionInArray the number of the question chosen in the arraylist in 'QA'
-     *                                that holds the questions of the game.
-     * @param randomNumberOfCategory the number that corresponds to the number of the category
-     *                               of the random question that is chosen.
+     * @param numberOfQuestionInArray the number of the question chosen in the arraylist
+     *                                in 'QA' that holds the questions of the game.
+     * @param randomNumberOfCategory the number that corresponds to the number of the
+     *                               category of the random question that is chosen.
      */
 
     public void setFourPossibleAnswers (int numberOfQuestionInArray, int randomNumberOfCategory) {
@@ -85,11 +91,11 @@ public class Answer extends QA {
     }
 
     /**
-     * This method shows the answers to a question that is chosen randomly in random order everytime
-     * on screen.
+     * This method shows the answers to a question that is chosen randomly in random
+     * order everytime on screen.
      *
-     * @param number is the number of each player that been used in order to show the keys that they
-     *               can use.
+     * @param number is the number of each player that been used in order to show the
+     *               keys that they can use.
      */
 
     public void showAnswers (int number) {
