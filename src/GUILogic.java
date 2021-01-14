@@ -74,7 +74,7 @@ public class GUILogic {
      * the number that is given.
      *
      * @param playerNumber the number 1 or 2 that gives the information of
-     *                     wether is the first player or the second one.
+     *                     whether is the first player or the second one.
      * @param name the name that the player typed in order to play.
      */
 
@@ -191,8 +191,8 @@ public class GUILogic {
     }
 
     /**
-     *This method checks whether the number of the current question is bigger than
-     *the number of questions that were set for this round.If it is,the method
+     * This method checks whether the number of the current question is bigger than
+     * the number of questions that were set for this round.If it is,the method
      * returns true and if it is not,it returns false.If it is not the end of
      * questions,then the question and answer objects are initialized properly
      * in order to make a new question for the player(s).If the mode is
@@ -206,15 +206,7 @@ public class GUILogic {
     public boolean endOfQuestions(){
         if (this.game.getNumberOfPlayers() == 2 && game.getCurrentRound() == game.getNumberOfRounds()){
             if ((this.player1.getCorrectAnswers() < 5  && this.player2.getCorrectAnswers() < 5)) {
-                this.question = new Question();
-
-                this.question.setRandomQuestion();
-                this.question.setNumberOfRandomQuestionInArray();
-
-                this.answer = new Answer();
-
-                this.answer.setFourPossibleAnswers(this.question.getNumberOfRandomQuestionInArray(),
-                        this.question.getNumberOfCategory());
+                makeQA();
 
                 return false;
             }
@@ -225,20 +217,24 @@ public class GUILogic {
             if (this.round.getCurrentNumberOfQuestion() > this.round.getRandomNumberOfQuestions())
                 return true;
             else {
-                this.question = new Question();
-
-                this.question.setRandomQuestion();
-                this.question.setNumberOfRandomQuestionInArray();
-                this.question.setLinkOfImage();
-
-                this.answer = new Answer();
-
-                this.answer.setFourPossibleAnswers(this.question.getNumberOfRandomQuestionInArray(),
-                        this.question.getNumberOfCategory());
+                makeQA();
 
                 return false;
             }
         }
+    }
+
+    public void makeQA(){
+        this.question = new Question();
+
+        this.question.setRandomQuestion();
+        this.question.setNumberOfRandomQuestionInArray();
+        this.question.setLinkOfImage();
+
+        this.answer = new Answer();
+
+        this.answer.setFourPossibleAnswers(this.question.getNumberOfRandomQuestionInArray(),
+                this.question.getNumberOfCategory());
     }
 
     /**
@@ -304,16 +300,15 @@ public class GUILogic {
 
     /**
      * This method sets the answer of one of the players and checks whether is
-     * the correct one or not and then sets the points they either win or lose.
+     * the correct one or not.
      *
-     * @param numberOfPlayer the number that the player that gave the answer has
+     * @param numberOfPlayer the number that the player that gave the answer has.
      * @param answer the number of the answer he chose.
-     * @param time is the number of points that got from the round "Stop The Watch".
      *
      * @return whether is the correct one or not.
      */
 
-    public boolean checkCorrectAnswer(int numberOfPlayer, int answer, double time) {
+    public boolean checkCorrectAnswer(int numberOfPlayer, int answer) {
         if (numberOfPlayer == this.player1.getPlayerNumber()) {
             this.player1.setNumberOfAnswer(answer);
             this.answer.setCorrectAnswer(this.player1.getNumberOfAnswer(),
@@ -324,15 +319,14 @@ public class GUILogic {
             this.answer.setCorrectAnswer(this.player2.getNumberOfAnswer(),
                     this.question.getNumberOfRandomQuestionInArray());
         }
-        setPoints(numberOfPlayer, time);
         return this.answer.getCorrectAnswer();
     }
 
     /**
      * This method sets the points of the player deserves depending on the kind of
      * round and the answer that they gave.They can win points if the answer is
-     * correct in almost every round(in Thermometer they need 5 correct answers to
-     * win 5000 points),lose the points they bet in the Bet Round if their answer
+     * correct in almost every round (in Thermometer they need 5 correct answers to
+     * win 5000 points), lose the points they bet in the Bet Round if their answer
      * was incorrect or keep their score the same.
      *
      * @param numberOfPlayer the number that the player has.

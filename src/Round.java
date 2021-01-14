@@ -32,7 +32,7 @@ public class Round {
         this.kinds = new ArrayList<>();
         this.kinds.add("Correct Answer");
         this.kinds.add("Bet");
-        this.kinds.add("Stop The Timer");
+        this.kinds.add("Stop The Watch");
 
         Random rand = new Random();
         int randInt;

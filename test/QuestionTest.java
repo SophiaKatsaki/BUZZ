@@ -27,6 +27,7 @@ public class  QuestionTest {
         assertEquals(allCategories.get(4),question.categories.get(4));
 
     }
+
     @Test
     public void NumberOfCategory() {
         List<Integer> howMany = List.of(0,1,2,3,4);
@@ -56,10 +57,7 @@ public class  QuestionTest {
     {
         Question question=new Question();
         question.setRandomQuestion();
-        assertEquals(30,question.questions.size());
+        assertEquals(31,question.questions.size());
 
     }
-
-
-
 }

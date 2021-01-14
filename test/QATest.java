@@ -33,16 +33,18 @@ public class QATest {
     @Test
     public void NumberOfCategories()
     {
-        Question question=new Question();
+        Question question = new Question();
         assertEquals(5,question.categories.size());
+        Answer answer = new Answer();
+        assertEquals(5,answer.categories.size());
     }
 
     @Test
     public void Questions()
     {
-        Question question=new Question();
+        Question question = new Question();
         question.makeQ(question.getNumberOfCategory());
-        assertEquals(30,question.questions.size());
+        assertEquals(31,question.questions.size());
     }
 
     @Test
@@ -50,7 +52,7 @@ public class QATest {
     {
         Question question=new Question();
         question.makeA(question.getNumberOfCategory());
-        assertEquals(120,question.possibleAnswers.size());
+        assertEquals(124,question.possibleAnswers.size());
     }
 
 }

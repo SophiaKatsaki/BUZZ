@@ -32,13 +32,10 @@ public class AnswerTest {
     @Test
     public void fourAnswers()
     {
-        Question question=new Question();
-        Answer answer=new Answer();
+        Question question = new Question();
+        Answer answer = new Answer();
         answer.setFourPossibleAnswers(question.getNumberOfRandomQuestionInArray(),question.getNumberOfCategory());
         answer.makeA(question.getNumberOfCategory());
         System.out.println(answer.getFourPossibleAnswers());
     }
-
-
-
 }

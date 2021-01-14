@@ -12,6 +12,7 @@ public class PlayerTest {
         System.out.println("By default: "+player.getPoints()+" points");
 
     }
+
     @Test
     public void name () {
         Player player = new Player(1);
@@ -83,7 +84,6 @@ public class PlayerTest {
         player.initializeCorrectAnswersOfRound();
         assertEquals(0,player.getCorrectAnswers());
     }
-
 
     @Test
     public void uniqueNumberOfPlayerOne()

@@ -62,5 +62,4 @@ public class RoundTest {
        assertEquals("Thermometer",round.getKind());
 
    }
-
 }

@@ -1,5 +1,5 @@
 Solo Game
-"S" has the top score with 4000 points!
+"Player" has the top score with 0 points!
 
 Multiplayer
 "Player" has 0 wins!
