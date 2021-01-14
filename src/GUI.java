@@ -707,7 +707,90 @@ public class GUI {
         panel2.add(startTheGame);
     }
 
+    public void b()
+    {
+
+        JFrame frame=new JFrame("BUZZ");
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setResizable(true);
+        frame.setSize(600, 550);
+        frame.setLocationRelativeTo(null);
+
+        JPanel panel=new JPanel(new GridLayout(3,1));
+
+        panel.add(new JLabel("Question"));
+
+        JPanel panel2=new JPanel(new GridLayout(1,2));
+/*
+        JPanel panel3=new JPanel(new GridLayout(4,1));
+        panel3.add(new JLabel("Answer 1"));
+        panel3.add(new JLabel("Answer 2"));
+        panel3.add(new JLabel("Answer 3"));
+        panel3.add(new JLabel("Answer 4"));
+
+
+        JPanel panel4=new JPanel(new GridLayout(4,1));
+        panel4.add(new JButton("A"));
+        panel4.add(new JButton("B"));
+        panel4.add(new JButton("C"));
+        panel4.add(new JButton("D"));
+        panel2.add(panel4);
+*/
+
+        Box box = Box.createVerticalBox();
+        box.add(new JLabel("Answer 1"));
+        box.add(Box.createVerticalStrut(13));
+        box.add(new JLabel("Answer 2"));
+        box.add(Box.createVerticalStrut(13));
+        box.add(new JLabel("Answer 3"));
+        box.add(Box.createVerticalStrut(13));
+        box.add(new JLabel("Answer 4"));
+
+
+        Box box1 = Box.createVerticalBox();
+        box1.add(new JButton("A"));
+       // box1.add(Box.createVerticalStrut(25));
+        box1.add(new JButton("B"));
+       // box1.add(Box.createVerticalStrut(25));
+        box1.add(new JButton("C"));
+       // box1.add(Box.createVerticalStrut(25));
+        box1.add(new JButton("D"));
+
+
+        panel2.add(box1,BorderLayout.CENTER);
+        panel2.add(box);
+
+        panel.add(panel2);
+
+        JPanel panel5=new JPanel(new GridLayout(1,3));
+        ImageIcon icon = new ImageIcon(getClass().getResource("gameWithAFriend.jpg"));
+        JLabel imageLabel = new JLabel(icon);
+        imageLabel.setVisible(true);
+
+        panel5.setBackground(Color.RED);
+        JLabel label1=new JLabel("5000");
+
+        label1.setHorizontalAlignment(JLabel.CENTER);
+        label1.setForeground(Color.WHITE);
+
+        JLabel label2=new JLabel("Points:2000");
+        label2.setHorizontalAlignment(JLabel.CENTER);
+        label2.setForeground(Color.white);
+
+        panel5.add(label1);
+        panel5.add(imageLabel);
+        panel5.add(label2);
+
+        panel.add(panel5);
+
+        frame.setIconImage(icon.getImage());
+
+        frame.add(panel);
+
+    }
     public static void main(String[] args) {
         GUI gui = new GUI();
+        gui.b();
     }
 }
