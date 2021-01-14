@@ -144,7 +144,7 @@ public class Question extends QA {
      */
 
     public void setLinkOfImage() {
-        if (this.numberOfRandomQuestionInArray < 5) {
+        if (this.numberOfRandomQuestionInArray < 6) {
             if (this.categories.get(this.randomNumberOfCategory).equals("TV Series/ Movies"))
                 this.linkToImage = "tv" + this.numberOfRandomQuestionInArray + ".jpg";
             else if (this.categories.get(this.randomNumberOfCategory).equals("Food & Drinks"))
