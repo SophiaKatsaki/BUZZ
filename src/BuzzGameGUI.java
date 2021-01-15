@@ -21,18 +21,18 @@ public class BuzzGameGUI {
     private JLabel pointsLabel2;
     private JLabel timeFliesBy;
     private Box answerBox;
-    private GUILogic logic;
+    private GUIController logic;
     private boolean bothHere = true;
     private boolean firstHere = true;
 
-    public BuzzGameGUI(GUILogic logic) {
+    public BuzzGameGUI(GUIController logic) {
         this.logic = logic;
 
         this.mainFrame = new JFrame("BUZZ");
         this.mainFrame.setVisible(true);
         this.mainFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.mainFrame.setResizable(true);
-        this.mainFrame.setSize(680, 460);
+        this.mainFrame.setSize(750, 520);
         this.mainFrame.setLocationRelativeTo(null);
 
         ImageIcon icon = new ImageIcon(getClass().getResource("openingImage.jpg"));
@@ -49,7 +49,9 @@ public class BuzzGameGUI {
         this.buttonA.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                button(1);
+                if (logic.getNumberOfPlayers() == 1)
+                    showPoints(1, logic.checkCorrectAnswer(1, 1));
+
             }
         });
 
@@ -57,7 +59,8 @@ public class BuzzGameGUI {
         this.buttonB.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                button(2);
+                if (logic.getNumberOfPlayers() == 1)
+                    showPoints(1, logic.checkCorrectAnswer(1, 2));
             }
         });
 
@@ -65,7 +68,8 @@ public class BuzzGameGUI {
         this.buttonC.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                button(3);
+                if (logic.getNumberOfPlayers() == 1)
+                    showPoints(1, logic.checkCorrectAnswer(1, 3));
             }
         });
 
@@ -73,7 +77,8 @@ public class BuzzGameGUI {
         this.buttonD.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                button(4);
+                if (logic.getNumberOfPlayers() == 1)
+                    showPoints(1, logic.checkCorrectAnswer(1, 4));
             }
         });
 
@@ -93,25 +98,29 @@ public class BuzzGameGUI {
             public void keyTyped(KeyEvent e) {
                 super.keyTyped(e);
                 if (e.getKeyChar() == '1') {
-                    logic.checkCorrectAnswer(1, 1);
+                    if (logic.getNumberOfPlayers() == 2)
+                        showPoints(1, logic.checkCorrectAnswer(1, 1));
                     buttonA.doClick();
                 } else if (e.getKeyChar() == '6' && logic.getNumberOfPlayers() == 2) {
                     showPoints(2, logic.checkCorrectAnswer(2, 6));
                     buttonA.doClick();
                 } else if (e.getKeyChar() == '2') {
-                    logic.checkCorrectAnswer(1, 2);
+                    if (logic.getNumberOfPlayers() == 2)
+                        showPoints(1, logic.checkCorrectAnswer(1, 2));
                     buttonB.doClick();
                 } else if (e.getKeyChar() == '7' && logic.getNumberOfPlayers() == 2) {
                     showPoints(2, logic.checkCorrectAnswer(2, 7));
                     buttonB.doClick();
                 } else if (e.getKeyChar() == '3') {
-                    logic.checkCorrectAnswer(1, 3);
+                    if (logic.getNumberOfPlayers() == 2)
+                        showPoints(1, logic.checkCorrectAnswer(1, 3));
                     buttonC.doClick();
                 } else if (e.getKeyChar() == '8' && logic.getNumberOfPlayers() == 2) {
                     showPoints(2, logic.checkCorrectAnswer(2, 8));
                     buttonC.doClick();
                 } else if (e.getKeyChar() == '4') {
-                    logic.checkCorrectAnswer(1, 4);
+                    if (logic.getNumberOfPlayers() == 2)
+                        showPoints(1, logic.checkCorrectAnswer(1, 4));
                     buttonD.doClick();
                 } else if (e.getKeyChar() == '9' && logic.getNumberOfPlayers() == 2) {
                     showPoints(2, logic.checkCorrectAnswer(2, 9));
@@ -151,16 +160,16 @@ public class BuzzGameGUI {
     }
 
     public void setMainPanel() {
-        this.firstPanel = new JPanel(new GridLayout(1,2));
+        this.firstPanel = new JPanel(new FlowLayout(FlowLayout.LEADING));
         this.firstPanel.setBackground(Color.YELLOW);
         this.mainPanel.add(this.firstPanel);
 
         this.questionLabel = new JLabel();
         this.questionLabel.setForeground(Color.BLACK);
-        this.firstPanel.add(this.questionLabel);
+        this.firstPanel.add(this.questionLabel, BorderLayout.LINE_START);
 
         this.imageLabel = new JLabel();
-        this.firstPanel.add(this.imageLabel);
+        this.firstPanel.add(this.imageLabel, BorderLayout.AFTER_LAST_LINE);
 
         this.secondPanel = new JPanel(new FlowLayout(FlowLayout.LEADING));
         this.secondPanel.setBackground(Color.WHITE);
@@ -169,19 +178,6 @@ public class BuzzGameGUI {
         this.thirdPanel = new JPanel(new GridLayout(1,3));
         this.thirdPanel.setBackground(Color.WHITE);
         this.mainPanel.add(this.thirdPanel);
-    }
-
-    public void button(int answer) {
-        if (this.logic.getNumberOfPlayers() == 1) {
-            if (answer == 1)
-                showPoints(1, logic.checkCorrectAnswer(1, 1));
-            else if (answer == 2)
-                showPoints(1, logic.checkCorrectAnswer(1, 2));
-            else if (answer == 3)
-                showPoints(1, logic.checkCorrectAnswer(1, 3));
-            else if (answer == 4)
-                showPoints(1, logic.checkCorrectAnswer(1, 4));
-        }
     }
 
     public void startRound() {
@@ -318,7 +314,6 @@ public class BuzzGameGUI {
 
         Timer timer = new Timer(100, new ActionListener() {
             private int count = 5000;
-
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (count <= 0)
@@ -327,7 +322,6 @@ public class BuzzGameGUI {
                     count -= 100;
                 timeFliesBy.setText(Integer.toString(count));
             }
-
         });
         timer.start();
         this.timeFliesBy.setVisible(this.logic.getKind().equals("Stop The Watch"));
@@ -335,6 +329,8 @@ public class BuzzGameGUI {
 
     public void showPoints(int numberOfPlayer, boolean correctAnswer) {
         this.logic.setPoints(numberOfPlayer, Integer.parseInt(timeFliesBy.getText())*0.2);
+        if (this.logic.getNumberOfPlayers() == 1)
+            this.timeFliesBy.setVisible(false);
 
         switch (this.logic.getKind()) {
             case "Correct Answer" -> {
@@ -345,9 +341,9 @@ public class BuzzGameGUI {
                         this.pointsLabel2.setText(this.logic.getName(2) + " +1000");
                 } else {
                     if (numberOfPlayer == 1)
-                        this.pointsLabel.removeAll();
+                        this.pointsLabel.setText("");
                     else
-                        this.pointsLabel2.removeAll();
+                        this.pointsLabel2.setText("");
                 }
             }
             case "Stop The Watch" -> {
@@ -358,9 +354,9 @@ public class BuzzGameGUI {
                         this.pointsLabel2.setText(this.logic.getName(2) + " + The left time X 0.2");
                 } else {
                     if (numberOfPlayer == 1)
-                        this.pointsLabel.removeAll();
+                        this.pointsLabel.setText("");
                     else
-                        this.pointsLabel2.removeAll();
+                        this.pointsLabel2.setText("");
                 }
             }
             case "Bet" -> {
@@ -408,9 +404,9 @@ public class BuzzGameGUI {
                         this.pointsLabel2.setText(this.logic.getName(2) + " +1 correct answer!");
                 } else {
                     if (numberOfPlayer == 1)
-                        this.pointsLabel.removeAll();
+                        this.pointsLabel.setText("");
                     else
-                        this.pointsLabel2.removeAll();
+                        this.pointsLabel2.setText("");
                 }
             }
         }
@@ -420,6 +416,7 @@ public class BuzzGameGUI {
                 this.bothHere = false;
             else {
                 this.bothHere = true;
+                this.timeFliesBy.setVisible(false);
                 this.logic.setCurrentQuestion();
                 startQuestion();
             }
@@ -437,10 +434,10 @@ public class BuzzGameGUI {
         else
             icon = new ImageIcon(getClass().getResource("openingImage.jpg"));
 
-        Image image = icon.getImage().getScaledInstance(220, 180, java.awt.Image.SCALE_SMOOTH);
+        Image image = icon.getImage().getScaledInstance(220, 140, java.awt.Image.SCALE_SMOOTH);
         icon = new ImageIcon(image);
         image.flush();
         this.imageLabel.setIcon(icon);
-        this.firstPanel.add(this.imageLabel);
+        this.firstPanel.add(this.imageLabel, BorderLayout.AFTER_LAST_LINE);
     }
 }

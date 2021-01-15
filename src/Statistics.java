@@ -151,7 +151,7 @@ public abstract class Statistics {
             while ((line = reader.readLine()) != null) {
                 if (line.contains("Multiplayer"))
                     ok = true;
-                if (ok) {
+                if (ok && !(line.contains("Multiplayer"))) {
                     if (line.contains(playerName)) {
                         String[] words = line.split(" ");
                         int temp = Integer.parseInt(words[2]);
@@ -162,8 +162,8 @@ public abstract class Statistics {
                     }
                 }
             }
-            if (oldStatistics.equals(newStatistics))
-                newStatistics += "\"" + playerName + "\" has 1 wins!";
+            if (!(newStatistics.contains(playerName)))
+                newStatistics += "\n\"" + playerName + "\" has 1 wins!";
 
             FileWriter writer = new FileWriter("src/Statistics.txt");
 

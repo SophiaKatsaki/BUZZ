@@ -6,10 +6,10 @@ import java.awt.event.ActionListener;
 public class InformationGUI {
     private JFrame infoFrame;
     private JPanel infoPanel;
-    private GUILogic logic;
+    private GUIController logic;
 
     public InformationGUI() {
-        this.logic = new GUILogic();
+        this.logic = new GUIController();
 
         this.infoFrame = new JFrame("BUZZ");
         this.infoFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

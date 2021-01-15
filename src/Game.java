@@ -104,7 +104,6 @@ public class Game {
     }
 
     /**
-     *
      * @return statement gives back the information about the number of the rounds
      * whenever it gets asked.
      */
@@ -114,7 +113,6 @@ public class Game {
     }
 
     /**
-     *
      * @return statement gives back the amount of the players in the game.
      */
     public int getNumberOfPlayers () {
@@ -122,7 +120,6 @@ public class Game {
     }
 
     /**
-     *
      * @return statement gives back the answer that the user gave.
      */
 
@@ -131,7 +128,6 @@ public class Game {
     }
 
     /**
-     *
      * @return statement gives back the information about the number of the current
      * round whenever it is asked.
      */

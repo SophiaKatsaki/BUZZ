@@ -34,7 +34,7 @@ public class Question extends QA {
      * extends and randomly selects a category for the question that is made when the
      * constructor is called,while a Question object is created.
      *
-    */
+     */
 
     public Question (){
         makeCategories();

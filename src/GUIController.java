@@ -14,7 +14,7 @@ import java.util.ArrayList;
  * @author Stylianos Tozios
  */
 
-public class GUILogic {
+public class GUIController {
     private Game game;
     private Statistics statistics;
     private Player player1;
@@ -33,7 +33,7 @@ public class GUILogic {
      *
      */
 
-    public GUILogic() {
+    public GUIController() {
         this.game = new Game();
         this.statistics = new Statistics() {};
         this.player1 = new Player(1);
@@ -204,7 +204,7 @@ public class GUILogic {
      */
 
     public boolean endOfQuestions(){
-        if (this.game.getNumberOfPlayers() == 2 && game.getCurrentRound() == game.getNumberOfRounds()){
+        if (this.game.getNumberOfPlayers() == 2 && this.game.getCurrentRound() == this.game.getNumberOfRounds()){
             if ((this.player1.getCorrectAnswers() < 5  && this.player2.getCorrectAnswers() < 5)) {
                 makeQA();
 
@@ -330,10 +330,10 @@ public class GUILogic {
      * was incorrect or keep their score the same.
      *
      * @param numberOfPlayer the number that the player has.
-     * @param time is the points to the round "Stop The Watch".
+     * @param timePoints is the points to the round "Stop The Watch".
      */
 
-    public void setPoints(int numberOfPlayer, double time) {
+    public void setPoints(int numberOfPlayer, double timePoints) {
         switch (this.round.getKind()) {
             case "Correct Answer" -> {
                 if (this.answer.getCorrectAnswer()) {
@@ -347,9 +347,9 @@ public class GUILogic {
             case "Stop The Watch" -> {
                 if (this.answer.getCorrectAnswer()) {
                     if (numberOfPlayer == 1) {
-                        player1.winPoints((int)time);
+                        player1.winPoints((int)timePoints);
                     } else {
-                        this.player2.winPoints((int)time);
+                        this.player2.winPoints((int)timePoints);
                     }
                 }
             }
@@ -387,12 +387,12 @@ public class GUILogic {
                 }
             }
             case "Thermometer" -> {
-                if (numberOfPlayer == this.player1.getPlayerNumber()) {
+                if (numberOfPlayer == 1 && this.answer.getCorrectAnswer()) {
                     this.player1.increaseCorrectAnswers();
                     if (this.player1.getCorrectAnswers() == 5)
                         this.player1.winPoints(5000);
                 }
-                else {
+                else if (numberOfPlayer == 2 && this.answer.getCorrectAnswer()) {
                     this.player2.increaseCorrectAnswers();
                     if (this.player2.getCorrectAnswers() == 5)
                         this.player2.winPoints(5000);

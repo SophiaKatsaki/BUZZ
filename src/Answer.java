@@ -15,7 +15,6 @@ import java.util.Collections;
  * @author Stylianos Tozios
  */
 
-
 public class Answer extends QA {
     private String answer;
     private boolean correctAnswer;
@@ -35,7 +34,6 @@ public class Answer extends QA {
         this.fourPossibleAnswers = new ArrayList<>();
     }
 
-
     /**
      * @return if the answer is correct
      */
@@ -43,7 +41,6 @@ public class Answer extends QA {
     public boolean getCorrectAnswer () {
         return this.correctAnswer;
     }
-
 
     /**
      * This method checks if the answer that the player gave is equal to the correct
@@ -117,6 +114,7 @@ public class Answer extends QA {
     /**
      * @return the shuffled four possible answers to a question.
      */
+
     public ArrayList<String> getFourPossibleAnswers()
     {
         return this.fourPossibleAnswers;

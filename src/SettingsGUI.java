@@ -7,9 +7,9 @@ public class SettingsGUI {
     private JFrame settingsFrame;
     private JPanel settingsPanel;
     private JLabel messageLabel;
-    private GUILogic logic;
+    private GUIController logic;
 
-    public SettingsGUI(GUILogic logic) {
+    public SettingsGUI(GUIController logic) {
         this.logic = logic;
 
         this.settingsFrame = new JFrame("Let's begin!");

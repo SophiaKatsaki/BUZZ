@@ -1,5 +1,6 @@
 import org.junit.Test;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,14 +53,10 @@ public class  QuestionTest {
     }
 
     @Test
-    public void sizeOfArrayCreatedWithQuestions()
-    {
+    public void sizeOfArrayCreatedWithQuestions(){
         Question question=new Question();
         question.setRandomQuestion();
         assertEquals(36,question.questions.size());
 
     }
-
-
-
 }
