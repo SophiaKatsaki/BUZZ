@@ -167,7 +167,7 @@ public class GUIController {
 
     /**
      *This method increases the number of the current round of the object game in
-     * the GUILogic class.
+     * the GUIController class.
      */
 
     public void setCurrentRound() {

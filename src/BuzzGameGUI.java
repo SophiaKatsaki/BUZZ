@@ -37,7 +37,7 @@ public class BuzzGameGUI {
     private JLabel pointsLabel2;
     private JLabel timeFliesBy;
     private Box answerBox;
-    private GUIController logic;
+    private GUIController controller;
     private boolean bothHere = true;
     private boolean firstHere = true;
 
@@ -51,11 +51,11 @@ public class BuzzGameGUI {
      * it takes in the previous form. It sets an image to the frame which depends to the mode of
      * it. At last it calls the method startRound in order to begin the game.
      *
-     * @param logic contains the data to make the implements possible.
+     * @param controller contains the data to make the implements possible.
      */
 
-    public BuzzGameGUI(GUIController logic) {
-        this.logic = logic;
+    public BuzzGameGUI(GUIController controller) {
+        this.controller = controller;
 
         this.mainFrame = new JFrame("BUZZ");
         this.mainFrame.setVisible(true);
@@ -78,8 +78,8 @@ public class BuzzGameGUI {
         this.buttonA.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (logic.getNumberOfPlayers() == 1)
-                    showPoints(1, logic.checkCorrectAnswer(1, 1));
+                if (controller.getNumberOfPlayers() == 1)
+                    showPoints(1, controller.checkCorrectAnswer(1, 1));
 
             }
         });
@@ -88,8 +88,8 @@ public class BuzzGameGUI {
         this.buttonB.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (logic.getNumberOfPlayers() == 1)
-                    showPoints(1, logic.checkCorrectAnswer(1, 2));
+                if (controller.getNumberOfPlayers() == 1)
+                    showPoints(1, controller.checkCorrectAnswer(1, 2));
             }
         });
 
@@ -97,8 +97,8 @@ public class BuzzGameGUI {
         this.buttonC.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (logic.getNumberOfPlayers() == 1)
-                    showPoints(1, logic.checkCorrectAnswer(1, 3));
+                if (controller.getNumberOfPlayers() == 1)
+                    showPoints(1, controller.checkCorrectAnswer(1, 3));
             }
         });
 
@@ -106,8 +106,8 @@ public class BuzzGameGUI {
         this.buttonD.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (logic.getNumberOfPlayers() == 1)
-                    showPoints(1, logic.checkCorrectAnswer(1, 4));
+                if (controller.getNumberOfPlayers() == 1)
+                    showPoints(1, controller.checkCorrectAnswer(1, 4));
             }
         });
 
@@ -127,32 +127,32 @@ public class BuzzGameGUI {
             public void keyTyped(KeyEvent e) {
                 super.keyTyped(e);
                 if (e.getKeyChar() == '1') {
-                    if (logic.getNumberOfPlayers() == 2)
-                        showPoints(1, logic.checkCorrectAnswer(1, 1));
+                    if (controller.getNumberOfPlayers() == 2)
+                        showPoints(1, controller.checkCorrectAnswer(1, 1));
                     buttonA.doClick();
-                } else if (e.getKeyChar() == '6' && logic.getNumberOfPlayers() == 2) {
-                    showPoints(2, logic.checkCorrectAnswer(2, 6));
+                } else if (e.getKeyChar() == '6' && controller.getNumberOfPlayers() == 2) {
+                    showPoints(2, controller.checkCorrectAnswer(2, 6));
                     buttonA.doClick();
                 } else if (e.getKeyChar() == '2') {
-                    if (logic.getNumberOfPlayers() == 2)
-                        showPoints(1, logic.checkCorrectAnswer(1, 2));
+                    if (controller.getNumberOfPlayers() == 2)
+                        showPoints(1, controller.checkCorrectAnswer(1, 2));
                     buttonB.doClick();
-                } else if (e.getKeyChar() == '7' && logic.getNumberOfPlayers() == 2) {
-                    showPoints(2, logic.checkCorrectAnswer(2, 7));
+                } else if (e.getKeyChar() == '7' && controller.getNumberOfPlayers() == 2) {
+                    showPoints(2, controller.checkCorrectAnswer(2, 7));
                     buttonB.doClick();
                 } else if (e.getKeyChar() == '3') {
-                    if (logic.getNumberOfPlayers() == 2)
-                        showPoints(1, logic.checkCorrectAnswer(1, 3));
+                    if (controller.getNumberOfPlayers() == 2)
+                        showPoints(1, controller.checkCorrectAnswer(1, 3));
                     buttonC.doClick();
-                } else if (e.getKeyChar() == '8' && logic.getNumberOfPlayers() == 2) {
-                    showPoints(2, logic.checkCorrectAnswer(2, 8));
+                } else if (e.getKeyChar() == '8' && controller.getNumberOfPlayers() == 2) {
+                    showPoints(2, controller.checkCorrectAnswer(2, 8));
                     buttonC.doClick();
                 } else if (e.getKeyChar() == '4') {
-                    if (logic.getNumberOfPlayers() == 2)
-                        showPoints(1, logic.checkCorrectAnswer(1, 4));
+                    if (controller.getNumberOfPlayers() == 2)
+                        showPoints(1, controller.checkCorrectAnswer(1, 4));
                     buttonD.doClick();
-                } else if (e.getKeyChar() == '9' && logic.getNumberOfPlayers() == 2) {
-                    showPoints(2, logic.checkCorrectAnswer(2, 9));
+                } else if (e.getKeyChar() == '9' && controller.getNumberOfPlayers() == 2) {
+                    showPoints(2, controller.checkCorrectAnswer(2, 9));
                     buttonD.doClick();
                 }
             }
@@ -176,7 +176,7 @@ public class BuzzGameGUI {
         this.thirdPanel.add(box2);
 
         ImageIcon icon2;
-        if (this.logic.getNumberOfPlayers() == 1)
+        if (this.controller.getNumberOfPlayers() == 1)
             icon2 = new ImageIcon(getClass().getResource("soloMode.jpg"));
         else
             icon2 = new ImageIcon(getClass().getResource("gameWithAFriend.jpg"));
@@ -222,8 +222,8 @@ public class BuzzGameGUI {
 
     public void setImage() {
         ImageIcon icon;
-        if(!this.logic.getImage().equals(""))
-            icon = new ImageIcon(getClass().getResource(this.logic.getImage()));
+        if(!this.controller.getImage().equals(""))
+            icon = new ImageIcon(getClass().getResource(this.controller.getImage()));
         else
             icon = new ImageIcon(getClass().getResource("openingImage.jpg"));
 
@@ -244,40 +244,40 @@ public class BuzzGameGUI {
      */
 
     public void startRound() {
-        if (this.logic.endOfRounds()) {
-            if (logic.getNumberOfPlayers() == 1) {
+        if (this.controller.endOfRounds()) {
+            if (this.controller.getNumberOfPlayers() == 1) {
                 JOptionPane.showMessageDialog(mainFrame,
-                        logic.getName(1) + ", you got " +
-                                logic.getEndOfRoundPoints(1) + " points.",
+                        controller.getName(1) + ", you got " +
+                                controller.getEndOfRoundPoints(1) + " points.",
                         "The game is over.",
                         JOptionPane.INFORMATION_MESSAGE);
-                logic.refreshStatistics(1, 1);
+                this.controller.refreshStatistics(1, 1);
             } else {
                 JOptionPane.showMessageDialog(mainFrame,
-                        logic.getName(1) + ", you got " + logic.getEndOfRoundPoints(1)
-                                + " points!\n" + logic.getName(2) + ", you got "
-                                + logic.getEndOfRoundPoints(2) + " points!",
+                        controller.getName(1) + ", you got " +
+                                controller.getEndOfRoundPoints(1)
+                                + " points!\n" + controller.getName(2) + ", you got "
+                                + controller.getEndOfRoundPoints(2) + " points!",
                         "The game is over.",
                         JOptionPane.INFORMATION_MESSAGE);
 
                 JOptionPane.showMessageDialog(mainFrame,
-                        logic.getWinner(),
+                        controller.getWinner(),
                         "See you next time!",
                         JOptionPane.INFORMATION_MESSAGE);
             }
-            //this.logic = new GUILogic();
             this.mainFrame.dispose();
         }
         else {
-            if (this.logic.isLastRound()) {
+            if (this.controller.isLastRound()) {
                 JOptionPane.showMessageDialog(mainFrame,
-                        logic.getKind(),
+                        controller.getKind(),
                         "Last Round",
                         JOptionPane.INFORMATION_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(mainFrame,
-                        logic.getKind(),
-                        "Round " + logic.getCurrentRound(),
+                        controller.getKind(),
+                        "Round " + controller.getCurrentRound(),
                         JOptionPane.INFORMATION_MESSAGE);
             }
 
@@ -295,22 +295,22 @@ public class BuzzGameGUI {
      */
 
     public void startQuestion() {
-        if (this.logic.endOfQuestions()) {
-            if (this.logic.getNumberOfPlayers() == 1)
+        if (this.controller.endOfQuestions()) {
+            if (this.controller.getNumberOfPlayers() == 1)
                 JOptionPane.showMessageDialog(mainFrame,
-                        logic.getName(1) + ", you have "
-                                + logic.getEndOfRoundPoints(1) + " points.",
+                        controller.getName(1) + ", you have "
+                                + controller.getEndOfRoundPoints(1) + " points.",
                         "End Of The Round",
                         JOptionPane.INFORMATION_MESSAGE);
             else
                 JOptionPane.showMessageDialog(mainFrame,
-                        logic.getName(1) + ", you have "
-                                + logic.getEndOfRoundPoints(1) + " points.\n"
-                                + logic.getName(2) + ", you have "
-                                + logic.getEndOfRoundPoints(2) + " points.\n",
+                        controller.getName(1) + ", you have "
+                                + controller.getEndOfRoundPoints(1) + " points.\n"
+                                + controller.getName(2) + ", you have "
+                                + controller.getEndOfRoundPoints(2) + " points.\n",
                         "End Of The Round",
                         JOptionPane.INFORMATION_MESSAGE);
-            this.logic.setCurrentRound();
+            this.controller.setCurrentRound();
             startRound();
         }
         else {
@@ -318,50 +318,50 @@ public class BuzzGameGUI {
             this.mainPanel.setVisible(false);
             JOptionPane.showMessageDialog(mainFrame,
                     "Select an answer: ",
-                    "Question " + logic.getCurrentQuestion(),
+                    "Question " + controller.getCurrentQuestion(),
                     JOptionPane.INFORMATION_MESSAGE);
-            if (this.logic.getKind().equals("Bet")) {
+            if (this.controller.getKind().equals("Bet")) {
                 Object[] betPoints = {250, 500, 750, 1000};
                 int temp = JOptionPane.CLOSED_OPTION;
 
-                if (logic.getNumberOfPlayers() == 1) {
+                if (controller.getNumberOfPlayers() == 1) {
                     while (temp == JOptionPane.CLOSED_OPTION) {
                         temp = JOptionPane.showOptionDialog(mainFrame,
-                                logic.getName(1) + ": Bet 250, 500, 750 or 1000",
-                                "\"" + logic.getCategory() + "\"",
+                                controller.getName(1) + ": Bet 250, 500, 750 or 1000",
+                                "\"" + controller.getCategory() + "\"",
                                 JOptionPane.YES_NO_CANCEL_OPTION,
                                 JOptionPane.QUESTION_MESSAGE,
                                 null,
                                 betPoints,
                                 betPoints[3]);
                     }
-                    this.logic.setBets(1, (int) betPoints[temp]);
+                    this.controller.setBets(1, (int) betPoints[temp]);
                 }
                 else {
                     while (temp == JOptionPane.CLOSED_OPTION) {
                         temp = JOptionPane.showOptionDialog(mainFrame,
-                                logic.getName(1) + ": Bet 250, 500, 750 or 1000",
-                                "\"" + logic.getCategory() + "\"",
+                                controller.getName(1) + ": Bet 250, 500, 750 or 1000",
+                                "\"" + controller.getCategory() + "\"",
                                 JOptionPane.YES_NO_CANCEL_OPTION,
                                 JOptionPane.QUESTION_MESSAGE,
                                 null,
                                 betPoints,
                                 betPoints[3]);
                     }
-                    this.logic.setBets(1, (int) betPoints[temp]);
+                    this.controller.setBets(1, (int) betPoints[temp]);
 
                     temp = JOptionPane.CLOSED_OPTION;
                     while (temp == JOptionPane.CLOSED_OPTION) {
                         temp = JOptionPane.showOptionDialog(mainFrame,
-                                logic.getName(2) + ": Bet 250, 500, 750 or 1000",
-                                "\"" + logic.getCategory() + "\"",
+                                controller.getName(2) + ": Bet 250, 500, 750 or 1000",
+                                "\"" + controller.getCategory() + "\"",
                                 JOptionPane.YES_NO_CANCEL_OPTION,
                                 JOptionPane.QUESTION_MESSAGE,
                                 null,
                                 betPoints,
                                 betPoints[3]);
                     }
-                    this.logic.setBets(2, (int) betPoints[temp]);
+                    this.controller.setBets(2, (int) betPoints[temp]);
                 }
             }
             this.mainPanel.setEnabled(true);
@@ -378,17 +378,17 @@ public class BuzzGameGUI {
      */
 
     public void showAnswers() {
-        this.questionLabel.setText(this.logic.getQuestion());
+        this.questionLabel.setText(this.controller.getQuestion());
         setImage();
 
         this.answerBox.removeAll();
-        this.answerBox.add(new JLabel(this.logic.getAPossibleAnswer(0)));
+        this.answerBox.add(new JLabel(this.controller.getAPossibleAnswer(0)));
         this.answerBox.add(Box.createVerticalStrut(20));
-        this.answerBox.add(new JLabel(this.logic.getAPossibleAnswer(1)));
+        this.answerBox.add(new JLabel(this.controller.getAPossibleAnswer(1)));
         this.answerBox.add(Box.createVerticalStrut(20));
-        this.answerBox.add(new JLabel(this.logic.getAPossibleAnswer(2)));
+        this.answerBox.add(new JLabel(this.controller.getAPossibleAnswer(2)));
         this.answerBox.add(Box.createVerticalStrut(20));
-        this.answerBox.add(new JLabel(this.logic.getAPossibleAnswer(3)));
+        this.answerBox.add(new JLabel(this.controller.getAPossibleAnswer(3)));
         this.secondPanel.add(this.answerBox, BorderLayout.AFTER_LAST_LINE);
 
         Timer timer = new Timer(100, new ActionListener() {
@@ -403,7 +403,7 @@ public class BuzzGameGUI {
             }
         });
         timer.start();
-        this.timeFliesBy.setVisible(this.logic.getKind().equals("Stop The Watch"));
+        this.timeFliesBy.setVisible(this.controller.getKind().equals("Stop The Watch"));
     }
 
     /**
@@ -416,17 +416,17 @@ public class BuzzGameGUI {
      */
 
     public void showPoints(int numberOfPlayer, boolean correctAnswer) {
-        this.logic.setPoints(numberOfPlayer, Integer.parseInt(timeFliesBy.getText())*0.2);
-        if (this.logic.getNumberOfPlayers() == 1)
+        this.controller.setPoints(numberOfPlayer, Integer.parseInt(timeFliesBy.getText())*0.2);
+        if (this.controller.getNumberOfPlayers() == 1)
             this.timeFliesBy.setVisible(false);
 
-        switch (this.logic.getKind()) {
+        switch (this.controller.getKind()) {
             case "Correct Answer" -> {
                 if (correctAnswer) {
                     if (numberOfPlayer == 1)
-                        this.pointsLabel.setText(this.logic.getName(1) + " +1000");
+                        this.pointsLabel.setText(this.controller.getName(1) + " +1000");
                     else
-                        this.pointsLabel2.setText(this.logic.getName(2) + " +1000");
+                        this.pointsLabel2.setText(this.controller.getName(2) + " +1000");
                 } else {
                     if (numberOfPlayer == 1)
                         this.pointsLabel.setText("");
@@ -437,9 +437,9 @@ public class BuzzGameGUI {
             case "Stop The Watch" -> {
                 if (correctAnswer) {
                     if (numberOfPlayer == 1)
-                        this.pointsLabel.setText(this.logic.getName(1) + " + The left time X 0.2");
+                        this.pointsLabel.setText(this.controller.getName(1) + " + The left time X 0.2");
                     else
-                        this.pointsLabel2.setText(this.logic.getName(2) + " + The left time X 0.2");
+                        this.pointsLabel2.setText(this.controller.getName(2) + " + The left time X 0.2");
                 } else {
                     if (numberOfPlayer == 1)
                         this.pointsLabel.setText("");
@@ -450,35 +450,35 @@ public class BuzzGameGUI {
             case "Bet" -> {
                 if (correctAnswer) {
                     if (numberOfPlayer == 1) {
-                        this.pointsLabel.setText(this.logic.getName(1) + " +"
-                                + this.logic.getBetPoints(1));
+                        this.pointsLabel.setText(this.controller.getName(1) + " +"
+                                + this.controller.getBetPoints(1));
                     } else {
-                        this.pointsLabel2.setText(logic.getName(2) + " +"
-                                + logic.getBetPoints(2));
+                        this.pointsLabel2.setText(controller.getName(2) + " +"
+                                + controller.getBetPoints(2));
                     }
                     this.pointsLabel.setVisible(true);
                 } else {
                     if (numberOfPlayer == 1)
-                        this.pointsLabel.setText(logic.getName(1) + " -"
-                                + logic.getBetPoints(1));
+                        this.pointsLabel.setText(controller.getName(1) + " -"
+                                + controller.getBetPoints(1));
                     else
-                        this.pointsLabel2.setText(logic.getName(2) + " -"
-                                + logic.getBetPoints(2));
+                        this.pointsLabel2.setText(controller.getName(2) + " -"
+                                + controller.getBetPoints(2));
                 }
             }
             case "Quick Answer" -> {
                 if (correctAnswer && this.firstHere) {
                     if (numberOfPlayer == 1)
-                        this.pointsLabel.setText(this.logic.getName(1) + " +1000");
+                        this.pointsLabel.setText(this.controller.getName(1) + " +1000");
                     else
-                        this.pointsLabel2.setText(this.logic.getName(2) + " +1000");
+                        this.pointsLabel2.setText(this.controller.getName(2) + " +1000");
                     this.firstHere = false;
                 }
                 else if (correctAnswer){
                     if (numberOfPlayer == 1)
-                        this.pointsLabel.setText(this.logic.getName(1) + " +500");
+                        this.pointsLabel.setText(this.controller.getName(1) + " +500");
                     else
-                        this.pointsLabel2.setText(this.logic.getName(2) + " +500");
+                        this.pointsLabel2.setText(this.controller.getName(2) + " +500");
                     this.firstHere = true;
                 }
                 else
@@ -487,9 +487,9 @@ public class BuzzGameGUI {
             case "Thermometer" -> {
                 if (correctAnswer) {
                     if (numberOfPlayer == 1)
-                        this.pointsLabel.setText(this.logic.getName(1) + " +1 correct answer!");
+                        this.pointsLabel.setText(this.controller.getName(1) + " +1 correct answer!");
                     else
-                        this.pointsLabel2.setText(this.logic.getName(2) + " +1 correct answer!");
+                        this.pointsLabel2.setText(this.controller.getName(2) + " +1 correct answer!");
                 } else {
                     if (numberOfPlayer == 1)
                         this.pointsLabel.setText("");
@@ -499,18 +499,18 @@ public class BuzzGameGUI {
             }
         }
 
-        if (this.logic.getNumberOfPlayers() == 2) {
+        if (this.controller.getNumberOfPlayers() == 2) {
             if (this.bothHere)
                 this.bothHere = false;
             else {
                 this.bothHere = true;
                 this.timeFliesBy.setVisible(false);
-                this.logic.setCurrentQuestion();
+                this.controller.setCurrentQuestion();
                 startQuestion();
             }
         }
         else {
-            this.logic.setCurrentQuestion();
+            this.controller.setCurrentQuestion();
             startQuestion();
         }
     }

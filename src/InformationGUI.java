@@ -19,10 +19,10 @@ import java.awt.event.ActionListener;
 public class InformationGUI {
     private JFrame infoFrame;
     private JPanel infoPanel;
-    private GUIController logic;
+    private GUIController controller;
 
     public InformationGUI() {
-        this.logic = new GUIController();
+        this.controller = new GUIController();
 
         this.infoFrame = new JFrame("BUZZ");
         this.infoFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -69,7 +69,7 @@ public class InformationGUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 newGame.setEnabled(false);
-                SettingsGUI settingsGUI = new SettingsGUI(logic);
+                SettingsGUI settingsGUI = new SettingsGUI(controller);
             }
         });
         this.infoPanel.add(newGame, BorderLayout.PAGE_END);
@@ -93,12 +93,12 @@ public class InformationGUI {
                 switch (temp){
                     case 0 ->
                         JOptionPane.showMessageDialog(infoFrame,
-                                logic.getStatistics(temp+1),
+                                controller.getStatistics(temp+1),
                                 "Solo Game",
                                 JOptionPane.INFORMATION_MESSAGE);
                     case 1 ->
                         JOptionPane.showMessageDialog(infoFrame,
-                                logic.getStatistics(temp+1),
+                                controller.getStatistics(temp+1),
                                 "Game With A Friend",
                                 JOptionPane.INFORMATION_MESSAGE);
                 }

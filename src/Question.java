@@ -109,7 +109,6 @@ public class Question extends QA {
         numberOfUsedQuestions[this.randomNumberOfCategory]++;
 
         Random rand = new Random();
-
         boolean isUsed;
 
         do {

@@ -164,9 +164,8 @@ public class Player {
 
     public void losePoints(double points) {
         this.points -= points;
-        if (this.points < 0){
+        if (this.points < 0)
             this.points = 0;
-        }
     }
 
     /**
@@ -175,8 +174,7 @@ public class Player {
      *  round starts,the player has not given any (correct) answers for the current round.
      */
 
-    public void initializeCorrectAnswersOfRound()
-    {
+    public void initializeCorrectAnswersOfRound(){
         this.correctAnswers=0;
     }
 
@@ -190,8 +188,7 @@ public class Player {
      * will be called, in order to set the correct answers of the new round as zero again.
      */
 
-    public void increaseCorrectAnswers()
-    {
+    public void increaseCorrectAnswers(){
         this.correctAnswers++;
     }
 
@@ -200,8 +197,7 @@ public class Player {
      *  a round, that will be used in the Thermometer round.
      */
 
-    public int getCorrectAnswers()
-    {
+    public int getCorrectAnswers(){
         return this.correctAnswers;
     }
 }
