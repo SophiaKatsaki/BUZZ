@@ -1,14 +1,13 @@
-
 import java.util.ArrayList;
 import java.util.Collections;
 
 /**
- * This class represents an answer to a question of the game.It extends the abstract
- * class 'QA'.It stores a String that is the correct possible answer,a boolean that is
- * true if the answer the player gave is correct and false if it is wrong and an
- * arraylist that holds the four possible answers of each question.The answer class is
+ * This class represents an answer to a question of the game. It extends the abstract
+ * class 'QA. It stores a String that is the correct possible answer, a boolean that is
+ * true if the answer that the player gave is correct and false if it is wrong and an
+ * arraylist that holds the four possible answers of each question. The answer class is
  * responsible for setting and for showing the possible answers of the question to the
- * player and set the answer the player gave as correct or wrong in order to calculate
+ * player and set the answer that the player gave as correct or wrong in order to calculate
  * the points that they deserve.
  *
  * @author Sophia Katsaki
@@ -35,7 +34,7 @@ public class Answer extends QA {
     }
 
     /**
-     * @return if the answer is correct
+     * @return true if the answer is correct and false if it is not.
      */
 
     public boolean getCorrectAnswer () {
@@ -45,15 +44,15 @@ public class Answer extends QA {
     /**
      * This method checks if the answer that the player gave is equal to the correct
      * answer of the question that is held in an arraylist with all the possible
-     * answers to this
-     * question.
+     * answers to this question. It sets the boolean to true or false whether if the
+     * previous state was right or it was not.
      *
      * @param answerOfPlayer Answer from 1 to 4 (keys that the first player uses to
-     *                       answer or 6 to 9 (the keys of the second one) that the
+     *                       answer) or 6 to 9 (the keys of the second one) that the
      *                       player pressed.
-     *
-     * @param numberOfRandomQuestionInArray the number of the question chosen randomly,in the arraylist
-     *                                      that holds all the questions
+     * @param numberOfRandomQuestionInArray the number of the question chosen randomly,
+     *                                      in the arraylist that holds all the
+     *                                      questions.
      */
 
     public void setCorrectAnswer (int answerOfPlayer, int numberOfRandomQuestionInArray) {
@@ -63,12 +62,12 @@ public class Answer extends QA {
             answerOfPlayer -= 5;
         }
 
-        this.correctAnswer= this.fourPossibleAnswers.get(answerOfPlayer - 1).equals(this.answer);
+        this.correctAnswer = this.fourPossibleAnswers.get(answerOfPlayer - 1).equals(this.answer);
     }
 
     /**
      * This method sets the four possible answers to a question in the arraylist and
-     * then it shuffles them,in order to appear in a random order everytime the
+     * then it shuffles them in order to appear in a random order everytime the
      * question is used.
      *
      * @param numberOfQuestionInArray the number of the question chosen in the arraylist
@@ -89,7 +88,8 @@ public class Answer extends QA {
 
     /**
      * This method shows the answers to a question that is chosen randomly in random
-     * order everytime on screen.
+     * order everytime on screen. It is used when the game is played without graphical
+     * interface.
      *
      * @param number is the number of each player that been used in order to show the
      *               keys that they can use.

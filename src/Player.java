@@ -11,7 +11,6 @@ import java.util.Scanner;
  * @author Stylianos Tozios
  */
 
-
 public class Player {
     private int playerNumber;
     private String name;
@@ -205,5 +204,4 @@ public class Player {
     {
         return this.correctAnswers;
     }
-
 }

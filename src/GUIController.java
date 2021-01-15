@@ -1,13 +1,13 @@
 import java.util.ArrayList;
 
 /**
- * This class is the logic before the main interface with the user(s).
+ * This class is the controller before the main interface with the user(s).
  *
- * This class represents the logic of the game. It is used in the classes that
- * implement the graphical user interface. It stores an object of the class Game,
- * a Statistics one, two objects of the class Player, one of the class Round, Question,
- * Answer and a boolean variable that holds the value of true when one of the players
- * in "Game With a Friend" / "Multiplayer" mode is the first one to answer to a
+ * This class makes possible that the graphics use the logic of the game. It is used in
+ * the classes that implement the graphical user interface. It stores an object of the
+ * class Game, a Statistics one, two objects of the class Player, one of the class Round,
+ * Question, Answer and a boolean variable that holds the value of true when one of the
+ * players in "Game With a Friend" / "Multiplayer" mode is the first one to answer to a
  * question.
  *
  * @author Sophia Katsaki
@@ -27,7 +27,7 @@ public class GUIController {
     /**
      * Constructor
      *
-     * The constructor of the GUILogic class creates a new game,by creating the
+     * The constructor of the GUIController class creates a new game, by creating the
      * object of the game it stores,as well as a new statistics object.Two players
      * are created,the first one with the number 1 and the second with the number 2.
      *
@@ -192,13 +192,12 @@ public class GUIController {
 
     /**
      * This method checks whether the number of the current question is bigger than
-     * the number of questions that were set for this round.If it is,the method
-     * returns true and if it is not,it returns false.If it is not the end of
+     * the number of questions that were set for this round. If it is,the method
+     * returns true and if it is not, it returns false. If it is not the end of
      * questions,then the question and answer objects are initialized properly
-     * in order to make a new question for the player(s).If the mode is
-     * "Game With a Friend" / "Multiplayer" and is is the last round and none
-     * of the players have reached the limit of 5 correct answers,then another
-     * question is created.
+     * from the method makeQA. If the mode is "Game With a Friend" / "Multiplayer"
+     * and is the last round and none of the players have reached the limit of 5 correct
+     * answers, then another question is created with the method makeQA.
      *
      * @return true if the questions should end in this round and false otherwise.
      */
@@ -223,6 +222,12 @@ public class GUIController {
             }
         }
     }
+
+    /**
+     * This method creates a new question and a new answer objects from their classes. It also
+     * sets a random question and its number and its image (if there are one). At last, it set
+     * the four possible answers to the question and randomizes them.
+     */
 
     public void makeQA(){
         this.question = new Question();

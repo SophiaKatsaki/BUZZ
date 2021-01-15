@@ -3,6 +3,19 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * This class represents the welcoming graphical interface. It was a frame with an image and two
+ * buttons. One for starting the game called "New Game" and one for the statistics called "Statistics".
+ * The first one can be clicked only once and then the class passes the graphical to the settingsGUI
+ * in order to get the game started. The second button can be clicked anytime the player wants to see
+ * the statistics to any mode (that is possible because the frame does not close when the game starts).
+ * The class has also an object of the GUIController in order to be able to connect the logic to the
+ * graphics.
+ *
+ * @author Sophia Katsaki
+ * @author Stylianos Tozios
+ */
+
 public class InformationGUI {
     private JFrame infoFrame;
     private JPanel infoPanel;
@@ -92,10 +105,5 @@ public class InformationGUI {
             }
         });
         this.infoPanel.add(statistics, BorderLayout.PAGE_END);
-    }
-
-    public static void main(String[] args) {
-        InformationGUI BUZZ = new InformationGUI();
-        BUZZ.start();
     }
 }

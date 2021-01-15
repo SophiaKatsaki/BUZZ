@@ -17,7 +17,6 @@ import java.util.Random;
  * @author Stylianos Tozios
  */
 
-
 public class Question extends QA {
     private static ArrayList<String> usedQuestions = new ArrayList<>();
     private static int[] numberOfUsedQuestions = {0, 0, 0, 0, 0};
@@ -64,7 +63,6 @@ public class Question extends QA {
     }
 
     /**
-     *
      * @return the String of the question that the player sees.
      */
 

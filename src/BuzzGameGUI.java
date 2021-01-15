@@ -5,6 +5,22 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+/**
+ * This class is the main graphical interface to the game. It is the game when it has all
+ * the important data from the setting point. It has one frame that will hold the game
+ * in the whole time until it ends. It has a panel that contains three sub panels and all
+ * of them are used in order to organize the frame and the things that it will present. It
+ * contains the four buttons for the four possible answers that are existing for every
+ * question. It also has five labels for the images, the questions, the points to each player
+ * and the timer to the kind of round "Stop The Watch". At last, it has a box that organizes
+ * the four possible answers, the controller which makes possible the implement of the graphics
+ * and the logic and two booleans that is used to the "Multiplayer" / "Game With A Friend" mode
+ * and "Quick Answer" kind of round.
+ *
+ * @author Sophia Katsaki
+ * @author Stylianos Tozios
+ */
+
 public class BuzzGameGUI {
     private JFrame mainFrame;
     private JPanel mainPanel;
@@ -24,6 +40,19 @@ public class BuzzGameGUI {
     private GUIController logic;
     private boolean bothHere = true;
     private boolean firstHere = true;
+
+    /**
+     * Constructor
+     *
+     * The constructor sets the main frame and puts an image to it. It also sets the buttons
+     * and adds to them actionListeners and keyListeners in order to be used properly. It calls
+     * a method in order to be set the main panel in a right way. It organizes all the containers
+     * with the help of the layouts. It sets the labels and the controller with all the data that
+     * it takes in the previous form. It sets an image to the frame which depends to the mode of
+     * it. At last it calls the method startRound in order to begin the game.
+     *
+     * @param logic contains the data to make the implements possible.
+     */
 
     public BuzzGameGUI(GUIController logic) {
         this.logic = logic;
@@ -159,6 +188,11 @@ public class BuzzGameGUI {
         startRound();
     }
 
+    /**
+     * This method organizes the main panel (which has a gridLayout) to the three sub
+     * panels and organizes them too.
+     */
+
     public void setMainPanel() {
         this.firstPanel = new JPanel(new FlowLayout(FlowLayout.LEADING));
         this.firstPanel.setBackground(Color.YELLOW);
@@ -179,6 +213,35 @@ public class BuzzGameGUI {
         this.thirdPanel.setBackground(Color.WHITE);
         this.mainPanel.add(this.thirdPanel);
     }
+
+    /**
+     * This method is responsible to set and to change the image when a question has one
+     * or if it does not have then it puts an image that was chosen to be as a default
+     * image.
+     */
+
+    public void setImage() {
+        ImageIcon icon;
+        if(!this.logic.getImage().equals(""))
+            icon = new ImageIcon(getClass().getResource(this.logic.getImage()));
+        else
+            icon = new ImageIcon(getClass().getResource("openingImage.jpg"));
+
+        Image image = icon.getImage().getScaledInstance(220, 140, java.awt.Image.SCALE_SMOOTH);
+        icon = new ImageIcon(image);
+        image.flush();
+        this.imageLabel.setIcon(icon);
+        this.firstPanel.add(this.imageLabel, BorderLayout.AFTER_LAST_LINE);
+    }
+
+    /**
+     * This method starts the round and the main game in general. It checks if there exists
+     * more rounds in order to continue the game and if there are not it ends it by disposing
+     * the main frame after it informs the user(s)/ player(s) that the game is over. If there
+     * are only one more round it informs them that they will play the last round. After it
+     * tells in which round they are, it calls the method startQuestion for the starting
+     * part of the round.
+     */
 
     public void startRound() {
         if (this.logic.endOfRounds()) {
@@ -221,6 +284,15 @@ public class BuzzGameGUI {
             startQuestion();
         }
     }
+
+    /**
+     * This method starts a question after it checked that there exist more question to
+     * the round they are. If there are not any, it informs the user(s)/ player(s) about
+     * their current score and continues with the next round by calling the method startRound.
+     * If there are more questions it shows the possible answers to them by calling the method
+     * showAnswers, but firstly it checks if the kind of round is "Bet" and if so, it gets
+     * from the player/s the points that they bet.
+     */
 
     public void startQuestion() {
         if (this.logic.endOfQuestions()) {
@@ -298,6 +370,13 @@ public class BuzzGameGUI {
         }
     }
 
+    /**
+     * This method reset the texts to the answerBox that exists in the secondPanel and makes
+     * possible to the player/s to see what are the answers to the the random question. It
+     * also checks if the kind of the round is "Stop The Watch" and if so, it makes visible
+     * the timer that counts for 5000 milliseconds to 0.
+     */
+
     public void showAnswers() {
         this.questionLabel.setText(this.logic.getQuestion());
         setImage();
@@ -326,6 +405,15 @@ public class BuzzGameGUI {
         timer.start();
         this.timeFliesBy.setVisible(this.logic.getKind().equals("Stop The Watch"));
     }
+
+    /**
+     * This method shows the points or the correct answer depending on the kind of round when
+     * a button from a player/s is pressed.
+     *
+     * @param numberOfPlayer is the unique number that the player that pressed the key has.
+     * @param correctAnswer is true if the key that the player pressed is the correct answer
+     *                      to the question and false if it is not.
+     */
 
     public void showPoints(int numberOfPlayer, boolean correctAnswer) {
         this.logic.setPoints(numberOfPlayer, Integer.parseInt(timeFliesBy.getText())*0.2);
@@ -425,19 +513,5 @@ public class BuzzGameGUI {
             this.logic.setCurrentQuestion();
             startQuestion();
         }
-    }
-
-    public void setImage() {
-        ImageIcon icon;
-        if(!this.logic.getImage().equals(""))
-            icon = new ImageIcon(getClass().getResource(this.logic.getImage()));
-        else
-            icon = new ImageIcon(getClass().getResource("openingImage.jpg"));
-
-        Image image = icon.getImage().getScaledInstance(220, 140, java.awt.Image.SCALE_SMOOTH);
-        icon = new ImageIcon(image);
-        image.flush();
-        this.imageLabel.setIcon(icon);
-        this.firstPanel.add(this.imageLabel, BorderLayout.AFTER_LAST_LINE);
     }
 }

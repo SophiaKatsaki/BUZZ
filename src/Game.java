@@ -22,7 +22,7 @@ public class Game {
      * Constructor
      *
      * The constructor initializes the current round to number one, that is, the first
-     * round.
+     * round of the game.
      */
 
     public Game () {
@@ -115,6 +115,7 @@ public class Game {
     /**
      * @return statement gives back the amount of the players in the game.
      */
+
     public int getNumberOfPlayers () {
         return this.numberOfPlayers;
     }
