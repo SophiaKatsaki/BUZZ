@@ -117,7 +117,7 @@ public class Game {
      */
 
     public int getNumberOfPlayers () {
-        return this.numberOfPlayers;
+        return numberOfPlayers;
     }
 
     /**

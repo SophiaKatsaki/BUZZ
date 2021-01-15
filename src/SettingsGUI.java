@@ -57,13 +57,10 @@ public class SettingsGUI {
         setNameOfPlayer();
     }
 
-
     /**
-     *
      * This method sets the number of players to either 1 or 2,
      * depending on what the user chose as their desired mode
      * of game.
-     *
      */
 
     public void setNumberOfPlayers() {
@@ -83,9 +80,7 @@ public class SettingsGUI {
         this.controller.setMode(temp+1);
     }
 
-
     /**
-     *
      * This method lets the player(s) enter their names.If it is solo mode,
      * the player just inputs their name.They are also informed that they
      * can play with their mouse by clicking the available buttons to answer
@@ -93,7 +88,6 @@ public class SettingsGUI {
      * enter their names and are then informed that the only way to play in this
      * mode is by pressing the keys 1,2,3,4(first player) and 6,7,8,9(second
      * player).
-     *
      */
 
     public void setNameOfPlayer() {
@@ -165,13 +159,11 @@ public class SettingsGUI {
     }
 
     /**
-     *
      * This method sets the number of rounds the game will have.Right away
      * after the player(s) have entered their name and have been informed about
      * the way they are going to play, it is time for them to chose whether
      * they want to choose their desired rounds(1 to 10) or to let the game
      * decide randomly for them(again 1 to 10 rounds).
-     *
      */
 
     public void setNumberOfRounds() {
