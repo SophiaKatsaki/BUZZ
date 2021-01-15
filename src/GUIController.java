@@ -27,7 +27,7 @@ public class GUIController {
     /**
      * Constructor
      *
-     * The constructor of the GUIController class creates a new game, by creating the
+     * The constructor of the GUIController class starts a new game, by creating the
      * object of the game it stores,as well as a new statistics object.Two players
      * are created,the first one with the number 1 and the second with the number 2.
      *

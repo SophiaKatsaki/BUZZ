@@ -215,9 +215,9 @@ public class BuzzGameGUI {
     }
 
     /**
-     * This method is responsible to set and to change the image when a question has one
-     * or if it does not have then it puts an image that was chosen to be as a default
-     * image.
+     * This method is responsible to set and to change the images. When the current question
+     * is an image question, it sets the proper image.When it is not,it puts an image
+     * that was chosen as a default one(the one that is also used as an opening image).
      */
 
     public void setImage() {
@@ -235,8 +235,8 @@ public class BuzzGameGUI {
     }
 
     /**
-     * This method starts the round and the main game in general. It checks if there exists
-     * more rounds in order to continue the game and if there are not it ends it by disposing
+     * This method starts the round and the main game in general. It checks if there are
+     * more rounds in order to continue the game and if there are not, it ends it by disposing
      * the main frame after it informs the user(s)/ player(s) that the game is over. If there
      * are only one more round it informs them that they will play the last round. After it
      * tells in which round they are, it calls the method startQuestion for the starting
@@ -286,12 +286,12 @@ public class BuzzGameGUI {
     }
 
     /**
-     * This method starts a question after it checked that there exist more question to
+     * This method starts a question after it checked that there are more questions to
      * the round they are. If there are not any, it informs the user(s)/ player(s) about
      * their current score and continues with the next round by calling the method startRound.
      * If there are more questions it shows the possible answers to them by calling the method
      * showAnswers, but firstly it checks if the kind of round is "Bet" and if so, it gets
-     * from the player/s the points that they bet.
+     * from the player(s) the points that they bet.
      */
 
     public void startQuestion() {
@@ -371,7 +371,7 @@ public class BuzzGameGUI {
     }
 
     /**
-     * This method reset the texts to the answerBox that exists in the secondPanel and makes
+     * This method resets the texts to the answerBox that exists in the secondPanel and makes
      * possible to the player/s to see what are the answers to the the random question. It
      * also checks if the kind of the round is "Stop The Watch" and if so, it makes visible
      * the timer that counts for 5000 milliseconds to 0.
@@ -408,7 +408,7 @@ public class BuzzGameGUI {
 
     /**
      * This method shows the points or the correct answer depending on the kind of round when
-     * a button from a player/s is pressed.
+     * a button from a player is pressed.
      *
      * @param numberOfPlayer is the unique number that the player that pressed the key has.
      * @param correctAnswer is true if the key that the player pressed is the correct answer
