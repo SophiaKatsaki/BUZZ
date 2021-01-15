@@ -21,6 +21,18 @@ public class InformationGUI {
     private JPanel infoPanel;
     private GUIController controller;
 
+    /**
+     *Constructor
+     *
+     * The constructor of the InformationGUI class creates a new GUIController
+     * object,makes a new frame,a panel that is added to the frame.It creates
+     * a label that becomes visible with the message that appears on the
+     * screen and greets the user(s)/player(s).It finally calls methods to
+     * set the opening image,start a new game and show the statistics of the
+     * game.
+     *
+     */
+
     public InformationGUI() {
         this.controller = new GUIController();
 
@@ -44,9 +56,23 @@ public class InformationGUI {
         showStatistics();
     }
 
+    /**
+     *
+     *This method sets the frame that holds the image,greeting label and
+     * 2 buttons as visible,in order for the user(s)/player(s) to begin.
+     *
+     */
+
     public void start(){
         this.infoFrame.setVisible(true);
     }
+
+    /**
+     *
+     * This method sets the image with the logo of the BUZZ game
+     * (opening image) and makes it visible in the opening frame.
+     *
+     */
 
     public void setImage() {
         JPanel imagePanel = new JPanel();
@@ -63,6 +89,15 @@ public class InformationGUI {
         this.infoFrame.setIconImage(icon.getImage());
     }
 
+    /**
+     *
+     *This method starts the game for the user(s)/player(s) and when the
+     * the button "New Game" in it is pressed,it is not enabled anymore,
+     * and a settingsGUI object is created with a GUIController object
+     * "controller" as a parameter in the constructor.
+     *
+     */
+
     public void startNewGame() {
         JButton newGame = new JButton("New Game");
         newGame.addActionListener(new ActionListener() {
@@ -74,6 +109,14 @@ public class InformationGUI {
         });
         this.infoPanel.add(newGame, BorderLayout.PAGE_END);
     }
+
+    /**
+     *
+     *This method is for showing the statistics of the game to the
+     *user(s)/player(s) when the "Statistics" button is pressed.
+     *There are two kinds of statistics,one that is for the "Solo Game" and
+     * one that is for the "Game With A Friend"
+     */
 
     public void showStatistics() {
         JButton statistics = new JButton("Statistics");
