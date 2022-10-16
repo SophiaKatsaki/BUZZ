@@ -1,4 +1,4 @@
-# BUZZ! : The Ultimate knowledge Quiz!#
+# BUZZ! : The Ultimate knowledge Quiz!
 
 **This is a fun knowledge game for one or two players with many questions, categories and types of rounds for the users to try!**
 
